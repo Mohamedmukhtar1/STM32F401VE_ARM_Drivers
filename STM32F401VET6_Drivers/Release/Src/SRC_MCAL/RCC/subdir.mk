@@ -5,23 +5,23 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../Src/SRC_MCAL/RCC/MCAL_RCC.c 
+../Src/Src_MCAL/RCC/MCAL_RCC.c 
 
 OBJS += \
-./Src/SRC_MCAL/RCC/MCAL_RCC.o 
+./Src/Src_MCAL/RCC/MCAL_RCC.o 
 
 C_DEPS += \
-./Src/SRC_MCAL/RCC/MCAL_RCC.d 
+./Src/Src_MCAL/RCC/MCAL_RCC.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
-Src/SRC_MCAL/RCC/%.o Src/SRC_MCAL/RCC/%.su: ../Src/SRC_MCAL/RCC/%.c Src/SRC_MCAL/RCC/subdir.mk
-	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -DSTM32 -DSTM32F4 -DSTM32F401VETx -c -I../Inc -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+Src/Src_MCAL/RCC/%.o Src/Src_MCAL/RCC/%.su: ../Src/Src_MCAL/RCC/%.c Src/Src_MCAL/RCC/subdir.mk
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -DSTM32 -DSTM32F4 -DSTM32F401VETx -c -I../Inc -I"E:/WorkShops ECE Knowledge/GitHup WorkShop/STM32_ARM_Drivers/STM32F401VET6_Drivers/Inc/Inc_APP/Utility" -I"E:/WorkShops ECE Knowledge/GitHup WorkShop/STM32_ARM_Drivers/STM32F401VET6_Drivers/Src/Src_MCAL/RCC" -I"E:/WorkShops ECE Knowledge/GitHup WorkShop/STM32_ARM_Drivers/STM32F401VET6_Drivers/Inc/Inc_MCAL/RCC" -I"E:/WorkShops ECE Knowledge/GitHup WorkShop/STM32_ARM_Drivers/STM32F401VET6_Drivers/Src/Src_MCAL/GPIO" -I"E:/WorkShops ECE Knowledge/GitHup WorkShop/STM32_ARM_Drivers/STM32F401VET6_Drivers/Inc/Inc_MCAL/GPIO" -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 
-clean: clean-Src-2f-SRC_MCAL-2f-RCC
+clean: clean-Src-2f-Src_MCAL-2f-RCC
 
-clean-Src-2f-SRC_MCAL-2f-RCC:
-	-$(RM) ./Src/SRC_MCAL/RCC/MCAL_RCC.d ./Src/SRC_MCAL/RCC/MCAL_RCC.o ./Src/SRC_MCAL/RCC/MCAL_RCC.su
+clean-Src-2f-Src_MCAL-2f-RCC:
+	-$(RM) ./Src/Src_MCAL/RCC/MCAL_RCC.d ./Src/Src_MCAL/RCC/MCAL_RCC.o ./Src/Src_MCAL/RCC/MCAL_RCC.su
 
-.PHONY: clean-Src-2f-SRC_MCAL-2f-RCC
+.PHONY: clean-Src-2f-Src_MCAL-2f-RCC
 

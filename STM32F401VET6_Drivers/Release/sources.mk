@@ -21,8 +21,7 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-Src/SRC_APP \
-Src/SRC_MCAL/RCC \
+Src/Src_MCAL/RCC \
 Src \
 Startup \
 

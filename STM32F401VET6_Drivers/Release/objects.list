@@ -1,5 +1,5 @@
-"./Src/SRC_APP/main.o"
-"./Src/SRC_MCAL/RCC/MCAL_RCC.o"
+"./Src/Src_MCAL/RCC/MCAL_RCC.o"
+"./Src/main.o"
 "./Src/syscalls.o"
 "./Src/sysmem.o"
 "./Startup/startup_stm32f401vetx.o"
