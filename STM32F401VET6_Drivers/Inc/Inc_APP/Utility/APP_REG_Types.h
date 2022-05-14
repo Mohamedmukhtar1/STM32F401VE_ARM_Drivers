@@ -84,7 +84,6 @@ typedef union
 		U32 BIT29:1;
 		U32 BIT30:1;
 		U32 BIT31:1;
-		U32 BIT32:1;
 		}BitAccess_Stag;
 	U32 RegisterAccess;
 }Register_32Bit_Utag;

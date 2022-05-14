@@ -8,9 +8,10 @@
 #ifndef INC_MCAL_RCC_MCAL_RCC_INTERFACE_H_
 #define INC_MCAL_RCC_MCAL_RCC_INTERFACE_H_
 
-/***************_MCAL_INCLUDES_****************************/
-#include "MCAL_RCC_Config.h"
+/***************_INCLUDES_****************************/
+#include "APP_Utility.h"
 #include "MCAL_RCC_Private.h"
+#include "MCAL_RCC_Config.h"
 #include "MCAL_RCC_Register.h"
 
 /**********   **********/
@@ -26,11 +27,14 @@ typedef enum
 
 /***************_MACROS_CONFIGURATION_*********************/
 
-/*============================================================================
-  ==================_APIs Supported by "MCAL_GPIO DRIVER"_====================
-  ============================================================================*/
 
-/***************_MCAL_GPIO.c_FUNCTION PROTOTYPE_***********/
+/*============================================================================
+  ==================_APIs Supported by "MCAL_RCC DRIVER"_====================
+  ============================================================================*/
+void MCAL_RCC_Bus_Enable_Clock(BusName_Etag BusNamex , RCC_AHB1ENR_Etag Peripheralx);
+void MCAL_RCC_Bus_Disable_Clock(BusName_Etag BusNamex , RCC_AHB1ENR_Etag Peripheralx);
+void MCAL_RCC_Enable_Security_System(void);
+void MCAL_RCC_Disable_Security_System(void);
 
 
 

@@ -8,6 +8,19 @@
 #ifndef INC_MCAL_RCC_MCAL_RCC_PRIVATE_H_
 #define INC_MCAL_RCC_MCAL_RCC_PRIVATE_H_
 
-
+#define  HSE   0U
+#define  HSI   1U
+#define  PLL   2U
+/**********   **********/
+#define _HSE_CRYSTAL  0U
+#define _HSE_RC       1U
+/**********   **********/
+#define _HSE_PLL      0U
+#define _HSI_PLL      1U
+/**********   **********/
+#define MC0_1_LSE   0U
+#define MC0_1_HSE   1U
+#define MC0_1_HSI   2U
+#define MC0_1_PLL   3U
 
 #endif /* INC_MCAL_RCC_MCAL_RCC_PRIVATE_H_ */

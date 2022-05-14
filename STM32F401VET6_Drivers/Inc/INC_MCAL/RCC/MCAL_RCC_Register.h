@@ -25,6 +25,7 @@
 	-----> Register Map
 ============================================================================================*/
 /*
+ **********************_Mechanic_Style_***********************************************************
 #define RCC_REG_CR                      (*(( volatile u32* )(RCC_PERIPHERAL_BASE_ADDRESS + 0x00)))
 #define RCC_REG_PLLCFGR                 (*(( volatile u32* )(RCC_PERIPHERAL_BASE_ADDRESS + 0x04)))
 #define RCC_REG_CFGR                    (*(( volatile u32* )(RCC_PERIPHERAL_BASE_ADDRESS + 0x08)))
@@ -48,6 +49,7 @@
 #define RCC_REG_DCKCFGR                 (*(( volatile u32* )(RCC_PERIPHERAL_BASE_ADDRESS + 0x8c)))
 */
 /*
+ *  **********************_Someone_Who_Finally_Understands_***************************************
 typedef struct {
 	volatile U32 REG_RCC_CR;                //!< RCC clock control register,                                  Address offset: 0x00
 	volatile U32 REG_RCC_PLLCFGR;           //!< RCC PLL configuration register,                              Address offset: 0x04
@@ -80,6 +82,7 @@ typedef struct {
 	volatile U32 REG_RCC_DCKCFGR;           //!< RCC Dedicated Clocks configuration register,                 Address offset: 0x8C
 } RCC_PERIPHERAL_Stag;
 */
+ /***********************_Expert_Mode_*********************************************************/
 typedef struct {
 	volatile Register_32Bit_Utag REG_RCC_CR;                /*!< RCC clock control register,                                  Address offset: 0x00 */
 	volatile Register_32Bit_Utag REG_RCC_PLLCFGR;           /*!< RCC PLL configuration register,                              Address offset: 0x04 */
@@ -113,22 +116,41 @@ typedef struct {
 } RCC_PERIPHERAL_Stag;
 
 typedef enum {
-	CR_HSI_ON		=0,
-	CR_HSI_RDY		=1,
-	CR_HSE_RDY		=17,
-	CR_HSE_ON		=16,
-	CR_HSE_BYP		=18,
-	CR_CSS_ON 		=19,
-	CR_PLL_ON 		=24,
-	CR_PLL_RDY 		=25,
-	CR_PLLI2S_ON 	=26,
-	CR_PLLI2S_RDY 	=27
+	CR_HSION		=0U,
+	CR_HSIRDY		=1U,
+	CR_HSEON		=16U,
+	CR_HSERDY		=17U,
+	CR_HSEBYP		=18U,
+	CR_CSSON 		=19U,
+	CR_PLLON 		=24U,
+	CR_PLLRDY 		=25U
 }RCC_CR_Etag;
 
+typedef enum {
+	PLLCFGR_PLLSRC		=22U,
+}RCC_PLLCFGR_Etag;
+
+typedef enum {
+	CFGR_SW0		=0U,
+	CFGR_SW1		=1U,
+	CFGR_MCO1		=22U
+}RCC_CFGR_Etag;
+
+typedef enum {
+	AHB1ENR_GPIOA_EN       =0U,
+	AHB1ENR_GPIOB_EN       =1U,
+	AHB1ENR_GPIOC_EN	   =2U,
+	AHB1ENR_GPIOD_EN	   =3U,
+	AHB1ENR_GPIOE_EN	   =4U,
+	AHB1ENR_GPIOH_EN	   =5U,
+	AHB1ENR_CRC_EN	       =6U,
+	AHB1ENR_DMA1_EN        =7U,
+	AHB1ENR_DMA2_EN        =8U
+}RCC_AHB1ENR_Etag;
 
 /*============================================================================================
 	-)	Struct Pointer :	Base_Address ->	RRC
   ============================================================================================*/
-#define RCC_SPTR      ((RCC_PERIPHERAL_Stag *)RCC_PERIPHERAL_BASE_ADDRESS)
+#define RCC_SPTR      ((volatile RCC_PERIPHERAL_Stag *)RCC_PERIPHERAL_BASE_ADDRESS)
 
 #endif /* INC_MCAL_RCC_MCAL_RCC_REGISTER_H_ */

@@ -28,8 +28,16 @@ Discarded input sections
  .text          0x0000000000000000        0x0 ./Src/Src_MCAL/RCC/MCAL_RCC.o
  .data          0x0000000000000000        0x0 ./Src/Src_MCAL/RCC/MCAL_RCC.o
  .bss           0x0000000000000000        0x0 ./Src/Src_MCAL/RCC/MCAL_RCC.o
- .text.MCAL_RCC_Enable_Clock
-                0x0000000000000000       0x30 ./Src/Src_MCAL/RCC/MCAL_RCC.o
+ .text.MCAL_RCC_Bus_Enable_Clock
+                0x0000000000000000       0x50 ./Src/Src_MCAL/RCC/MCAL_RCC.o
+ .text.MCAL_RCC_Bus_Disable_Clock
+                0x0000000000000000       0x58 ./Src/Src_MCAL/RCC/MCAL_RCC.o
+ .text.MCAL_RCC_Enable_Security_System
+                0x0000000000000000       0x10 ./Src/Src_MCAL/RCC/MCAL_RCC.o
+ .text.MCAL_RCC_Disable_Security_System
+                0x0000000000000000       0x10 ./Src/Src_MCAL/RCC/MCAL_RCC.o
+ .text.MCAL_RCC_Init_System_CLK
+                0x0000000000000000       0x40 ./Src/Src_MCAL/RCC/MCAL_RCC.o
  .comment       0x0000000000000000       0x51 ./Src/Src_MCAL/RCC/MCAL_RCC.o
  .ARM.attributes
                 0x0000000000000000       0x34 ./Src/Src_MCAL/RCC/MCAL_RCC.o

@@ -1,1 +1,5 @@
-../Src/Src_MCAL/RCC/MCAL_RCC.c:15:6:MCAL_RCC_Enable_Clock	0	static
+../Src/Src_MCAL/RCC/MCAL_RCC.c:10:6:MCAL_RCC_Bus_Enable_Clock	0	static
+../Src/Src_MCAL/RCC/MCAL_RCC.c:26:6:MCAL_RCC_Bus_Disable_Clock	0	static
+../Src/Src_MCAL/RCC/MCAL_RCC.c:42:6:MCAL_RCC_Enable_Security_System	0	static
+../Src/Src_MCAL/RCC/MCAL_RCC.c:47:6:MCAL_RCC_Disable_Security_System	0	static
+../Src/Src_MCAL/RCC/MCAL_RCC.c:52:6:MCAL_RCC_Init_System_CLK	0	static
