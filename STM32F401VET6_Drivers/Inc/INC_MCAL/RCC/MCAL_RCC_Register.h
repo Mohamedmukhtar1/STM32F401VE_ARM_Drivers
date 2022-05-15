@@ -166,20 +166,62 @@ typedef enum {
  *                                                                  |___/
  * [RCC_CR] -> Clock Control Register
  * 		Every flag is set by "Hardware", Configuration is set by "Software"
- *REGISTER MISSION:
+ * REGISTER MISSION:
  *             [1]  PLLI2S clock ready #flag                  [unlocked / locked]
  *             [2]  PLLI2S enable                             [OFF / ON]
  *             ----------------------------------------------------------------------------------
  *             [3]  Main PLL (PLL) clock ready #flag          [unlocked / locked]
  *             [4]  Main PLL (PLL) enable                     [OFF / ON]
+ *                     note: PLL cannot be OFF if PLL clock is used as the system clock.
  *             [5]  CCS - Clock security system enable        [OFF / ON]
+ *                     note: When CSSON is ON, the clock detector is enabled by hardware
+ *                           when the HSE oscillator is ready, and disabled by hardware
+ *                           if an oscillator failure is detected
  *             ----------------------------------------------------------------------------------
  *             [6]  External high-speed clock bypass control  [not bypassed / bypassed]
+ *                     note: The HSEBYP can be controlled only if the HSE oscillator is disabled
  *             [7]  External high-speed clock ready flag      [not ready / ready]
  *             [8]  External high-speed clock enable          [OFF / ON]
+ *                     note: HSE cannot be OFF if HSE clock is used as the system clock.
  *             ----------------------------------------------------------------------------------
  *             [9]  Internal high-speed clock calibration     [initialized automatically at startup]
  *             [10] Internal high-speed clock trimming        [provide an additional programmable trimming]
  *             [11] Internal high-speed clock ready flag      [not ready / ready]
  *             [12] Internal high-speed clock enable          [OFF / ON]
+ *                     note: HSI cannot be OFF if HSI clock is used as the system clock.
+ *******************************************************************************************************************
+***  _____   _____ _____     _____  _      _      _____ ______ _____ _____             _____            _     _
+ *  |  __ \ / ____/ ____|   |  __ \| |    | |    / ____|  ____/ ____|  __ \           |  __ \          (_)   | |
+ *  | |__) | |   | |        | |__) | |    | |   | |    | |__ | |  __| |__) |  ______  | |__) |___  __ _ _ ___| |_ ___ _ __
+ *  |  _  /| |   | |        |  ___/| |    | |   | |    |  __|| | |_ |  _  /  |______| |  _  // _ \/ _` | / __| __/ _ \ '__|
+ *  | | \ \| |___| |____ _  | |    | |____| |___| |____| |   | |__| | | \ \           | | \ \  __/ (_| | \__ \ ||  __/ |
+ *  |_|  \_\\_____\_____(_) |_|    |______|______\_____|_|    \_____|_|  \_\          |_|  \_\___|\__, |_|___/\__\___|_|
+ *                                                                                                 __/ |
+ *                                                                                                |___/
+ * [RCC_PLLCFGR] -> Clock PLL configuration register
+ * 		Every flag is set by "Hardware", Configuration is set by "Software"
+ * REGISTER MISSION:
+ *             [1]  PLL division factor for USB OTG FS, SDIO and random number generator clocks
+ *             [2]  PLL and audio PLLI2S entry clock source
+ *             [3]  PLL division factor for main system clock
+ *             [4]  PLL multiplication factor for VCO
+ *             [5]  Division factor for the main PLL and audio PLLI2S input clock
+ *******************************************************************************************************************
+***     _____   _____ _____      _____ ______ _____ _____             _____            _     _
+ *     |  __ \ / ____/ ____|    / ____|  ____/ ____|  __ \           |  __ \          (_)   | |
+ *     | |__) | |   | |        | |    | |__ | |  __| |__) |  ______  | |__) |___  __ _ _ ___| |_ ___ _ __
+ *     |  _  /| |   | |        | |    |  __|| | |_ |  _  /  |______| |  _  // _ \/ _` | / __| __/ _ \ '__|
+ *     | | \ \| |___| |____ _  | |____| |   | |__| | | \ \           | | \ \  __/ (_| | \__ \ ||  __/ |
+ *     |_|  \_\\_____\_____(_)  \_____|_|    \_____|_|  \_\          |_|  \_\___|\__, |_|___/\__\___|_|
+ *                                                                                __/ |
+ *                                                                               |___/
+ * [RCC_CFGR] -> Clock configuration register
+ * 		Every flag is set by "Hardware", Configuration is set by "Software"
+ * REGISTER MISSION:
+ *             [1]  PLL division factor for USB OTG FS, SDIO and random number generator clocks
+ *             [2]  PLL and audio PLLI2S entry clock source
+ *             [3]  PLL division factor for main system clock
+ *             [4]  PLL multiplication factor for VCO
+ *             [5]  Division factor for the main PLL and audio PLLI2S input clock
+ *******************************************************************************************************************
  *********************************************************************************************/
