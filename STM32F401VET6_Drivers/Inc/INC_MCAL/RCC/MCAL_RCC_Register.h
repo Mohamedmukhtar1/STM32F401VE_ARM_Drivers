@@ -154,3 +154,34 @@ typedef enum {
 #define RCC_SPTR      ((volatile RCC_PERIPHERAL_Stag *)RCC_PERIPHERAL_BASE_ADDRESS)
 
 #endif /* INC_MCAL_RCC_MCAL_RCC_REGISTER_H_ */
+
+/**********************************************************************************************
+ *
+***
+ *      _____   _____ _____      _____ _____             _____            _     _
+ *     |  __ \ / ____/ ____|    / ____|  __ \           |  __ \          (_)   | |
+ *     | |__) | |   | |        | |    | |__) |  ______  | |__) |___  __ _ _ ___| |_ ___ _ __
+ *     |  _  /| |   | |        | |    |  _  /  |______| |  _  // _ \/ _` | / __| __/ _ \ '__|
+ *     | | \ \| |___| |____ _  | |____| | \ \           | | \ \  __/ (_| | \__ \ ||  __/ |
+ *     |_|  \_\\_____\_____(_)  \_____|_|  \_\          |_|  \_\___|\__, |_|___/\__\___|_|
+ *                                                                   __/ |
+ *                                                                  |___/
+ * [RCC_CR] -> Clock Control Register
+ * 		Every flag is set by "Hardware", Configuration is set by "Software"
+ *REGISTER MISSION:
+ *             [1]  PLLI2S clock ready #flag                  [unlocked / locked]
+ *             [2]  PLLI2S enable                             [OFF / ON]
+ *             ----------------------------------------------------------------------------------
+ *             [3]  Main PLL (PLL) clock ready #flag          [unlocked / locked]
+ *             [4]  Main PLL (PLL) enable                     [OFF / ON]
+ *             [5]  CCS - Clock security system enable        [OFF / ON]
+ *             ----------------------------------------------------------------------------------
+ *             [6]  External high-speed clock bypass control  [not bypassed / bypassed]
+ *             [7]  External high-speed clock ready flag      [not ready / ready]
+ *             [8]  External high-speed clock enable          [OFF / ON]
+ *             ----------------------------------------------------------------------------------
+ *             [9]  Internal high-speed clock calibration     [initialized automatically at startup]
+ *             [10] Internal high-speed clock trimming        [provide an additional programmable trimming]
+ *             [11] Internal high-speed clock ready flag      [not ready / ready]
+ *             [12] Internal high-speed clock enable          [OFF / ON]
+ *********************************************************************************************/
