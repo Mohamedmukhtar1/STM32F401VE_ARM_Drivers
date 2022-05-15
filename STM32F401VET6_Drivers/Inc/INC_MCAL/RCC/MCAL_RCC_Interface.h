@@ -15,13 +15,11 @@
 #include "MCAL_RCC_Register.h"
 
 /**********   **********/
-typedef enum
-{
-   Bus_AHB1 =0,
-   Bus_AHB2   ,
-   Bus_APB1   ,
-   Bus_APB2
-}BusName_Etag;
+#define   Bus_AHB1   0U
+#define   Bus_AHB2   1U
+#define   Bus_APB1   2U
+#define   Bus_APB2   3U
+
 
 
 
@@ -31,8 +29,8 @@ typedef enum
 /*============================================================================
   ==================_APIs Supported by "MCAL_RCC DRIVER"_====================
   ============================================================================*/
-void MCAL_RCC_Bus_Enable_Clock(BusName_Etag BusNamex , RCC_AHB1ENR_Etag Peripheralx);
-void MCAL_RCC_Bus_Disable_Clock(BusName_Etag BusNamex , RCC_AHB1ENR_Etag Peripheralx);
+void MCAL_RCC_Bus_Enable_Clock(U8 AxBxENR_RCC_Bus ,U8 Peripheralx);
+void MCAL_RCC_Bus_Disable_Clock(U8 AxBxENR_RCC_Bus ,U8 Peripheralx);
 void MCAL_RCC_Enable_Security_System(void);
 void MCAL_RCC_Disable_Security_System(void);
 

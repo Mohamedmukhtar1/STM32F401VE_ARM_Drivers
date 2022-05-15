@@ -115,38 +115,58 @@ typedef struct {
 	volatile Register_32Bit_Utag REG_RCC_DCKCFGR;           /*!< RCC Dedicated Clocks configuration register,                 Address offset: 0x8C */
 } RCC_PERIPHERAL_Stag;
 
-typedef enum {
-	CR_HSION		=0U,
-	CR_HSIRDY		=1U,
-	CR_HSEON		=16U,
-	CR_HSERDY		=17U,
-	CR_HSEBYP		=18U,
-	CR_CSSON 		=19U,
-	CR_PLLON 		=24U,
-	CR_PLLRDY 		=25U
-}RCC_CR_Etag;
 
-typedef enum {
-	PLLCFGR_PLLSRC		=22U,
-}RCC_PLLCFGR_Etag;
+#define	CR_HSION		0U
+#define	CR_HSIRDY		1U
+#define	CR_HSEON		16U
+#define	CR_HSERDY		17U
+#define	CR_HSEBYP		18U
+#define	CR_CSSON 		19U
+#define	CR_PLLON 		24U
+#define	CR_PLLRDY 		25U
 
-typedef enum {
-	CFGR_SW0		=0U,
-	CFGR_SW1		=1U,
-	CFGR_MCO1		=22U
-}RCC_CFGR_Etag;
+#define	PLLCFGR_PLLSRC  22U
 
-typedef enum {
-	AHB1ENR_GPIOA_EN     =0U,
-	AHB1ENR_GPIOB_EN     =1U,
-	AHB1ENR_GPIOC_EN     =2U,
-	AHB1ENR_GPIOD_EN     =3U,
-	AHB1ENR_GPIOE_EN     =4U,
-	AHB1ENR_GPIOH_EN     =5U,
-	AHB1ENR_CRC_EN	     =6U,
-	AHB1ENR_DMA1_EN      =7U,
-	AHB1ENR_DMA2_EN      =8U
-}RCC_AHB1ENR_Etag;
+#define	CFGR_SW0		0U
+#define	CFGR_SW1		1U
+#define	CFGR_MCO1		22U
+
+#define	AHB1ENR_GPIOAEN     0U
+#define	AHB1ENR_GPIOBEN     1U
+#define	AHB1ENR_GPIOCEN     2U
+#define	AHB1ENR_GPIODEN     3U
+#define	AHB1ENR_GPIOEEN     4U
+#define	AHB1ENR_GPIOHEN     5U
+#define	AHB1ENR_CRCEN       6U
+#define	AHB1ENR_DMA1EN      7U
+#define	AHB1ENR_DMA2EN      8U
+
+#define AHB2ENR_OTGFSEN     7U
+
+#define APB1ENR_TIM2EN      0U
+#define APB1ENR_TIM3EN      1U
+#define APB1ENR_TIM4EN      2U
+#define APB1ENR_TIM5EN      3U
+#define APB1ENR_WWDGEN      11U
+#define APB1ENR_SPI2EN      14U
+#define APB1ENR_SPI3EN      15U
+#define APB1ENR_USART2      17U
+#define APB1ENR_I2C1        21U
+#define APB1ENR_I2C2        22U
+#define APB1ENR_I2C3        23U
+#define APB1ENR_PWR         28U
+
+#define APB2ENR_TIM1EN       0U
+#define APB2ENR_USART1EN     4U
+#define APB2ENR_USART6EN     5U
+#define APB2ENR_ADC1EN       8U
+#define APB2ENR_SDIOEN       11U
+#define APB2ENR_SPI1EN       12U
+#define APB2ENR_SPI4EN       13U
+#define APB2ENR_SYSCFGEN     14U
+#define APB2ENR_TIM9EN       16U
+#define APB2ENR_TIM10EN      17U
+#define APB2ENR_TIM11EN      18U
 
 /*============================================================================================
 	-)	Struct Pointer :	Base_Address ->	RRC
@@ -218,10 +238,53 @@ typedef enum {
  * [RCC_CFGR] -> Clock configuration register
  * 		Every flag is set by "Hardware", Configuration is set by "Software"
  * REGISTER MISSION:
- *             [1]  PLL division factor for USB OTG FS, SDIO and random number generator clocks
- *             [2]  PLL and audio PLLI2S entry clock source
- *             [3]  PLL division factor for main system clock
- *             [4]  PLL multiplication factor for VCO
- *             [5]  Division factor for the main PLL and audio PLLI2S input clock
+ *             [1]  Microcontroller clock output_2 selection         [SYSCLK, PLLI2S, HSE, PLL]
+ *             [2]  Microcontroller clock output_1 selection         [HSI, LSE, HSE, PLL]
+ *             [3]  Microcontroller clock output_2 prescaler         [2, 3, 4, 5]
+ *             [4]  Microcontroller clock output_1 prescaler         [2, 3, 4, 5]
+ *             ----------------------------------------------------------------------------------
+ *             [5]  I2S clock selection
+ *             ----------------------------------------------------------------------------------
+ *             [6]  HSE division factor for RTC clock                [HSE/2, ..., HSE/31]
+ *             ----------------------------------------------------------------------------------
+ *             [7]  APB high-speed prescaler (APB2)                  [None, 2, 4, 8, 16]
+ *             [8]  APB Low-speed prescaler (APB1)                   [None, 2, 4, 8, 16]
+ *             [9]  AHB prescaler                                    [None, 2, 4, 8, 16, 64, 128, 256, 512]
+ *             ----------------------------------------------------------------------------------
+ *             [10] System clock switch status #flag                 [HSI, HSE, PLL]
+ *             [11] System clock switch                              [HSI, HSE, PLL]
  *******************************************************************************************************************
+***     _____   _____ _____      _____ _____ _____             _____            _     _
+ *     |  __ \ / ____/ ____|    / ____|_   _|  __ \           |  __ \          (_)   | |
+ *     | |__) | |   | |        | |      | | | |__) |  ______  | |__) |___  __ _ _ ___| |_ ___ _ __
+ *     |  _  /| |   | |        | |      | | |  _  /  |______| |  _  // _ \/ _` | / __| __/ _ \ '__|
+ *     | | \ \| |___| |____ _  | |____ _| |_| | \ \           | | \ \  __/ (_| | \__ \ ||  __/ |
+ *     |_|  \_\\_____\_____(_)  \_____|_____|_|  \_\          |_|  \_\___|\__, |_|___/\__\___|_|
+ *                                                                         __/ |
+ *                                                                        |___/
+ * [RCC_CIR] -> Clock interrupt register
+ * 		Every flag is set by "Hardware", Configuration is set by "Software"
+ * REGISTER MISSION:
+ *             [1]  Clock security system interrupt clear        [0: No effect, 1: Clear CSSF flag]
+ *             [2]  PLLI2S ready interrupt clear                 [0: No effect, 1: Clear PLLI2SRDYF flag]
+ *             [3]  Main PLL ready interrupt clear               [0: No effect, 1: Clear PLLRDYF flag]
+ *             [4]  HSE ready interrupt clear                    [0: No effect, 1: Clear HSERDYF flag]
+ *             [5]  HSI ready interrupt clear                    [0: No effect, 1: Clear HSIRDYF flag]
+ *             [6]  LSE ready interrupt clear                    [0: No effect, 1: Clear LSERDYF flag]
+ *             [7]  LSI ready interrupt clear                    [0: No effect, 1: Clear LSIRDYF flag]
+ *             ----------------------------------------------------------------------------------
+ *             [8]  PLLI2S ready interrupt enable            [interrupt disabled / interrupt enabled]
+ *             [9]  Main PLL ready interrupt enable          [interrupt disabled / interrupt enabled]
+ *             [10] HSE ready interrupt enable               [interrupt disabled / interrupt enabled]
+ *             [11] HSI ready interrupt enable               [interrupt disabled / interrupt enabled]
+ *             [12] LSE ready interrupt enable               [interrupt disabled / interrupt enabled]
+ *             [13] LSI ready interrupt enable               [interrupt disabled / interrupt enabled]
+ *             ----------------------------------------------------------------------------------
+ *             [14] Clock security system interrupt flag
+ *             [15] PLLI2S ready interrupt flag
+ *             [16] Main PLL ready interrupt flag
+ *             [17] HSE ready interrupt flag
+ *             [18] HSI ready interrupt flag
+ *             [19] LSE ready interrupt flag
+ *             [20] LSI ready interrupt flag
  *********************************************************************************************/

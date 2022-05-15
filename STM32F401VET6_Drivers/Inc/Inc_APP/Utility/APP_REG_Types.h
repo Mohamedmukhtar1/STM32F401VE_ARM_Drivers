@@ -20,7 +20,7 @@ typedef union
 		U8 BIT5:1;
 		U8 BIT6:1;
 		U8 BIT7:1;
-		}BitAccess_Stag;
+		}BitAccess;
 	U8 RegisterAccess;
 }Register_8Bit_Utag;
 
@@ -44,7 +44,7 @@ typedef union
 		U16 BIT13:1;
 		U16 BIT14:1;
 		U16 BIT15:1;
-		}BitAccess_Stag;
+		}BitAccess;
 	U16 RegisterAccess;
 }Register_16Bit_Utag;
 
@@ -84,7 +84,7 @@ typedef union
 		U32 BIT29:1;
 		U32 BIT30:1;
 		U32 BIT31:1;
-		}BitAccess_Stag;
+		}BitAccess;
 	U32 RegisterAccess;
 }Register_32Bit_Utag;
 

@@ -37,7 +37,7 @@ Discarded input sections
  .text.MCAL_RCC_Disable_Security_System
                 0x0000000000000000       0x10 ./Src/Src_MCAL/RCC/MCAL_RCC.o
  .text.MCAL_RCC_Init_System_CLK
-                0x0000000000000000       0x40 ./Src/Src_MCAL/RCC/MCAL_RCC.o
+                0x0000000000000000       0x50 ./Src/Src_MCAL/RCC/MCAL_RCC.o
  .comment       0x0000000000000000       0x51 ./Src/Src_MCAL/RCC/MCAL_RCC.o
  .ARM.attributes
                 0x0000000000000000       0x34 ./Src/Src_MCAL/RCC/MCAL_RCC.o
