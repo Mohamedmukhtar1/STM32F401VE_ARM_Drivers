@@ -137,15 +137,15 @@ typedef enum {
 }RCC_CFGR_Etag;
 
 typedef enum {
-	AHB1ENR_GPIOA_EN       =0U,
-	AHB1ENR_GPIOB_EN       =1U,
-	AHB1ENR_GPIOC_EN	   =2U,
-	AHB1ENR_GPIOD_EN	   =3U,
-	AHB1ENR_GPIOE_EN	   =4U,
-	AHB1ENR_GPIOH_EN	   =5U,
-	AHB1ENR_CRC_EN	       =6U,
-	AHB1ENR_DMA1_EN        =7U,
-	AHB1ENR_DMA2_EN        =8U
+	AHB1ENR_GPIOA_EN     =0U,
+	AHB1ENR_GPIOB_EN     =1U,
+	AHB1ENR_GPIOC_EN     =2U,
+	AHB1ENR_GPIOD_EN     =3U,
+	AHB1ENR_GPIOE_EN     =4U,
+	AHB1ENR_GPIOH_EN     =5U,
+	AHB1ENR_CRC_EN	     =6U,
+	AHB1ENR_DMA1_EN      =7U,
+	AHB1ENR_DMA2_EN      =8U
 }RCC_AHB1ENR_Etag;
 
 /*============================================================================================
@@ -156,9 +156,7 @@ typedef enum {
 #endif /* INC_MCAL_RCC_MCAL_RCC_REGISTER_H_ */
 
 /**********************************************************************************************
- *
-***
- *      _____   _____ _____      _____ _____             _____            _     _
+***     _____   _____ _____      _____ _____             _____            _     _
  *     |  __ \ / ____/ ____|    / ____|  __ \           |  __ \          (_)   | |
  *     | |__) | |   | |        | |    | |__) |  ______  | |__) |___  __ _ _ ___| |_ ___ _ __
  *     |  _  /| |   | |        | |    |  _  /  |______| |  _  // _ \/ _` | / __| __/ _ \ '__|
