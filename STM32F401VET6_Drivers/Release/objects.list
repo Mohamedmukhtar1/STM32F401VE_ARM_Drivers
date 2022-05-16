@@ -1,3 +1,4 @@
+"./Src/Src_MCAL/GPIO/MCAL_GPIO.o"
 "./Src/Src_MCAL/RCC/MCAL_RCC.o"
 "./Src/main.o"
 "./Src/syscalls.o"

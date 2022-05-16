@@ -116,20 +116,24 @@ typedef struct {
 } RCC_PERIPHERAL_Stag;
 
 
-#define	CR_HSION		0U
-#define	CR_HSIRDY		1U
-#define	CR_HSEON		16U
-#define	CR_HSERDY		17U
-#define	CR_HSEBYP		18U
-#define	CR_CSSON 		19U
-#define	CR_PLLON 		24U
-#define	CR_PLLRDY 		25U
+#define	CR_HSION     0U
+#define	CR_HSIRDY    1U
+#define	CR_HSEON     16U
+#define	CR_HSERDY    17U
+#define	CR_HSEBYP    18U
+#define	CR_CSSON     19U
+#define	CR_PLLON     24U
+#define	CR_PLLRDY    25U
 
 #define	PLLCFGR_PLLSRC  22U
 
-#define	CFGR_SW0		0U
-#define	CFGR_SW1		1U
-#define	CFGR_MCO1		22U
+#define	CFGR_SW0        0U
+#define	CFGR_SW1        1U
+#define	CFGR_MCO1_1     21U
+#define	CFGR_MCO1_2     22U
+#define	CFGR_MCO1PRE_1  24U
+#define	CFGR_MCO1PRE_2  25U
+#define	CFGR_MCO1PRE_3  26U
 
 #define	AHB1ENR_GPIOAEN     0U
 #define	AHB1ENR_GPIOBEN     1U
@@ -156,17 +160,17 @@ typedef struct {
 #define APB1ENR_I2C3        23U
 #define APB1ENR_PWR         28U
 
-#define APB2ENR_TIM1EN       0U
-#define APB2ENR_USART1EN     4U
-#define APB2ENR_USART6EN     5U
-#define APB2ENR_ADC1EN       8U
-#define APB2ENR_SDIOEN       11U
-#define APB2ENR_SPI1EN       12U
-#define APB2ENR_SPI4EN       13U
-#define APB2ENR_SYSCFGEN     14U
-#define APB2ENR_TIM9EN       16U
-#define APB2ENR_TIM10EN      17U
-#define APB2ENR_TIM11EN      18U
+#define APB2ENR_TIM1EN      0U
+#define APB2ENR_USART1EN    4U
+#define APB2ENR_USART6EN    5U
+#define APB2ENR_ADC1EN      8U
+#define APB2ENR_SDIOEN      11U
+#define APB2ENR_SPI1EN      12U
+#define APB2ENR_SPI4EN      13U
+#define APB2ENR_SYSCFGEN    14U
+#define APB2ENR_TIM9EN      16U
+#define APB2ENR_TIM10EN     17U
+#define APB2ENR_TIM11EN     18U
 
 /*============================================================================================
 	-)	Struct Pointer :	Base_Address ->	RRC

@@ -3,3 +3,5 @@
 ../Src/Src_MCAL/RCC/MCAL_RCC.c:42:6:MCAL_RCC_Enable_Security_System	0	static
 ../Src/Src_MCAL/RCC/MCAL_RCC.c:47:6:MCAL_RCC_Disable_Security_System	0	static
 ../Src/Src_MCAL/RCC/MCAL_RCC.c:52:6:MCAL_RCC_Init_System_CLK	0	static
+../Src/Src_MCAL/RCC/MCAL_RCC.c:124:6:MCAL_RCC_Out_MCO_1	0	static
+../Src/Src_MCAL/RCC/MCAL_RCC.c:150:6:MCAL_RCC_Out_MCO_1_Prescaler	0	static

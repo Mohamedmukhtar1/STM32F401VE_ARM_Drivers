@@ -119,3 +119,60 @@ void MCAL_RCC_Init_System_CLK(void)
 		/* Error*/
 	#endif
 }
+
+
+void MCAL_RCC_Out_MCO_1(U8 MCO_1_Source)
+{
+	switch(MCO_1_Source)
+	{
+		case  MCO_1_SOURCE_HSI:
+			CLR_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1_1);
+			CLR_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1_2);
+		break  ;
+		case  MCO_1_SOURCE_LSE:
+			SET_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1_1);
+			CLR_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1_2);
+		break  ;
+		case  MCO_1_SOURCE_HSE:
+			CLR_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1_1);
+			SET_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1_2);
+		break  ;
+		case  MCO_1_SOURCE_PLL :
+			SET_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1_1);
+			SET_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1_2);
+		break  ;
+		default :
+			/* ERROR*/
+		break ;
+	}
+}
+
+void MCAL_RCC_Out_MCO_1_Prescaler(U8 MCO_1_Prescaler)
+{
+	switch (MCO_1_Prescaler )
+	{
+	 case MCO_1_PRESCALER_1 :
+		 SET_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1PRE_3);
+	 break ;
+	 case MCO_1_PRESCALER_2 :
+		 CLR_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1PRE_1);
+		 CLR_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1PRE_2);
+		 SET_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1PRE_3);
+	 break ;
+	 case MCO_1_PRESCALER_3 :
+		 CLR_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1PRE_1);
+		 CLR_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1PRE_2);
+		 SET_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1PRE_3);
+	 break ;
+	  case MCO_1_PRESCALER_4 :
+		 CLR_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1PRE_1);
+		 SET_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1PRE_2);
+		 SET_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1PRE_3);
+	 break ;
+	  case MCO_1_PRESCALER_5 :
+		 SET_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1PRE_1);
+		 SET_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1PRE_2);
+		 SET_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1PRE_3);
+	 break ;
+	}
+}
