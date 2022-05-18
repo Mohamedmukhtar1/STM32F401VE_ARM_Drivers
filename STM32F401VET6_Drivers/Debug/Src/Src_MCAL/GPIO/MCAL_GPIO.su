@@ -1,0 +1,4 @@
+../Src/Src_MCAL/GPIO/MCAL_GPIO.c:10:6:MGPIO_vSetPinMode	16	static
+../Src/Src_MCAL/GPIO/MCAL_GPIO.c:26:6:MGPIO_vSetPinOutPutType	16	static
+../Src/Src_MCAL/GPIO/MCAL_GPIO.c:40:6:MGPIO_vSetPinOutSpeed	24	static
+../Src/Src_MCAL/GPIO/MCAL_GPIO.c:54:6:MGPIO_vSetPullType	24	static
