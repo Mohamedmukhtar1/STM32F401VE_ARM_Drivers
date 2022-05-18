@@ -1,7 +1,7 @@
-../Src/Src_MCAL/RCC/MCAL_RCC.c:10:6:MCAL_RCC_Bus_Enable_Clock	0	static
-../Src/Src_MCAL/RCC/MCAL_RCC.c:26:6:MCAL_RCC_Bus_Disable_Clock	0	static
-../Src/Src_MCAL/RCC/MCAL_RCC.c:42:6:MCAL_RCC_Enable_Security_System	0	static
-../Src/Src_MCAL/RCC/MCAL_RCC.c:47:6:MCAL_RCC_Disable_Security_System	0	static
-../Src/Src_MCAL/RCC/MCAL_RCC.c:52:6:MCAL_RCC_Init_System_CLK	0	static
-../Src/Src_MCAL/RCC/MCAL_RCC.c:124:6:MCAL_RCC_Out_MCO_1	0	static
-../Src/Src_MCAL/RCC/MCAL_RCC.c:150:6:MCAL_RCC_Out_MCO_1_Prescaler	0	static
+../Src/Src_MCAL/RCC/MCAL_RCC.c:10:6:MRCC_vInitSystemClock	0	static
+../Src/Src_MCAL/RCC/MCAL_RCC.c:81:6:MRCC_vEnableBusClock	0	static
+../Src/Src_MCAL/RCC/MCAL_RCC.c:97:6:MRCC_vDisableBusClock	0	static
+../Src/Src_MCAL/RCC/MCAL_RCC.c:113:6:MRCC_vEnableSecuritySystem	0	static
+../Src/Src_MCAL/RCC/MCAL_RCC.c:119:6:MRCC_vDisableSecuritySystem	0	static
+../Src/Src_MCAL/RCC/MCAL_RCC.c:124:6:MRCC_vOutMCO_1	0	static
+../Src/Src_MCAL/RCC/MCAL_RCC.c:150:6:MRCC_vOutMCO_1_Prescaler	0	static

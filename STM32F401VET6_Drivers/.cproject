@@ -70,7 +70,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Inc"/>
+						<entry excluding="Inc_MCAL/EXTI|EXTIx|Inc_MCAL/Src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Inc"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Src"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Startup"/>
 					</sourceEntries>
@@ -122,6 +122,10 @@
 									<listOptionValue builtIn="false" value="&quot;E:\WorkShops ECE Knowledge\GitHup WorkShop\STM32_ARM_Drivers\STM32F401VET6_Drivers\Inc\Inc_MCAL\RCC&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;E:\WorkShops ECE Knowledge\GitHup WorkShop\STM32_ARM_Drivers\STM32F401VET6_Drivers\Src\Src_MCAL\GPIO&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;E:\WorkShops ECE Knowledge\GitHup WorkShop\STM32_ARM_Drivers\STM32F401VET6_Drivers\Inc\Inc_MCAL\GPIO&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;E:\WorkShops ECE Knowledge\GitHup WorkShop\STM32_ARM_Drivers\STM32F401VET6_Drivers\Src\Src_MCAL\NVIC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;E:\WorkShops ECE Knowledge\GitHup WorkShop\STM32_ARM_Drivers\STM32F401VET6_Drivers\Inc\Inc_MCAL\NVIC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;E:\WorkShops ECE Knowledge\GitHup WorkShop\STM32_ARM_Drivers\STM32F401VET6_Drivers\Src\Src_MCAL\EXTIx&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;E:\WorkShops ECE Knowledge\GitHup WorkShop\STM32_ARM_Drivers\STM32F401VET6_Drivers\Inc\Inc_MCAL\EXTIx&quot;"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1466555237" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
@@ -148,7 +152,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Inc"/>
+						<entry excluding="Inc_MCAL/EXTI|EXTIx|Inc_MCAL/Src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Inc"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Src"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Startup"/>
 					</sourceEntries>

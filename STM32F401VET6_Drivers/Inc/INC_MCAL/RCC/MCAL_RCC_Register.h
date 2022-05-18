@@ -84,35 +84,35 @@ typedef struct {
 */
  /***********************_Expert_Mode_*********************************************************/
 typedef struct {
-	volatile Register_32Bit_Utag REG_RCC_CR;                /*!< RCC clock control register,                                  Address offset: 0x00 */
-	volatile Register_32Bit_Utag REG_RCC_PLLCFGR;           /*!< RCC PLL configuration register,                              Address offset: 0x04 */
-	volatile Register_32Bit_Utag REG_RCC_CFGR;              /*!< RCC clock configuration register,                            Address offset: 0x08 */
-	volatile Register_32Bit_Utag REG_RCC_CIR;               /*!< RCC clock interrupt register,                                Address offset: 0x0C */
-	volatile Register_32Bit_Utag REG_RCC_AHB1RSTR;          /*!< RCC AHB1 peripheral reset register,                          Address offset: 0x10 */
-	volatile Register_32Bit_Utag REG_RCC_AHB2RSTR;          /*!< RCC AHB2 peripheral reset register,                          Address offset: 0x14 */
-	volatile U32                 REG_RCC_RESERVED_1_[2];    /*!< Reserved, 0x28-0x2C                                                               */
-	volatile Register_32Bit_Utag REG_RCC_APB1RSTR;          /*!< RCC APB1 peripheral reset register,                          Address offset: 0x20 */
-	volatile Register_32Bit_Utag REG_RCC_APB2RSTR;          /*!< RCC APB2 peripheral reset register,                          Address offset: 0x24 */
-	volatile U32                 REG_RCC_RESERVED_2_[2];    /*!< Reserved, 0x28-0x2C                                                               */
-	volatile Register_32Bit_Utag REG_RCC_AHB1ENR;           /*!< RCC AHB1 peripheral clock register,                          Address offset: 0x30 */
-	volatile Register_32Bit_Utag REG_RCC_AHB2ENR;           /*!< RCC AHB2 peripheral clock register,                          Address offset: 0x34 */
-	volatile U32                 REG_RCC_RESERVED_3_[2];	/*!< Reserved,                                                                */
-	volatile Register_32Bit_Utag REG_RCC_APB1ENR;           /*!< RCC APB1 peripheral clock enable register,                   Address offset: 0x40 */
-	volatile Register_32Bit_Utag REG_RCC_APB2ENR;           /*!< RCC APB2 peripheral clock enable register,                   Address offset: 0x44 */
-	volatile U32                 REG_RCC_RESERVED_4_[2];    /*!< Reserved, 0x48-0x4C                                                               */
-	volatile Register_32Bit_Utag REG_RCC_AHB1LPENR;         /*!< RCC AHB1 peripheral clock enable in low power mode register, Address offset: 0x50 */
-	volatile Register_32Bit_Utag REG_RCC_AHB2LPENR;         /*!< RCC AHB2 peripheral clock enable in low power mode register, Address offset: 0x54 */
-	volatile U32                 REG_RCC_RESERVED_5_[2];    /*!< Reserved, 0x48-0x4C                                                               */
-	volatile Register_32Bit_Utag REG_RCC_APB1LPENR;         /*!< RCC APB1 peripheral clock enable in low power mode register, Address offset: 0x60 */
-	volatile Register_32Bit_Utag REG_RCC_APB2LPENR;         /*!< RCC APB2 peripheral clock enable in low power mode register, Address offset: 0x64 */
-	volatile U32                 REG_RCC_RESERVED_6_[2];    /*!< Reserved, 0x68-0x6C                                                               */
-	volatile Register_32Bit_Utag REG_RCC_BDCR;              /*!< RCC Backup domain control register,                          Address offset: 0x70 */
-	volatile Register_32Bit_Utag REG_RCC_CSR;               /*!< RCC clock control & status register,                         Address offset: 0x74 */
-	volatile U32                 REG_RCC_RESERVED_7_[2];    /*!< Reserved, 0x78-0x7C                                                               */
-	volatile Register_32Bit_Utag REG_RCC_SSCGR;             /*!< RCC spread spectrum clock generation register,               Address offset: 0x80 */
-	volatile Register_32Bit_Utag REG_RCC_PLLI2SCFGR;        /*!< RCC PLLI2S configuration register,                           Address offset: 0x84 */
-	volatile U32                 REG_RCC_RESERVED_8_[1];    /*!< Reserved, 0x88                                                                    */
-	volatile Register_32Bit_Utag REG_RCC_DCKCFGR;           /*!< RCC Dedicated Clocks configuration register,                 Address offset: 0x8C */
+	volatile Reg_32Bit_Utag REG_RCC_CR;                /*!< RCC clock control register,                                  Address offset: 0x00 */
+	volatile Reg_32Bit_Utag REG_RCC_PLLCFGR;           /*!< RCC PLL configuration register,                              Address offset: 0x04 */
+	volatile Reg_32Bit_Utag REG_RCC_CFGR;              /*!< RCC clock configuration register,                            Address offset: 0x08 */
+	volatile Reg_32Bit_Utag REG_RCC_CIR;               /*!< RCC clock interrupt register,                                Address offset: 0x0C */
+	volatile Reg_32Bit_Utag REG_RCC_AHB1RSTR;          /*!< RCC AHB1 peripheral reset register,                          Address offset: 0x10 */
+	volatile Reg_32Bit_Utag REG_RCC_AHB2RSTR;          /*!< RCC AHB2 peripheral reset register,                          Address offset: 0x14 */
+	volatile U32            REG_RCC_RESERVED_1_[2];    /*!< Reserved, 0x28-0x2C                                                               */
+	volatile Reg_32Bit_Utag REG_RCC_APB1RSTR;          /*!< RCC APB1 peripheral reset register,                          Address offset: 0x20 */
+	volatile Reg_32Bit_Utag REG_RCC_APB2RSTR;          /*!< RCC APB2 peripheral reset register,                          Address offset: 0x24 */
+	volatile U32            REG_RCC_RESERVED_2_[2];    /*!< Reserved, 0x28-0x2C                                                               */
+	volatile Reg_32Bit_Utag REG_RCC_AHB1ENR;           /*!< RCC AHB1 peripheral clock register,                          Address offset: 0x30 */
+	volatile Reg_32Bit_Utag REG_RCC_AHB2ENR;           /*!< RCC AHB2 peripheral clock register,                          Address offset: 0x34 */
+	volatile U32            REG_RCC_RESERVED_3_[2];	/*!< Reserved,                                                                */
+	volatile Reg_32Bit_Utag REG_RCC_APB1ENR;           /*!< RCC APB1 peripheral clock enable register,                   Address offset: 0x40 */
+	volatile Reg_32Bit_Utag REG_RCC_APB2ENR;           /*!< RCC APB2 peripheral clock enable register,                   Address offset: 0x44 */
+	volatile U32            REG_RCC_RESERVED_4_[2];    /*!< Reserved, 0x48-0x4C                                                               */
+	volatile Reg_32Bit_Utag REG_RCC_AHB1LPENR;         /*!< RCC AHB1 peripheral clock enable in low power mode register, Address offset: 0x50 */
+	volatile Reg_32Bit_Utag REG_RCC_AHB2LPENR;         /*!< RCC AHB2 peripheral clock enable in low power mode register, Address offset: 0x54 */
+	volatile U32            REG_RCC_RESERVED_5_[2];    /*!< Reserved, 0x48-0x4C                                                               */
+	volatile Reg_32Bit_Utag REG_RCC_APB1LPENR;         /*!< RCC APB1 peripheral clock enable in low power mode register, Address offset: 0x60 */
+	volatile Reg_32Bit_Utag REG_RCC_APB2LPENR;         /*!< RCC APB2 peripheral clock enable in low power mode register, Address offset: 0x64 */
+	volatile U32            REG_RCC_RESERVED_6_[2];    /*!< Reserved, 0x68-0x6C                                                               */
+	volatile Reg_32Bit_Utag REG_RCC_BDCR;              /*!< RCC Backup domain control register,                          Address offset: 0x70 */
+	volatile Reg_32Bit_Utag REG_RCC_CSR;               /*!< RCC clock control & status register,                         Address offset: 0x74 */
+	volatile U32            REG_RCC_RESERVED_7_[2];    /*!< Reserved, 0x78-0x7C                                                               */
+	volatile Reg_32Bit_Utag REG_RCC_SSCGR;             /*!< RCC spread spectrum clock generation register,               Address offset: 0x80 */
+	volatile Reg_32Bit_Utag REG_RCC_PLLI2SCFGR;        /*!< RCC PLLI2S configuration register,                           Address offset: 0x84 */
+	volatile U32            REG_RCC_RESERVED_8_[1];    /*!< Reserved, 0x88                                                                    */
+	volatile Reg_32Bit_Utag REG_RCC_DCKCFGR;           /*!< RCC Dedicated Clocks configuration register,                 Address offset: 0x8C */
 } RCC_PERIPHERAL_Stag;
 
 

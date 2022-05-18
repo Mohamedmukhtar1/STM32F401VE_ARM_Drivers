@@ -7,49 +7,7 @@
 
 #include "MCAL_RCC_Interface.h"
 
-void MCAL_RCC_Bus_Enable_Clock(U8 AxBxENR_RCC_Bus ,U8 Peripheralx)
-{
-	switch(AxBxENR_RCC_Bus)
-	{
-		case Bus_AHB1:
-			SET_BIT(RCC_SPTR->REG_RCC_AHB1ENR.RegisterAccess, Peripheralx);  break ;
-		case Bus_AHB2:
-			SET_BIT(RCC_SPTR->REG_RCC_AHB2ENR.RegisterAccess, Peripheralx);  break ;
-		case Bus_APB1:
-			SET_BIT(RCC_SPTR->REG_RCC_APB1ENR.RegisterAccess, Peripheralx);  break ;
-		case Bus_APB2:
-			SET_BIT(RCC_SPTR->REG_RCC_APB2ENR.RegisterAccess, Peripheralx);  break ;
-		default :        /************ERROR*/             				break ;
-	}
-}
-
-void MCAL_RCC_Bus_Disable_Clock(U8 AxBxENR_RCC_Bus , U8 Peripheralx)
-{
-	switch(AxBxENR_RCC_Bus)
-	{
-		case Bus_AHB1:
-			CLR_BIT(RCC_SPTR->REG_RCC_AHB1ENR.RegisterAccess, Peripheralx);  break ;
-		case Bus_AHB2:
-			CLR_BIT(RCC_SPTR->REG_RCC_AHB2ENR.RegisterAccess, Peripheralx);  break ;
-		case Bus_APB1:
-			CLR_BIT(RCC_SPTR->REG_RCC_APB1ENR.RegisterAccess, Peripheralx);  break ;
-		case Bus_APB2:
-			CLR_BIT(RCC_SPTR->REG_RCC_APB2ENR.RegisterAccess, Peripheralx);  break ;
-		default :        /************ERROR*/             				break ;
-	}
-}
-
-void MCAL_RCC_Enable_Security_System(void)
-{
-	SET_BIT(RCC_SPTR->REG_RCC_CR.RegisterAccess, CR_CSSON);
-}
-
-void MCAL_RCC_Disable_Security_System(void)
-{
-	CLR_BIT(RCC_SPTR->REG_RCC_CR.RegisterAccess, CR_CSSON);
-}
-
-void MCAL_RCC_Init_System_CLK(void)
+void MRCC_vInitSystemClock(void)
 {
 	CLR_BIT(RCC_SPTR->REG_RCC_CR.RegisterAccess, CR_HSION);
     CLR_BIT(RCC_SPTR->REG_RCC_CR.RegisterAccess, CR_HSEON);
@@ -120,8 +78,51 @@ void MCAL_RCC_Init_System_CLK(void)
 	#endif
 }
 
+void MRCC_vEnableBusClock(U8 AxBxENR_RCC_Bus ,U8 Peripheral_PPxx)
+{
+	switch(AxBxENR_RCC_Bus)
+	{
+		case Bus_AHB1:
+			SET_BIT(RCC_SPTR->REG_RCC_AHB1ENR.RegisterAccess, Peripheral_PPxx);  break ;
+		case Bus_AHB2:
+			SET_BIT(RCC_SPTR->REG_RCC_AHB2ENR.RegisterAccess, Peripheral_PPxx);  break ;
+		case Bus_APB1:
+			SET_BIT(RCC_SPTR->REG_RCC_APB1ENR.RegisterAccess, Peripheral_PPxx);  break ;
+		case Bus_APB2:
+			SET_BIT(RCC_SPTR->REG_RCC_APB2ENR.RegisterAccess, Peripheral_PPxx);  break ;
+		default :        /************ERROR*/             				break ;
+	}
+}
 
-void MCAL_RCC_Out_MCO_1(U8 MCO_1_Source)
+void MRCC_vDisableBusClock(U8 AxBxENR_RCC_Bus , U8 Peripheral_PPxx)
+{
+	switch(AxBxENR_RCC_Bus)
+	{
+		case Bus_AHB1:
+			CLR_BIT(RCC_SPTR->REG_RCC_AHB1ENR.RegisterAccess, Peripheral_PPxx);  break ;
+		case Bus_AHB2:
+			CLR_BIT(RCC_SPTR->REG_RCC_AHB2ENR.RegisterAccess, Peripheral_PPxx);  break ;
+		case Bus_APB1:
+			CLR_BIT(RCC_SPTR->REG_RCC_APB1ENR.RegisterAccess, Peripheral_PPxx);  break ;
+		case Bus_APB2:
+			CLR_BIT(RCC_SPTR->REG_RCC_APB2ENR.RegisterAccess, Peripheral_PPxx);  break ;
+		default :        /************ERROR*/             				break ;
+	}
+}
+
+void MRCC_vEnableSecuritySystem(void)
+{
+	SET_BIT(RCC_SPTR->REG_RCC_CR.RegisterAccess, CR_CSSON);
+	//ASSIGN_BIT_TO(RCC_SPTR->REG_RCC_CR.BitAccess.BIT19, 1U);
+}
+
+void MRCC_vDisableSecuritySystem(void)
+{
+	CLR_BIT(RCC_SPTR->REG_RCC_CR.RegisterAccess, CR_CSSON);
+	//ASSIGN_BIT_TO(RCC_SPTR->REG_RCC_CR.BitAccess.BIT19, 0U);
+}
+
+void MRCC_vOutMCO_1(U8 MCO_1_Source)
 {
 	switch(MCO_1_Source)
 	{
@@ -147,9 +148,9 @@ void MCAL_RCC_Out_MCO_1(U8 MCO_1_Source)
 	}
 }
 
-void MCAL_RCC_Out_MCO_1_Prescaler(U8 MCO_1_Prescaler)
+void MRCC_vOutMCO_1_Prescaler(U8 MCO_1_Prescaler)
 {
-	switch (MCO_1_Prescaler )
+	switch (MCO_1_Prescaler)
 	{
 	 case MCO_1_PRESCALER_1 :
 		 SET_BIT(RCC_SPTR->REG_RCC_CFGR.RegisterAccess, CFGR_MCO1PRE_3);

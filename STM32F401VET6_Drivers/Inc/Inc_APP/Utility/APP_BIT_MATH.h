@@ -14,6 +14,8 @@
 #define TOG_BIT(REG,BIT_INDEX)      		(REG ^=  (1 << BIT_INDEX))	// Inverting the state of Bit
 #define GET_BIT(REG,BIT_INDEX)      		(1 & (REG >> BIT_INDEX))	// Determining the value of Bit
 #define ASSIGN_BIT_TO(BIT_ACCESS,VALUE)		(BIT_ACCESS) = (VALUE)
+
+#define GIVE_BIT(REG,BIT_INDEX,VALUE)	    (REG |=  (VALUE << BIT_INDEX))
 /*******************BYTE_MANIPULATION**********************************/
 #define SET_REG(REG)				(REG  = 0xFFFFFFFF)		// Setting a whole 1 byte register
 #define CLR_REG(REG)				(REG  = 0x00000000)		// Clearing a whole 1 byte register

@@ -22,12 +22,12 @@ typedef union
 		U8 BIT7:1;
 		}BitAccess;
 	U8 RegisterAccess;
-}Register_8Bit_Utag;
+}Reg_8Bit_Utag;
 
 /* 16_bit Register Typedef **************************************************************/
 typedef union
 {
-	struct{
+	struct Bit_Order{
 		U16 BIT0:1;
 		U16 BIT1:1;
 		U16 BIT2:1;
@@ -45,8 +45,12 @@ typedef union
 		U16 BIT14:1;
 		U16 BIT15:1;
 		}BitAccess;
+	struct{
+		U16 BYTE0:8;
+		U16 BYTE1:8;
+		}ByteAccess;
 	U16 RegisterAccess;
-}Register_16Bit_Utag;
+}Reg_16Bit_Utag;
 
 /* 32_bit Register Typedef **************************************************************/
 typedef union
@@ -85,7 +89,13 @@ typedef union
 		U32 BIT30:1;
 		U32 BIT31:1;
 		}BitAccess;
+	struct{
+		U32 BYTE0:8;
+		U32 BYTE1:8;
+		U32 BYTE2:8;
+		U32 BYTE3:8;
+		}ByteAccess;
 	U32 RegisterAccess;
-}Register_32Bit_Utag;
+}Reg_32Bit_Utag;
 
 #endif /* INC_APP_UTILITY_APP_REG_TYPES_H_ */
