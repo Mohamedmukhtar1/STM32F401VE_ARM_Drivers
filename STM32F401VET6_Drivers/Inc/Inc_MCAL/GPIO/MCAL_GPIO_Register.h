@@ -27,12 +27,12 @@ typedef struct {
 	volatile Reg_32Bit_Utag GPIO_ODR     ;    /*!< GPIO port output data register,        Address offset: 0x14      */
 	volatile Reg_32Bit_Utag GPIO_BSRR    ;    /*!< GPIO port bit set/reset register,      Address offset: 0x18      */
 	volatile Reg_32Bit_Utag GPIO_LCKR    ;    /*!< GPIO port configuration lock register, Address offset: 0x1C      */
-	volatile Reg_32Bit_Utag GPIO_AFRL    ;    /*!< GPIO alternate function registers,     Address offset: 0x20-0x24 */
-	volatile Reg_32Bit_Utag GPIO_AFRH    ;
+	volatile Reg_32Bit_Utag GPIO_AFRL    ;    /*!< GPIO alternate function low registers, Address offset: 0x20-0x24 */
+	volatile Reg_32Bit_Utag GPIO_AFRH    ;    /*!< GPIO alternate function high registers 							*/
 } GPIO_PERIPHERAL_Stag;
 
 /*============================================================================================
-	-)	Struct Pointer :	Base_Address ->	GPIOA
+	-)	Struct Pointer :	Base_Address ->	GPIOx
   ============================================================================================*/
 #define GPIOA_SPTR      ((volatile GPIO_PERIPHERAL_Stag *)GPIOA_PERIPHERAL_BASE_ADDRESS)
 #define GPIOB_SPTR      ((volatile GPIO_PERIPHERAL_Stag *)GPIOB_PERIPHERAL_BASE_ADDRESS)
@@ -40,7 +40,5 @@ typedef struct {
 #define GPIOD_SPTR      ((volatile GPIO_PERIPHERAL_Stag *)GPIOD_PERIPHERAL_BASE_ADDRESS)
 #define GPIOE_SPTR      ((volatile GPIO_PERIPHERAL_Stag *)GPIOE_PERIPHERAL_BASE_ADDRESS)
 #define GPIOH_SPTR      ((volatile GPIO_PERIPHERAL_Stag *)GPIOH_PERIPHERAL_BASE_ADDRESS)
-
-
 
 #endif /* INC_MCAL_GPIO_MCAL_GPIO_REGISTER_H_ */

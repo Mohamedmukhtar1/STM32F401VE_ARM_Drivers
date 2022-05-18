@@ -38,7 +38,7 @@ void MGPIO_vSetPinOutputType(U8 PortName ,U8 PinNum ,U8 OutPutType)
      }
 }
 
-void MGPIO_vSetPinOutputSpeed(U8 PortName ,U8 PinNum ,U8 OutputSpeed )
+void MGPIO_vSetPinOutputSpeed(U8 PortName ,U8 PinNum ,U8 OutputSpeed)
 {
 	/*OUTPUT_LOW_SPEED, OUTPUT_MEDUIM_SPEED, OUTPUT_HIGH_SPEED, OUTPUT_VERY_HIGH_SPEED*/
 	switch(PortName)
@@ -53,7 +53,7 @@ void MGPIO_vSetPinOutputSpeed(U8 PortName ,U8 PinNum ,U8 OutputSpeed )
 	}
 }
 
-void MGPIO_vSetPinPullType(U8 PortName ,U8 PinNum ,U8 PullType )
+void MGPIO_vSetPinPullType(U8 PortName ,U8 PinNum ,U8 PullType)
 {
 	/*PULL_OFF_STATE, PULL_UP_STATE, PULL_DOWN_STATE*/
 	switch(PortName)
@@ -105,60 +105,96 @@ void MGPIO_vWritePinData(U8 PortName ,U8 PinNum, U8 OutputState)
 	/*LOW_STATE, HIGH_STATE*/
 	switch(PortName)
 	{
-	    case GPIOA_PORT :GPIOA_SPTR->GPIO_ODR.RegisterAccess |= (U32)(OutputState<<(PinNum)) ; break;
-	    case GPIOB_PORT :GPIOB_SPTR->GPIO_ODR.RegisterAccess |= (U32)(OutputState<<(PinNum)) ; break;
-	    case GPIOC_PORT :GPIOC_SPTR->GPIO_ODR.RegisterAccess |= (U32)(OutputState<<(PinNum)) ; break;
-	    case GPIOD_PORT :GPIOD_SPTR->GPIO_ODR.RegisterAccess |= (U32)(OutputState<<(PinNum)) ; break;
-	    case GPIOE_PORT :GPIOE_SPTR->GPIO_ODR.RegisterAccess |= (U32)(OutputState<<(PinNum)) ; break;
-	    case GPIOH_PORT :GPIOH_SPTR->GPIO_ODR.RegisterAccess |= (U32)(OutputState<<(PinNum)) ; break;
+	    case GPIOA_PORT :GPIOA_SPTR->GPIO_ODR.RegisterAccess |= (U16)(OutputState<<(PinNum)) ; break;
+	    case GPIOB_PORT :GPIOB_SPTR->GPIO_ODR.RegisterAccess |= (U16)(OutputState<<(PinNum)) ; break;
+	    case GPIOC_PORT :GPIOC_SPTR->GPIO_ODR.RegisterAccess |= (U16)(OutputState<<(PinNum)) ; break;
+	    case GPIOD_PORT :GPIOD_SPTR->GPIO_ODR.RegisterAccess |= (U16)(OutputState<<(PinNum)) ; break;
+	    case GPIOE_PORT :GPIOE_SPTR->GPIO_ODR.RegisterAccess |= (U16)(OutputState<<(PinNum)) ; break;
+	    case GPIOH_PORT :GPIOH_SPTR->GPIO_ODR.RegisterAccess |= (U16)(OutputState<<(PinNum)) ; break;
 		default : /*ERROR*/ break ;
 	}
 }
 
-
-void MGPIO_vPinLock(U8 PortNum, U8 PinNum )
+void MGPIO_vWritePortData(U8 PortName, U16 Data)
 {
-	switch(PortNum)
+	/*LOW_STATE, HIGH_STATE*/
+	switch(PortName)
 	{
-	  case _GPIOA_PORT  :
+	    case GPIOA_PORT :GIVE_REG(GPIOA_SPTR->GPIO_ODR.RegisterAccess, Data)  ; break;
+	    case GPIOB_PORT :GIVE_REG(GPIOB_SPTR->GPIO_ODR.RegisterAccess, Data)  ; break;
+	    case GPIOC_PORT :GIVE_REG(GPIOC_SPTR->GPIO_ODR.RegisterAccess, Data)  ; break;
+	    case GPIOD_PORT :GIVE_REG(GPIOD_SPTR->GPIO_ODR.RegisterAccess, Data)  ; break;
+	    case GPIOE_PORT :GIVE_REG(GPIOE_SPTR->GPIO_ODR.RegisterAccess, Data)  ; break;
+	    case GPIOH_PORT :GIVE_REG(GPIOH_SPTR->GPIO_ODR.RegisterAccess, Data)  ; break;
+		default : /*ERROR*/ break ;
+	}
+}
+
+void MGPIO_vWritePortOneByteData(U8 PortName, U8 Data, U8 StartBit)
+{
+	/* In ODR  Pass and Shift ( 0000 0000 ) to the start bit & sheft data to that start bit
+	 * == Dynamic Data Assigning																*/
+	switch(PortName)
+	{
+		case GPIOA_PORT :
+			GPIOA_SPTR->GPIO_ODR.RegisterAccess =((GPIOA_SPTR->GPIO_ODR.RegisterAccess) & ~(0xFF<<(StartBit))) | (Data<<(StartBit)); break;
+		case GPIOB_PORT :
+			GPIOB_SPTR->GPIO_ODR.RegisterAccess =((GPIOB_SPTR->GPIO_ODR.RegisterAccess) & ~(0xFF<<(StartBit))) | (Data<<(StartBit)); break;
+		case GPIOC_PORT :
+			GPIOC_SPTR->GPIO_ODR.RegisterAccess =((GPIOC_SPTR->GPIO_ODR.RegisterAccess) & ~(0xFF<<(StartBit))) | (Data<<(StartBit)); break;
+		case GPIOD_PORT :
+			GPIOD_SPTR->GPIO_ODR.RegisterAccess =((GPIOD_SPTR->GPIO_ODR.RegisterAccess) & ~(0xFF<<(StartBit))) | (Data<<(StartBit)); break;
+		case GPIOE_PORT :
+			GPIOE_SPTR->GPIO_ODR.RegisterAccess =((GPIOE_SPTR->GPIO_ODR.RegisterAccess) & ~(0xFF<<(StartBit))) | (Data<<(StartBit)); break;
+		case GPIOH_PORT :
+			GPIOH_SPTR->GPIO_ODR.RegisterAccess =((GPIOH_SPTR->GPIO_ODR.RegisterAccess) & ~(0xFF<<(StartBit))) | (Data<<(StartBit)); break;
+		default : /*ERROR*/ break ;
+	}
+}
+
+void MGPIO_vPinLock(U8 PortName, U8 PinNum)
+{
+	switch(PortName)
+	{
+	  case GPIOA_PORT  :
 		  SET_BIT(GPIOA_SPTR->GPIO_LCKR.RegisterAccess, (U32)(PinNum)) ; break;
-		  SET_BIT(GPIOA_SPTR->GPIO_LCKR.RegisterAccess, (U32)(16U))    ; break;
+		  ASSIGN_BIT_TO(GPIOA_SPTR->GPIO_LCKR.BitAccess.BIT16, 1U)     ; break;
 		  while(!(GPIOA_SPTR->GPIO_LCKR.RegisterAccess, (U32)(16U)));
 		  break ;
-	  case _GPIOB_PORT  :
+	  case GPIOB_PORT  :
 		  SET_BIT(GPIOB_SPTR->GPIO_LCKR.RegisterAccess, (U32)(PinNum)) ; break;
-		  SET_BIT(GPIOB_SPTR->GPIO_LCKR.RegisterAccess, (U32)(16U))    ; break;
+		  ASSIGN_BIT_TO(GPIOB_SPTR->GPIO_LCKR.BitAccess.BIT16, 1U);    ; break;
 		  while(!(GPIOB_SPTR->GPIO_LCKR.RegisterAccess, (U32)(16U)));
 		  break ;
-	  case _GPIOC_PORT  :
+	  case GPIOC_PORT  :
 		  SET_BIT(GPIOC_SPTR->GPIO_LCKR.RegisterAccess, (U32)(PinNum)) ; break;
-		  SET_BIT(GPIOC_SPTR->GPIO_LCKR.RegisterAccess, (U32)(16U))    ; break;
+		  ASSIGN_BIT_TO(GPIOC_SPTR->GPIO_LCKR.BitAccess.BIT16, 1U)     ; break;
 		  while(!(GPIOC_SPTR->GPIO_LCKR.RegisterAccess, (U32)(16U)));
 		  break ;
-	  case _GPIOD_PORT  :
+	  case GPIOD_PORT  :
 		  SET_BIT(GPIOD_SPTR->GPIO_LCKR.RegisterAccess, (U32)(PinNum)) ; break;
-		  SET_BIT(GPIOD_SPTR->GPIO_LCKR.RegisterAccess, (U32)(16U))    ; break;
+		  ASSIGN_BIT_TO(GPIOD_SPTR->GPIO_LCKR.BitAccess.BIT16, 1U)     ; break;
 		  while(!(GPIOD_SPTR->GPIO_LCKR.RegisterAccess, (U32)(16U)));
 		  break ;
-	  case _GPIOE_PORT  :
+	  case GPIOE_PORT  :
 		  SET_BIT(GPIOE_SPTR->GPIO_LCKR.RegisterAccess, (U32)(PinNum)) ; break;
-		  SET_BIT(GPIOE_SPTR->GPIO_LCKR.RegisterAccess, (U32)(16U))    ; break;
+		  ASSIGN_BIT_TO(GPIOE_SPTR->GPIO_LCKR.BitAccess.BIT16, 1U)     ; break;
 		  while(!(GPIOE_SPTR->GPIO_LCKR.RegisterAccess, (U32)(16U)));
 		  break ;
-	  case _GPIOH_PORT  :
+	  case GPIOH_PORT  :
 		  SET_BIT(GPIOH_SPTR->GPIO_LCKR.RegisterAccess, (U32)(PinNum)) ; break;
-		  SET_BIT(GPIOH_SPTR->GPIO_LCKR.RegisterAccess, (U32)(16U))    ; break;
+		  ASSIGN_BIT_TO(GPIOH_SPTR->GPIO_LCKR.BitAccess.BIT16, 1U)     ; break;
 		  while(!(GPIOH_SPTR->GPIO_LCKR.RegisterAccess, (U32)(16U)));
 		  break ;
 	  default : /*ERROR*/ break ;
 	}
 }
 
-void MGPIO_vSetPinAltFun(U8 Copy_u8PortNum, U8 PinNum, U8 ALTFUN )
+void MGPIO_vSetPinAltFun(U8 PortName, U8 PinNum, U8 ALTFUN )
 {
 	if(PinNum <=7U)
 	{
-		switch(Copy_u8PortNum )
+		switch(PortName)
 		{
 			 case GPIOA_PORT  : GPIOA_SPTR->GPIO_AFRL.RegisterAccess |= (U32)(ALTFUN<<(4U*PinNum)) ; break ;
 			 case GPIOB_PORT  : GPIOB_SPTR->GPIO_AFRL.RegisterAccess |= (U32)(ALTFUN<<(4U*PinNum)) ; break ;
@@ -169,10 +205,10 @@ void MGPIO_vSetPinAltFun(U8 Copy_u8PortNum, U8 PinNum, U8 ALTFUN )
 			 default : /*ERROR*/ break ;
 		}
 	}
-	else	// 8 : 15
+	else
 	{
 		PinNum %=8;
-		switch(Copy_u8PortNum )
+		switch(PortName)
 		{
 			 case GPIOA_PORT  : GPIOA_SPTR->GPIO_AFRH.RegisterAccess |= (U32)(ALTFUN<<(4U*PinNum)) ; break ;
 			 case GPIOB_PORT  : GPIOB_SPTR->GPIO_AFRH.RegisterAccess |= (U32)(ALTFUN<<(4U*PinNum)) ; break ;

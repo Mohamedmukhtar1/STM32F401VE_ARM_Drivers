@@ -2,4 +2,10 @@
 ../Src/Src_MCAL/GPIO/MCAL_GPIO.c:26:6:MGPIO_vSetPinOutputType	16	static
 ../Src/Src_MCAL/GPIO/MCAL_GPIO.c:41:6:MGPIO_vSetPinOutputSpeed	16	static
 ../Src/Src_MCAL/GPIO/MCAL_GPIO.c:56:6:MGPIO_vSetPinPullType	16	static
-../Src/Src_MCAL/GPIO/MCAL_GPIO.c:71:4:MGPIO_U8PinReadData	24	static
+../Src/Src_MCAL/GPIO/MCAL_GPIO.c:71:4:MGPIO_U8ReadPinData	24	static
+../Src/Src_MCAL/GPIO/MCAL_GPIO.c:87:5:MGPIO_U16ReadPortData	24	static
+../Src/Src_MCAL/GPIO/MCAL_GPIO.c:103:6:MGPIO_vWritePinData	16	static
+../Src/Src_MCAL/GPIO/MCAL_GPIO.c:118:6:MGPIO_vWritePortData	16	static
+../Src/Src_MCAL/GPIO/MCAL_GPIO.c:133:6:MGPIO_vWritePortOneByteData	16	static
+../Src/Src_MCAL/GPIO/MCAL_GPIO.c:155:6:MGPIO_vPinLock	16	static
+../Src/Src_MCAL/GPIO/MCAL_GPIO.c:193:6:MGPIO_vSetPinAltFun	16	static

@@ -24,22 +24,22 @@
 #define GPIOH_PORT   		      ((U8)5U)            /*!< GPIO (H) PORT  */
 
 /*======== Macros Of Pins ========*/
-#define GPIO_PIN_0              ((U8)0U)       /*!< Pin 0 selected    */
-#define GPIO_PIN_1              ((U8)1U)       /*!< Pin 1 selected    */
-#define GPIO_PIN_2              ((U8)2U)       /*!< Pin 2 selected    */
-#define GPIO_PIN_3              ((U8)3U)       /*!< Pin 3 selected    */
-#define GPIO_PIN_4              ((U8)4U)       /*!< Pin 4 selected    */
-#define GPIO_PIN_5              ((U8)5U)       /*!< Pin 5 selected    */
-#define GPIO_PIN_6              ((U8)6U)       /*!< Pin 6 selected    */
-#define GPIO_PIN_7              ((U8)7U)       /*!< Pin 7 selected    */
-#define GPIO_PIN_8              ((U8)8U)       /*!< Pin 8 selected    */
-#define GPIO_PIN_9              ((U8)9U)       /*!< Pin 9 selected    */
-#define GPIO_PIN_10             ((U8)10U)       /*!< Pin 10 selected   */
-#define GPIO_PIN_11             ((U8)11U)       /*!< Pin 11 selected   */
-#define GPIO_PIN_12             ((U8)12U)       /*!< Pin 12 selected   */
-#define GPIO_PIN_13             ((U8)13U)       /*!< Pin 13 selected   */
-#define GPIO_PIN_14             ((U8)14U)       /*!< Pin 14 selected   */
-#define GPIO_PIN_15             ((U8)15U)       /*!< Pin 15 selected   */
+#define GPIO_PIN_0               ((U8)0U)       /*!< Pin 0 selected    */
+#define GPIO_PIN_1               ((U8)1U)       /*!< Pin 1 selected    */
+#define GPIO_PIN_2               ((U8)2U)       /*!< Pin 2 selected    */
+#define GPIO_PIN_3               ((U8)3U)       /*!< Pin 3 selected    */
+#define GPIO_PIN_4               ((U8)4U)       /*!< Pin 4 selected    */
+#define GPIO_PIN_5               ((U8)5U)       /*!< Pin 5 selected    */
+#define GPIO_PIN_6               ((U8)6U)       /*!< Pin 6 selected    */
+#define GPIO_PIN_7               ((U8)7U)       /*!< Pin 7 selected    */
+#define GPIO_PIN_8               ((U8)8U)       /*!< Pin 8 selected    */
+#define GPIO_PIN_9               ((U8)9U)       /*!< Pin 9 selected    */
+#define GPIO_PIN_10              ((U8)10U)       /*!< Pin 10 selected   */
+#define GPIO_PIN_11              ((U8)11U)       /*!< Pin 11 selected   */
+#define GPIO_PIN_12              ((U8)12U)       /*!< Pin 12 selected   */
+#define GPIO_PIN_13              ((U8)13U)       /*!< Pin 13 selected   */
+#define GPIO_PIN_14              ((U8)14U)       /*!< Pin 14 selected   */
+#define GPIO_PIN_15              ((U8)15U)       /*!< Pin 15 selected   */
 //#define GPIO_PIN_All            ((U16)0xFFFF)    /*!< All pins selected */  ####################
 
 /*======== Macros Of Pin Mode ========*/
@@ -53,47 +53,55 @@
 #define OUTPUT_OPEN_DRAIN_TYPE   ((U8)1U)          /*!< OUTPUT TYPE ---> OPEN DRAIN  */
 /*======== Macros Of Pin Speed ========*/
 
-#define OUTPUT_LOW_SPEED        ((U8)0U)  /*!< IO works at 2 MHz, please refer to the product datasheet */
-#define OUTPUT_MEDUIM_SPEED     ((U8)1U)  /*!< range 12,5 MHz to 50 MHz, please refer to the product datasheet */
-#define OUTPUT_HIGH_SPEED       ((U8)2U)  /*!< range 25 MHz to 100 MHz, please refer to the product datasheet  */
-#define OUTPUT_VERY_HIGH_SPEED  ((U8)3U)  /*!< range 50 MHz to 200 MHz, please refer to the product datasheet  */
+#define OUTPUT_LOW_SPEED         ((U8)0U)  /*!< IO works at 2 MHz, please refer to the product datasheet */
+#define OUTPUT_MEDUIM_SPEED      ((U8)1U)  /*!< range 12,5 MHz to 50 MHz, please refer to the product datasheet */
+#define OUTPUT_HIGH_SPEED        ((U8)2U)  /*!< range 25 MHz to 100 MHz, please refer to the product datasheet  */
+#define OUTPUT_VERY_HIGH_SPEED   ((U8)3U)  /*!< range 50 MHz to 200 MHz, please refer to the product datasheet  */
 
 /*======== Macros Of Pin PULL  ========*/
-#define PULL_OFF_STATE         ((U8)0U)   /*!< No Pull-up or Pull-down activation  */
-#define PULL_UP_STATE                  ((U8)1U)   /*!< Pull-up activation                  */
-#define PULL_DOWN_STATE                ((U8)2U)   /*!< Pull-down activation                */
+#define PULL_OFF_STATE           ((U8)0U)   /*!< No Pull-up or Pull-down activation  */
+#define PULL_UP_STATE            ((U8)1U)   /*!< Pull-up activation                  */
+#define PULL_DOWN_STATE          ((U8)2U)   /*!< Pull-down activation                */
 
 /*======== Macros Write Data  ========*/
-#define LOW_STATE                    ((U32)0U)
-#define HIGH_STATE	                 ((U32)1U)
+#define LOW_STATE                ((U8)0U)
+#define HIGH_STATE	             ((U8)1U)
 
 /*======== Macros ALTF  ========*/
-#define ALTFUN_0                  (0b0000)      /*!< ALTF  --> 0  */
-#define ALTFUN_1                  (0b0001)      /*!< ALTF  --> 1  */
-#define ALTFUN_2                  (0b0010)      /*!< ALTF  --> 2  */
-#define ALTFUN_3                  (0b0011)      /*!< ALTF  --> 3  */
-#define ALTFUN_4                  (0b0100)      /*!< ALTF  --> 4  */
-#define ALTFUN_5                  (0b0101)      /*!< ALTF  --> 5  */
-#define ALTFUN_6                  (0b0110)      /*!< ALTF  --> 6  */
-#define ALTFUN_7                  (0b0111)      /*!< ALTF  --> 7  */
-#define ALTFUN_8                  (0b1000)      /*!< ALTF  --> 8  */
-#define ALTFUN_9                  (0b1001)      /*!< ALTF  --> 9  */
-#define ALTFUN_10                 (0b1010)      /*!< ALTF  --> 10 */
-#define ALTFUN_11                 (0b1011)      /*!< ALTF  --> 11 */
-#define ALTFUN_12                 (0b1100)      /*!< ALTF  --> 12 */
-#define ALTFUN_13                 (0b1101)      /*!< ALTF  --> 13 */
-#define ALTFUN_14                 (0b1110)      /*!< ALTF  --> 14 */
-#define ALTFUN_15                 (0b1111)      /*!< ALTF  --> 15 */
+#define ALTFUN_0            (U8)(0U)      /*!< ALTF  --> 0  */
+#define ALTFUN_1            (U8)(1U)      /*!< ALTF  --> 1  */
+#define ALTFUN_2            (U8)(2U)      /*!< ALTF  --> 2  */
+#define ALTFUN_3            (U8)(3U)      /*!< ALTF  --> 3  */
+#define ALTFUN_4            (U8)(4U)      /*!< ALTF  --> 4  */
+#define ALTFUN_5            (U8)(5U)      /*!< ALTF  --> 5  */
+#define ALTFUN_6            (U8)(6U)      /*!< ALTF  --> 6  */
+#define ALTFUN_7            (U8)(7U)      /*!< ALTF  --> 7  */
+#define ALTFUN_8            (U8)(8U)      /*!< ALTF  --> 8  */
+#define ALTFUN_9            (U8)(9U)      /*!< ALTF  --> 9  */
+#define ALTFUN_10           (U8)(10U)      /*!< ALTF  --> 10 */
+#define ALTFUN_11           (U8)(11U)      /*!< ALTF  --> 11 */
+#define ALTFUN_12           (U8)(12U)      /*!< ALTF  --> 12 */
+#define ALTFUN_13           (U8)(13U)      /*!< ALTF  --> 13 */
+#define ALTFUN_14           (U8)(14U)      /*!< ALTF  --> 14 */
+#define ALTFUN_15           (U8)(15U)      /*!< ALTF  --> 15 */
 
 
 /*============================================================================
   ==================_APIs Supported by "MCAL_GPIO DRIVER"_====================
   ============================================================================*/
 void MGPIO_vSetPinMode(U8 PortName ,U8 PinNum ,U8 DirectionMode);
-void MGPIO_vSetPinOutPutType(U8 PortName ,U8 PinNum ,U8 OutPutType);
-void MGPIO_vSetPinOutSpeed(U8 Copy_u8PortName ,U8 Copy_u8PinNum ,U8 Copy_u8OutSpeed );
-void MGPIO_vSetPullType(U8 Copy_u8PortName ,U8 Copy_u8PinNum ,U8 Copy_u8PullType );
-U8 MGPIO_U8PinReadData(U8 PortName ,U8 PinNum);
+void MGPIO_vSetPinOutputType(U8 PortName ,U8 PinNum ,U8 OutPutType);
+void MGPIO_vSetPinOutputSpeed(U8 PortName ,U8 PinNum ,U8 OutputSpeed);
+void MGPIO_vSetPinPullType(U8 PortName ,U8 PinNum ,U8 PullType);
 
+U8 MGPIO_U8ReadPinData(U8 PortName ,U8 PinNum);
+U16 MGPIO_U16ReadPortData(U8 PortName);
+
+void MGPIO_vWritePinData(U8 PortName ,U8 PinNum, U8 OutputState);
+void MGPIO_vWritePortOneByteData(U8 PortName, U8 Data, U8 StartBit);
+void MGPIO_vWritePortData(U8 PortName, U16 Data);
+
+void MGPIO_vPinLock(U8 PortName, U8 PinNum );
+void MGPIO_vSetPinAltFun(U8 PortName, U8 PinNum, U8 ALTFUN);
 
 #endif /* INC_MCAL_GPIO_MCAL_GPIO_INTERFACE_H_ */

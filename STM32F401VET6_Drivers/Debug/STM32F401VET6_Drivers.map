@@ -56,23 +56,35 @@ Discarded input sections
                 0x0000000000000000       0xf0 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .text.MGPIO_vSetPinPullType
                 0x0000000000000000       0xf0 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
- .text.MGPIO_U8PinReadData
+ .text.MGPIO_U8ReadPinData
                 0x0000000000000000       0xc4 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
- .debug_info    0x0000000000000000      0x50d ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .text.MGPIO_U16ReadPortData
+                0x0000000000000000       0x7c ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .text.MGPIO_vWritePinData
+                0x0000000000000000       0xf0 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .text.MGPIO_vWritePortData
+                0x0000000000000000       0x8c ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .text.MGPIO_vWritePortOneByteData
+                0x0000000000000000      0x12c ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .text.MGPIO_vPinLock
+                0x0000000000000000       0xe0 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .text.MGPIO_vSetPinAltFun
+                0x0000000000000000      0x1b8 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .debug_info    0x0000000000000000      0x688 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .debug_abbrev  0x0000000000000000      0x112 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .debug_aranges
-                0x0000000000000000       0x40 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
- .debug_ranges  0x0000000000000000       0x30 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+                0x0000000000000000       0x70 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .debug_ranges  0x0000000000000000       0x60 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .debug_macro   0x0000000000000000       0x63 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .debug_macro   0x0000000000000000      0xa7e ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .debug_macro   0x0000000000000000       0x10 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .debug_macro   0x0000000000000000       0x70 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .debug_macro   0x0000000000000000       0x52 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .debug_macro   0x0000000000000000      0x142 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
- .debug_line    0x0000000000000000      0x442 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
- .debug_str     0x0000000000000000     0x3a96 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .debug_line    0x0000000000000000      0x767 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .debug_str     0x0000000000000000     0x3b34 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .comment       0x0000000000000000       0x51 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
- .debug_frame   0x0000000000000000       0xd8 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .debug_frame   0x0000000000000000      0x1c8 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .ARM.attributes
                 0x0000000000000000       0x34 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .group         0x0000000000000000        0xc ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
@@ -92,7 +104,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x70 ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
  .debug_macro   0x0000000000000000       0xa0 ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
  .debug_line    0x0000000000000000      0x1b4 ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
- .debug_str     0x0000000000000000     0x34be ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
+ .debug_str     0x0000000000000000     0x34b9 ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
  .comment       0x0000000000000000       0x51 ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
  .ARM.attributes
                 0x0000000000000000       0x34 ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
@@ -134,7 +146,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x166 ./Src/Src_MCAL/RCC/MCAL_RCC.o
  .debug_macro   0x0000000000000000      0x118 ./Src/Src_MCAL/RCC/MCAL_RCC.o
  .debug_line    0x0000000000000000      0x2b5 ./Src/Src_MCAL/RCC/MCAL_RCC.o
- .debug_str     0x0000000000000000     0x3c0d ./Src/Src_MCAL/RCC/MCAL_RCC.o
+ .debug_str     0x0000000000000000     0x3c08 ./Src/Src_MCAL/RCC/MCAL_RCC.o
  .comment       0x0000000000000000       0x51 ./Src/Src_MCAL/RCC/MCAL_RCC.o
  .debug_frame   0x0000000000000000      0x110 ./Src/Src_MCAL/RCC/MCAL_RCC.o
  .ARM.attributes
@@ -679,10 +691,10 @@ LOAD c:/st/stm32cubeide_1.9.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_line    0x0000000000000000      0x281 ./Src/main.o
  .debug_line    0x0000000000000281       0x84 ./Startup/startup_stm32f401vetx.o
 
-.debug_str      0x0000000000000000     0x3f8f
- .debug_str     0x0000000000000000     0x3f5e ./Src/main.o
-                                       0x3fe9 (size before relaxing)
- .debug_str     0x0000000000003f5e       0x31 ./Startup/startup_stm32f401vetx.o
+.debug_str      0x0000000000000000     0x3f8e
+ .debug_str     0x0000000000000000     0x3f5d ./Src/main.o
+                                       0x3fe8 (size before relaxing)
+ .debug_str     0x0000000000003f5d       0x31 ./Startup/startup_stm32f401vetx.o
                                          0x8a (size before relaxing)
 
 .comment        0x0000000000000000       0x50
