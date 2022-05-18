@@ -1,4 +1,0 @@
-../Src/Src_MCAL/GPIO/MCAL_GPIO.c:10:6:MGPIO_vSetPinMode	8	static
-../Src/Src_MCAL/GPIO/MCAL_GPIO.c:26:6:MGPIO_vSetPinOutPutType	8	static
-../Src/Src_MCAL/GPIO/MCAL_GPIO.c:40:6:MGPIO_vSetPinOutSpeed	8	static
-../Src/Src_MCAL/GPIO/MCAL_GPIO.c:54:6:MGPIO_vSetPullType	8	static

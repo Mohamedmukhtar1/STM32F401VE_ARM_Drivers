@@ -1,8 +1,0 @@
-"./Src/Src_MCAL/EXTIx/MCAL_EXTI.o"
-"./Src/Src_MCAL/GPIO/MCAL_GPIO.o"
-"./Src/Src_MCAL/NVIC/MCAL_NVIC.o"
-"./Src/Src_MCAL/RCC/MCAL_RCC.o"
-"./Src/main.o"
-"./Src/syscalls.o"
-"./Src/sysmem.o"
-"./Startup/startup_stm32f401vetx.o"
