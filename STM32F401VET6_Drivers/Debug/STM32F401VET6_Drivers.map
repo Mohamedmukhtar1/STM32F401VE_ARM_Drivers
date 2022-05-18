@@ -49,28 +49,30 @@ Discarded input sections
  .data          0x0000000000000000        0x0 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .bss           0x0000000000000000        0x0 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .text.MGPIO_vSetPinMode
-                0x0000000000000000       0xec ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
- .text.MGPIO_vSetPinOutPutType
                 0x0000000000000000       0xf0 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
- .text.MGPIO_vSetPinOutSpeed
-                0x0000000000000000       0xe0 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
- .text.MGPIO_vSetPullType
-                0x0000000000000000       0xe0 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
- .debug_info    0x0000000000000000      0x4c5 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
- .debug_abbrev  0x0000000000000000       0xe3 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .text.MGPIO_vSetPinOutputType
+                0x0000000000000000       0xe4 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .text.MGPIO_vSetPinOutputSpeed
+                0x0000000000000000       0xf0 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .text.MGPIO_vSetPinPullType
+                0x0000000000000000       0xf0 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .text.MGPIO_U8PinReadData
+                0x0000000000000000       0xc4 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .debug_info    0x0000000000000000      0x50d ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .debug_abbrev  0x0000000000000000      0x112 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .debug_aranges
-                0x0000000000000000       0x38 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
- .debug_ranges  0x0000000000000000       0x28 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+                0x0000000000000000       0x40 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .debug_ranges  0x0000000000000000       0x30 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .debug_macro   0x0000000000000000       0x63 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .debug_macro   0x0000000000000000      0xa7e ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .debug_macro   0x0000000000000000       0x10 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .debug_macro   0x0000000000000000       0x70 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .debug_macro   0x0000000000000000       0x52 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
- .debug_macro   0x0000000000000000      0x148 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
- .debug_line    0x0000000000000000      0x3b7 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
- .debug_str     0x0000000000000000     0x3a93 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .debug_macro   0x0000000000000000      0x142 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .debug_line    0x0000000000000000      0x442 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .debug_str     0x0000000000000000     0x3a96 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .comment       0x0000000000000000       0x51 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
- .debug_frame   0x0000000000000000       0xb0 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
+ .debug_frame   0x0000000000000000       0xd8 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .ARM.attributes
                 0x0000000000000000       0x34 ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
  .group         0x0000000000000000        0xc ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
@@ -157,7 +159,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x166 ./Src/main.o
  .debug_macro   0x0000000000000000      0x118 ./Src/main.o
  .debug_macro   0x0000000000000000       0x52 ./Src/main.o
- .debug_macro   0x0000000000000000      0x148 ./Src/main.o
+ .debug_macro   0x0000000000000000      0x142 ./Src/main.o
  .group         0x0000000000000000        0xc ./Src/syscalls.o
  .group         0x0000000000000000        0xc ./Src/syscalls.o
  .group         0x0000000000000000        0xc ./Src/syscalls.o
