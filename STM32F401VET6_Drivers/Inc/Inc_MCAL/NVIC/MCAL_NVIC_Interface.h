@@ -9,7 +9,7 @@
 #define INC_MCAL_NVIC_MCAL_NVIC_INTERFACE_H_
 
 /***************_INCLUDES_****************************/
-#include "APP_Utility.h"
+#include "..\Inc\Inc_APP\Utility\APP_Utility.h"
 #include "MCAL_NVIC_Private.h"
 #include "MCAL_NVIC_Config.h"
 #include "MCAL_NVIC_Register.h"

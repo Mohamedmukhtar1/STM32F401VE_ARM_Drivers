@@ -1,3 +1,4 @@
+"./Inc/Inc_APP/Utility/Utility_Delay/DELAY_UNIT.o"
 "./Src/Src_APP/Debug/APP_Debug.o"
 "./Src/Src_MCAL/EXTIx/MCAL_EXTI.o"
 "./Src/Src_MCAL/GPIO/MCAL_GPIO.o"

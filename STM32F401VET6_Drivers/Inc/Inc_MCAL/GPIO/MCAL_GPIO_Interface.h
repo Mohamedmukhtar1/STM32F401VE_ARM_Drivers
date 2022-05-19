@@ -9,7 +9,7 @@
 #define INC_MCAL_GPIO_MCAL_GPIO_INTERFACE_H_
 
 /***************_INCLUDES_****************************/
-#include "APP_Utility.h"
+#include "..\Inc\Inc_APP\Utility\APP_Utility.h"
 #include "MCAL_GPIO_Private.h"
 #include "MCAL_GPIO_Config.h"
 #include "MCAL_GPIO_Register.h"

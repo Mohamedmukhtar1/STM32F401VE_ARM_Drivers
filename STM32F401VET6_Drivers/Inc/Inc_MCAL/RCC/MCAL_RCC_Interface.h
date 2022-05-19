@@ -9,7 +9,7 @@
 #define INC_MCAL_RCC_MCAL_RCC_INTERFACE_H_
 
 /***************_INCLUDES_****************************/
-#include "APP_Utility.h"
+#include "..\Inc\Inc_APP\Utility\APP_Utility.h"
 #include "MCAL_RCC_Private.h"
 #include "MCAL_RCC_Config.h"
 #include "MCAL_RCC_Register.h"

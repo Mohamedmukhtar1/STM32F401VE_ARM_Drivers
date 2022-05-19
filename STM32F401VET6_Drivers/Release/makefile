@@ -16,6 +16,7 @@ RM := rm -rf
 -include Src/Src_MCAL/EXTIx/subdir.mk
 -include Src/Src_APP/Debug/subdir.mk
 -include Src/subdir.mk
+-include Inc/Inc_APP/Utility/Utility_Delay/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
