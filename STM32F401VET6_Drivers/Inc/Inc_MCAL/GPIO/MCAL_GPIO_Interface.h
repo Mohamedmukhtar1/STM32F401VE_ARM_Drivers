@@ -48,11 +48,15 @@
 #define ALTERNATE_FUNCTION_MODE  ((U8)2U)          /*!< MODE ---> ALTF      */
 #define ANALOG_MODE   	         ((U8)3U)          /*!< MODE ---> ANALOG    */
 
+#define INPUT_PORT_MODE			 ((U32)0x00000000)  //0b0000 0000 0000 0000 0000 0000 0000 0000
+#define OUTPUT_PORT_MODE		 ((U32)0x55555555)  //0b0101 0101 0101 0101 0101 0101 0101 0101
+#define ANALOG_PORT_MODE         ((U32)0xFFFFFFFF)  //0b1111 1111 1111 1111 1111 1111 1111 1111
+
 /*======== Macros Of Output Type ========*/
 #define OUTPUT_PUSH_PULL_TYPE    ((U8)0U)          /*!< OUTPUT TYPE ---> PUSH PULL   */
 #define OUTPUT_OPEN_DRAIN_TYPE   ((U8)1U)          /*!< OUTPUT TYPE ---> OPEN DRAIN  */
-/*======== Macros Of Pin Speed ========*/
 
+/*======== Macros Of Pin Speed ========*/
 #define OUTPUT_LOW_SPEED         ((U8)0U)  /*!< IO works at 2 MHz, please refer to the product datasheet */
 #define OUTPUT_MEDUIM_SPEED      ((U8)1U)  /*!< range 12,5 MHz to 50 MHz, please refer to the product datasheet */
 #define OUTPUT_HIGH_SPEED        ((U8)2U)  /*!< range 25 MHz to 100 MHz, please refer to the product datasheet  */
@@ -67,29 +71,31 @@
 #define LOW_STATE                ((U8)0U)
 #define HIGH_STATE	             ((U8)1U)
 
-/*======== Macros ALTF  ========*/
-#define ALTFUN_0            (U8)(0U)      /*!< ALTF  --> 0  */
-#define ALTFUN_1            (U8)(1U)      /*!< ALTF  --> 1  */
-#define ALTFUN_2            (U8)(2U)      /*!< ALTF  --> 2  */
-#define ALTFUN_3            (U8)(3U)      /*!< ALTF  --> 3  */
-#define ALTFUN_4            (U8)(4U)      /*!< ALTF  --> 4  */
-#define ALTFUN_5            (U8)(5U)      /*!< ALTF  --> 5  */
-#define ALTFUN_6            (U8)(6U)      /*!< ALTF  --> 6  */
-#define ALTFUN_7            (U8)(7U)      /*!< ALTF  --> 7  */
-#define ALTFUN_8            (U8)(8U)      /*!< ALTF  --> 8  */
-#define ALTFUN_9            (U8)(9U)      /*!< ALTF  --> 9  */
-#define ALTFUN_10           (U8)(10U)      /*!< ALTF  --> 10 */
-#define ALTFUN_11           (U8)(11U)      /*!< ALTF  --> 11 */
-#define ALTFUN_12           (U8)(12U)      /*!< ALTF  --> 12 */
-#define ALTFUN_13           (U8)(13U)      /*!< ALTF  --> 13 */
-#define ALTFUN_14           (U8)(14U)      /*!< ALTF  --> 14 */
-#define ALTFUN_15           (U8)(15U)      /*!< ALTF  --> 15 */
+/*======== Macros ALTFUN  ========*/
+#define ALTFUN_0            (U8)(0U)
+#define ALTFUN_1            (U8)(1U)
+#define ALTFUN_2            (U8)(2U)
+#define ALTFUN_3            (U8)(3U)
+#define ALTFUN_4            (U8)(4U)
+#define ALTFUN_5            (U8)(5U)
+#define ALTFUN_6            (U8)(6U)
+#define ALTFUN_7            (U8)(7U)
+#define ALTFUN_8            (U8)(8U)
+#define ALTFUN_9            (U8)(9U)
+#define ALTFUN_10           (U8)(10U)
+#define ALTFUN_11           (U8)(11U)
+#define ALTFUN_12           (U8)(12U)
+#define ALTFUN_13           (U8)(13U)
+#define ALTFUN_14           (U8)(14U)
+#define ALTFUN_15           (U8)(15U)
 
 
 /*============================================================================
   ==================_APIs Supported by "MCAL_GPIO DRIVER"_====================
   ============================================================================*/
 void MGPIO_vSetPinMode(U8 PortName ,U8 PinNum ,U8 DirectionMode);
+void MGPIO_vFastPortConfigMode(U8 PortName, U32 PortDirectionMode);
+
 void MGPIO_vSetPinOutputType(U8 PortName ,U8 PinNum ,U8 OutPutType);
 void MGPIO_vSetPinOutputSpeed(U8 PortName ,U8 PinNum ,U8 OutputSpeed);
 void MGPIO_vSetPinPullType(U8 PortName ,U8 PinNum ,U8 PullType);

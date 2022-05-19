@@ -39,10 +39,10 @@
 #define	  PHB1_GPIOC     2U
 #define	  PHB1_GPIOD     3U
 #define	  PHB1_GPIOE     4U
-#define	  PHB1_GPIOH     5U
-#define	  PHB1_CRC       6U
-#define	  PHB1_DMA1      7U
-#define	  PHB1_DMA2      8U
+#define	  PHB1_GPIOH     7U
+#define	  PHB1_CRC       12U
+#define	  PHB1_DMA1      21U
+#define	  PHB1_DMA2      22U
 /*-----------------------------------*/
 #define   PHB2_OTGFS     7U
 /*-----------------------------------*/
@@ -59,7 +59,7 @@
 #define   PPB1_I2C3      23U
 #define   PPB1_PWR       28U
 /*-----------------------------------*/
-#define   PPB2_TIM1EN    0U
+#define   PPB2_TIM1      0U
 #define   PPB2_USART1    4U
 #define   PPB2_USART6    5U
 #define   PPB2_ADC1      8U

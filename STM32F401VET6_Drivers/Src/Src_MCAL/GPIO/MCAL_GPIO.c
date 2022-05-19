@@ -7,7 +7,7 @@
 
 #include "MCAL_GPIO_Interface.h"
 
-void MGPIO_vSetPinMode(U8 PortName ,U8 PinNum ,U8 DirectionMode)
+void MGPIO_vSetPinMode(U8 PortName, U8 PinNum, U8 DirectionMode)
 {
 	/* INPUT_MODE, OUTPUT_MODE, ALTERNATE_FUNCTION_MODE, ANALOG_MODE */
 	switch(PortName)
@@ -23,7 +23,22 @@ void MGPIO_vSetPinMode(U8 PortName ,U8 PinNum ,U8 DirectionMode)
     }
 }
 
-void MGPIO_vSetPinOutputType(U8 PortName ,U8 PinNum ,U8 OutPutType)
+void MGPIO_vFastPortConfigMode(U8 PortName, U32 PortDirectionMode)
+{
+	/* INPUT_PORT_MODE, OUTPUT_PORT_MODE, ANALOG_PORT_MODE*/
+	switch(PortName)
+	{
+		case GPIOA_PORT :GPIOA_SPTR->GPIO_MODER.RegisterAccess = (U32)PortDirectionMode ; break;
+		case GPIOB_PORT :GPIOB_SPTR->GPIO_MODER.RegisterAccess = (U32)PortDirectionMode ; break;
+		case GPIOC_PORT :GPIOC_SPTR->GPIO_MODER.RegisterAccess = (U32)PortDirectionMode ; break;
+		case GPIOD_PORT :GPIOD_SPTR->GPIO_MODER.RegisterAccess = (U32)PortDirectionMode ; break;
+		case GPIOE_PORT :GPIOE_SPTR->GPIO_MODER.RegisterAccess = (U32)PortDirectionMode ; break;
+		case GPIOH_PORT :GPIOH_SPTR->GPIO_MODER.RegisterAccess = (U32)PortDirectionMode ; break;
+		default : /*ERROR*/ break ;
+    }
+}
+
+void MGPIO_vSetPinOutputType(U8 PortName, U8 PinNum, U8 OutPutType)
 {
 	/*OUTPUT_PUSH_PULL_TYPE, OUTPUT_OPEN_DRAIN_TYPE*/
 	switch(PortName)
@@ -38,7 +53,7 @@ void MGPIO_vSetPinOutputType(U8 PortName ,U8 PinNum ,U8 OutPutType)
      }
 }
 
-void MGPIO_vSetPinOutputSpeed(U8 PortName ,U8 PinNum ,U8 OutputSpeed)
+void MGPIO_vSetPinOutputSpeed(U8 PortName, U8 PinNum, U8 OutputSpeed)
 {
 	/*OUTPUT_LOW_SPEED, OUTPUT_MEDUIM_SPEED, OUTPUT_HIGH_SPEED, OUTPUT_VERY_HIGH_SPEED*/
 	switch(PortName)
@@ -53,7 +68,7 @@ void MGPIO_vSetPinOutputSpeed(U8 PortName ,U8 PinNum ,U8 OutputSpeed)
 	}
 }
 
-void MGPIO_vSetPinPullType(U8 PortName ,U8 PinNum ,U8 PullType)
+void MGPIO_vSetPinPullType(U8 PortName, U8 PinNum, U8 PullType)
 {
 	/*PULL_OFF_STATE, PULL_UP_STATE, PULL_DOWN_STATE*/
 	switch(PortName)
@@ -68,7 +83,7 @@ void MGPIO_vSetPinPullType(U8 PortName ,U8 PinNum ,U8 PullType)
 	}
 }
 
-U8 MGPIO_U8ReadPinData(U8 PortName ,U8 PinNum)
+U8 MGPIO_U8ReadPinData(U8 PortName, U8 PinNum)
 {
 	U8 L_U8Pin_Read_Data =0;
 	switch(PortName)
@@ -100,7 +115,7 @@ U16 MGPIO_U16ReadPortData(U8 PortName)
 	return L_U8Pin_Read_Data;
 }
 
-void MGPIO_vWritePinData(U8 PortName ,U8 PinNum, U8 OutputState)
+void MGPIO_vWritePinData(U8 PortName, U8 PinNum, U8 OutputState)
 {
 	/*LOW_STATE, HIGH_STATE*/
 	switch(PortName)
