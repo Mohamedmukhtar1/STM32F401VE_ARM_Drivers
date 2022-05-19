@@ -8,8 +8,12 @@
 #ifndef INC_MCAL_GPIO_MCAL_GPIO_INTERFACE_H_
 #define INC_MCAL_GPIO_MCAL_GPIO_INTERFACE_H_
 
-/***************_INCLUDES_****************************/
+/***************_APP_INCLUDES_*****************************/
 #include "..\Inc\Inc_APP\Utility\APP_Utility.h"
+
+/***************_HAL_INCLUDES_*****************************/
+
+/***************_MCAL_INCLUDES_****************************/
 #include "MCAL_GPIO_Private.h"
 #include "MCAL_GPIO_Config.h"
 #include "MCAL_GPIO_Register.h"
@@ -106,6 +110,8 @@ U16 MGPIO_U16ReadPortData(U8 PortName);
 void MGPIO_vWritePinData(U8 PortName ,U8 PinNum, U8 OutputState);
 void MGPIO_vWritePortOneByteData(U8 PortName, U8 Data, U8 StartBit);
 void MGPIO_vWritePortData(U8 PortName, U16 Data);
+
+void MGPIO_vToggle_Pin(U8 PortName, U8 PinNum);
 
 void MGPIO_vPinLock(U8 PortName, U8 PinNum );
 void MGPIO_vSetPinAltFun(U8 PortName, U8 PinNum, U8 ALTFUN);

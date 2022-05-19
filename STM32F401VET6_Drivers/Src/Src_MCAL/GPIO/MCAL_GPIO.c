@@ -167,6 +167,22 @@ void MGPIO_vWritePortOneByteData(U8 PortName, U8 Data, U8 StartBit)
 	}
 }
 
+void MGPIO_vToggle_Pin(U8 PortName, U8 PinNum)
+{
+	/*LOW_STATE, HIGH_STATE*/
+		switch(PortName)
+		{
+		    case GPIOA_PORT :GPIOA_SPTR->GPIO_ODR.RegisterAccess ^= (U16)(1 <<(PinNum)) ; break;
+		    case GPIOB_PORT :GPIOB_SPTR->GPIO_ODR.RegisterAccess ^= (U16)(1 <<(PinNum)) ; break;
+		    case GPIOC_PORT :GPIOC_SPTR->GPIO_ODR.RegisterAccess ^= (U16)(1 <<(PinNum)) ; break;
+		    case GPIOD_PORT :GPIOD_SPTR->GPIO_ODR.RegisterAccess ^= (U16)(1 <<(PinNum)) ; break;
+		    case GPIOE_PORT :GPIOE_SPTR->GPIO_ODR.RegisterAccess ^= (U16)(1 <<(PinNum)) ; break;
+		    case GPIOH_PORT :GPIOH_SPTR->GPIO_ODR.RegisterAccess ^= (U16)(1 <<(PinNum)) ; break;
+			default : /*ERROR*/ break ;
+		}
+}
+
+
 void MGPIO_vPinLock(U8 PortName, U8 PinNum)
 {
 	switch(PortName)

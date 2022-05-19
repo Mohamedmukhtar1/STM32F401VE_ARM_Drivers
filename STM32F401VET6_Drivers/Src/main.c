@@ -16,10 +16,14 @@ int main(void)
 	 * >>>>>> ADebug_All_GPIO_Ports();
 	 * >>>>>>
 	 **************************************************************************/
-	MRCC_vInitSystemClock(); //System Clock Start -->>>>>>>>>>>>>>>>>>>>>>>>>>>
+		MRCC_vInitSystemClock(); //System Clock Start -->>>>>>>>>>>>>>>>>>>>>>>
 	/*************************_Main_Body_Start_********************************/
 
-	ADebug_All_GPIO_Ports();
+
+
+
+
+
 	while(1)
 	{
 

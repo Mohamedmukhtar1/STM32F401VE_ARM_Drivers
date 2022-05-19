@@ -24,6 +24,7 @@ C_DEPS :=
 SUBDIRS := \
 Inc/Inc_APP/Utility/Utility_Delay \
 Src/Src_APP/Debug \
+Src/Src_HAL/LED \
 Src/Src_MCAL/EXTIx \
 Src/Src_MCAL/GPIO \
 Src/Src_MCAL/NVIC \

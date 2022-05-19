@@ -8,5 +8,6 @@
 ../Src/Src_MCAL/GPIO/MCAL_GPIO.c:118:6:MGPIO_vWritePinData	0	static
 ../Src/Src_MCAL/GPIO/MCAL_GPIO.c:133:6:MGPIO_vWritePortData	0	static
 ../Src/Src_MCAL/GPIO/MCAL_GPIO.c:148:6:MGPIO_vWritePortOneByteData	8	static
-../Src/Src_MCAL/GPIO/MCAL_GPIO.c:170:6:MGPIO_vPinLock	0	static
-../Src/Src_MCAL/GPIO/MCAL_GPIO.c:208:6:MGPIO_vSetPinAltFun	8	static
+../Src/Src_MCAL/GPIO/MCAL_GPIO.c:170:6:MGPIO_vToggle_Pin	0	static
+../Src/Src_MCAL/GPIO/MCAL_GPIO.c:186:6:MGPIO_vPinLock	0	static
+../Src/Src_MCAL/GPIO/MCAL_GPIO.c:224:6:MGPIO_vSetPinAltFun	8	static

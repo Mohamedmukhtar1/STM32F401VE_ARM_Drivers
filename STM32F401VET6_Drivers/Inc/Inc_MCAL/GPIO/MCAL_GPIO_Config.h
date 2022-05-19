@@ -9,5 +9,4 @@
 #define INC_MCAL_GPIO_MCAL_GPIO_CONFIG_H_
 
 
-
 #endif /* INC_MCAL_GPIO_MCAL_GPIO_CONFIG_H_ */
