@@ -7,53 +7,45 @@
 
 #include "..\Inc\Inc_HAL\LED\HAL_LED_Interface.h"
 
-struct LED
-{
-	U8 LED_BUS		      ;
-	U8 LED_PORT			  ;
-	U8 LED_PIN			  ;
-	U8 LED_PinOutputType  ;
-	U8 LED_PinOutputSpeed ;
-};
+LED_Stag LED_0_;
+LED_Stag LED_1_;
+LED_Stag LED_2_;
 
-struct LED LED_0_;
-struct LED LED_1_;
-struct LED LED_2_;
-
-LED_0_.LED_BUS = 1;
-
-typedef struct
-{
-	U8 Led_BUS		      ;
-	U8 Led_PORT			  ;
-	U8 Led_PIN			  ;
-	U8 Led_PinOutputType  ;
-	U8 Led_PinOutputSpeed ;
-}LED_SS;
-
-LED_SS ALI;
-//ALI.Led_BUS = 1;
 //LED_0_.Led_BUS = Bus_AHB1;
 
-
-void HLED_vInitLed(U8 LED_NAME)
+void HLED_vConfigLEDs(void)
 {
-	switch(LED_NAME)
-	{
-		case 0:
-			MRCC_vEnableBusClock(Bus_AHB1, PHB1_GPIOA);
-			MGPIO_vSetPinMode(GPIOA_PORT, GPIO_PIN_0, OUTPUT_MODE);
-			MGPIO_vSetPinOutputType(GPIOA_PORT, GPIO_PIN_0, OUTPUT_PUSH_PULL_TYPE);
-			MGPIO_vSetPinOutputSpeed(GPIOA_PORT, GPIO_PIN_0, OUTPUT_LOW_SPEED);
-			MGPIO_vWritePinData(GPIOA_PORT, GPIO_PIN_0, HIGH_STATE);
-			break;
-		case 1:
+	/*Each LED must be configuered here first with its elements*/
+	LED_0_.LED_PORT           = PHB1_GPIOA;
+	LED_0_.LED_PIN            = GPIO_PIN_0;
+	LED_0_.LED_PinOutputType  = OUTPUT_PUSH_PULL_TYPE;
+	LED_0_.LED_PinOutputSpeed = OUTPUT_LOW_SPEED;
 
-		break;
-		case 2:
+	LED_1_.LED_PORT           = PHB1_GPIOA;
+	LED_1_.LED_PIN            = GPIO_PIN_1;
+	LED_1_.LED_PinOutputType  = OUTPUT_PUSH_PULL_TYPE;
+	LED_1_.LED_PinOutputSpeed = OUTPUT_LOW_SPEED;
 
-		break;
-		default:
-		break;
-	}
+	LED_1_.LED_PORT           = PHB1_GPIOA;
+	LED_1_.LED_PIN            = GPIO_PIN_2;
+	LED_1_.LED_PinOutputType  = OUTPUT_PUSH_PULL_TYPE;
+	LED_1_.LED_PinOutputSpeed = OUTPUT_LOW_SPEED;
+}
+
+void HLED_vInitLed(LED_Stag *LED_ptr)
+{
+	MRCC_vEnableBusClock(Bus_AHB1, LED_ptr->LED_PORT);
+	MGPIO_vSetPinMode(LED_ptr->LED_PORT, LED_ptr->LED_PIN, OUTPUT_MODE);
+	MGPIO_vSetPinOutputType(LED_ptr->LED_PORT, LED_ptr->LED_PIN, LED_ptr->LED_PinOutputType);
+	MGPIO_vSetPinOutputSpeed(LED_ptr->LED_PORT, LED_ptr->LED_PIN, LED_ptr->LED_PinOutputSpeed);
+}
+
+void HLED_vStateControl(LED_Stag *LED_ptr, U8 LED_State)
+{
+	MGPIO_vWritePinData(LED_ptr->LED_PORT, LED_ptr->LED_PIN, LED_State);
+}
+
+void HLED_vTOGGEL(LED_Stag *LED_ptr)
+{
+	MGPIO_vToggle_Pin(LED_ptr->LED_PORT, LED_ptr->LED_PIN);
 }

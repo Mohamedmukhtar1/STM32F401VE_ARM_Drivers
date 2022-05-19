@@ -46,9 +46,14 @@ Discarded input sections
  .text          0x0000000000000000        0x0 ./Src/Src_HAL/LED/HAL_LED.o
  .data          0x0000000000000000        0x0 ./Src/Src_HAL/LED/HAL_LED.o
  .bss           0x0000000000000000        0x0 ./Src/Src_HAL/LED/HAL_LED.o
+ .text.HLED_vConfigLEDs
+                0x0000000000000000       0x24 ./Src/Src_HAL/LED/HAL_LED.o
  .text.HLED_vInitLed
-                0x0000000000000000       0x40 ./Src/Src_HAL/LED/HAL_LED.o
- .bss.ALI       0x0000000000000000        0x5 ./Src/Src_HAL/LED/HAL_LED.o
+                0x0000000000000000       0x2e ./Src/Src_HAL/LED/HAL_LED.o
+ .text.HLED_vStateControl
+                0x0000000000000000        0xa ./Src/Src_HAL/LED/HAL_LED.o
+ .text.HLED_vTOGGEL
+                0x0000000000000000        0x8 ./Src/Src_HAL/LED/HAL_LED.o
  .bss.LED_0_    0x0000000000000000        0x5 ./Src/Src_HAL/LED/HAL_LED.o
  .bss.LED_1_    0x0000000000000000        0x5 ./Src/Src_HAL/LED/HAL_LED.o
  .bss.LED_2_    0x0000000000000000        0x5 ./Src/Src_HAL/LED/HAL_LED.o

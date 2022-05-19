@@ -1,0 +1,4 @@
+../Src/Src_HAL/LED/HAL_LED.c:16:6:HLED_vConfigLEDs	0	static
+../Src/Src_HAL/LED/HAL_LED.c:35:6:HLED_vInitLed	8	static
+../Src/Src_HAL/LED/HAL_LED.c:43:6:HLED_vStateControl	0	static
+../Src/Src_HAL/LED/HAL_LED.c:48:6:HLED_vTOGGEL	0	static

@@ -19,10 +19,12 @@
 #include "..\Inc\Inc_MCAL\RCC\MCAL_RCC_Interface.h"
 #include "..\Inc\Inc_MCAL\GPIO\MCAL_GPIO_Interface.h"
 
-/*
-#define RED_LED_PIN			 PC0		//	Built-in LED
-#define GRN_LED_PIN			 PC1		//	Built-in LED
-#define BLU_LED_PIN			 PC2		//	Built-in LED
-*/
+/*============================================================================
+  ==================_APIs Supported by "HAL_LED DRIVER"_====================
+  ============================================================================*/
+void HLED_vConfigLEDs(void);
+void HLED_vInitLed(LED_Stag *LED_ptr);
+void HLED_vStateControl(LED_Stag *LED_ptr, U8 LED_State);
+void HLED_vTOGGEL(LED_Stag *LED_ptr);
 
 #endif /* INC_HAL_LED_HAL_LED_INTERFACE_H_ */

@@ -8,9 +8,8 @@
 #ifndef INC_HAL_LED_HAL_LED_PRIVATE_H_
 #define INC_HAL_LED_HAL_LED_PRIVATE_H_
 
-#define RED_LED				 1
-#define GRN_LED				 2
-#define BLU_LED				 3
+#define LED_ON		HIGH_STATE
+#define LED_OFF		LOW_STATE
 
 
 #endif /* INC_HAL_LED_HAL_LED_PRIVATE_H_ */

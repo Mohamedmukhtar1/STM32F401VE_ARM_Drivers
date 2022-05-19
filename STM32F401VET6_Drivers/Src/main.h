@@ -15,6 +15,7 @@
 #include "..\Src\Src_APP\Debug\APP_Debug.h"
 
 /***************_HAL_INCLUDES_*****************************/
+#include "..\Inc\Inc_HAL\LED\HAL_LED_Interface.h"
 
 /***************_MCAL_INCLUDES_****************************/
 #include "..\Inc\Inc_MCAL\RCC\MCAL_RCC_Interface.h"
