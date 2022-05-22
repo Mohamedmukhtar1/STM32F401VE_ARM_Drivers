@@ -12,6 +12,6 @@
 #include "APP_STD_Types.h"
 #include "APP_BIT_MATH.h"
 #include "APP_REG_Types.h"
-#include "..\Inc\Inc_APP\Utility\Utility_Delay\DELAY_UNIT.h"
+#include "..\Src\Src_APP\Utility\Utility_Delay\DELAY_UNIT.h"
 
 #endif /* INC_APP_UTILITY_APP_UTILITY_H_ */

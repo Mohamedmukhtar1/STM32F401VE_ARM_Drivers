@@ -22,8 +22,8 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-Inc/Inc_APP/Utility/Utility_Delay \
 Src/Src_APP/Debug \
+Src/Src_APP/Utility/Utility_Delay \
 Src/Src_HAL/LED \
 Src/Src_MCAL/EXTIx \
 Src/Src_MCAL/GPIO \
