@@ -14,6 +14,9 @@ RM := rm -rf
 -include Src/Src_MCAL/NVIC/subdir.mk
 -include Src/Src_MCAL/GPIO/subdir.mk
 -include Src/Src_MCAL/EXTIx/subdir.mk
+-include Src/Src_HAL/LED/subdir.mk
+-include Src/Src_APP/Utility/Utility_Delay/subdir.mk
+-include Src/Src_APP/Debug/subdir.mk
 -include Src/subdir.mk
 -include objects.mk
 
