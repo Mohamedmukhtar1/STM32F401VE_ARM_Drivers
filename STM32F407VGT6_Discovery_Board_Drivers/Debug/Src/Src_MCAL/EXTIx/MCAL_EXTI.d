@@ -1,0 +1,1 @@
+Src/Src_MCAL/EXTIx/MCAL_EXTI.o: ../Src/Src_MCAL/EXTIx/MCAL_EXTI.c
