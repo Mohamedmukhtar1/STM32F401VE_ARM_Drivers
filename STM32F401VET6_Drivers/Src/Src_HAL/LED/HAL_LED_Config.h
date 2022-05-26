@@ -8,13 +8,26 @@
 #ifndef INC_HAL_LED_HAL_LED_CONFIG_H_
 #define INC_HAL_LED_HAL_LED_CONFIG_H_
 
-typedef struct
-{
-	U8 LED_PORT			  ;
-	U8 LED_PIN			  ;
-	U8 LED_PinOutputType  ;
-	U8 LED_PinOutputSpeed ;
-	U8 LED_State		  ;
-}LED_Stag;
+
+#define LED_0_ENABLE			     ENABLE_LED
+#define LED_0_PORT_CFG               PHB1_GPIOA
+#define LED_0_PIN_CFG                GPIO_PIN_0
+#define LED_0_PinOutputType_CFG      OUTPUT_PUSH_PULL_TYPE
+#define LED_0_PinOutputSpeed_CFG     OUTPUT_LOW_SPEED
+#define LED_0_PinPullType_CFG        PULL_UP_STATE
+
+#define LED_1_ENABLE			     ENABLE_LED
+#define LED_1_PORT_CFG               PHB1_GPIOA
+#define LED_1_PIN_CFG                GPIO_PIN_1
+#define LED_1_PinOutputType_CFG      OUTPUT_PUSH_PULL_TYPE
+#define LED_1_PinOutputSpeed_CFG     OUTPUT_LOW_SPEED
+#define LED_1_PinPullType_CFG        PULL_UP_STATE
+
+#define LED_2_ENABLE			     ENABLE_LED
+#define LED_2_PORT_CFG               PHB1_GPIOA
+#define LED_2_PIN_CFG                GPIO_PIN_2
+#define LED_2_PinOutputType_CFG      OUTPUT_PUSH_PULL_TYPE
+#define LED_2_PinOutputSpeed_CFG     OUTPUT_LOW_SPEED
+#define LED_2_PinPullType_CFG        PULL_UP_STATE
 
 #endif /* INC_HAL_LED_HAL_LED_CONFIG_H_ */

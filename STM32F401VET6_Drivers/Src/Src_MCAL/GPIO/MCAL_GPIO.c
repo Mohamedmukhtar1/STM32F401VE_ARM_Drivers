@@ -118,14 +118,32 @@ U16 MGPIO_U16ReadPortData(U8 PortName)
 void MGPIO_vWritePinData(U8 PortName, U8 PinNum, U8 OutputState)
 {
 	/*LOW_STATE, HIGH_STATE*/
-	switch(PortName)
+	switch(OutputState)
 	{
-	    case GPIOA_PORT :GPIOA_SPTR->GPIO_ODR.RegisterAccess |= (U32)(OutputState<<(PinNum)) ; break;
-	    case GPIOB_PORT :GPIOB_SPTR->GPIO_ODR.RegisterAccess |= (U32)(OutputState<<(PinNum)) ; break;
-	    case GPIOC_PORT :GPIOC_SPTR->GPIO_ODR.RegisterAccess |= (U32)(OutputState<<(PinNum)) ; break;
-	    case GPIOD_PORT :GPIOD_SPTR->GPIO_ODR.RegisterAccess |= (U32)(OutputState<<(PinNum)) ; break;
-	    case GPIOE_PORT :GPIOE_SPTR->GPIO_ODR.RegisterAccess |= (U32)(OutputState<<(PinNum)) ; break;
-	    case GPIOH_PORT :GPIOH_SPTR->GPIO_ODR.RegisterAccess |= (U32)(OutputState<<(PinNum)) ; break;
+		case LOW_STATE:
+			switch(PortName)
+			{
+				case GPIOA_PORT :CLR_BIT(GPIOA_SPTR->GPIO_ODR.RegisterAccess, PinNum); break;
+				case GPIOB_PORT :CLR_BIT(GPIOB_SPTR->GPIO_ODR.RegisterAccess, PinNum); break;
+				case GPIOC_PORT :CLR_BIT(GPIOC_SPTR->GPIO_ODR.RegisterAccess, PinNum); break;
+				case GPIOD_PORT :CLR_BIT(GPIOD_SPTR->GPIO_ODR.RegisterAccess, PinNum); break;
+				case GPIOE_PORT :CLR_BIT(GPIOE_SPTR->GPIO_ODR.RegisterAccess, PinNum); break;
+				case GPIOH_PORT :CLR_BIT(GPIOH_SPTR->GPIO_ODR.RegisterAccess, PinNum); break;
+				default : /*ERROR*/ break ;
+			}
+		break ;
+		case HIGH_STATE:
+			switch(PortName)
+			{
+				case GPIOA_PORT :SET_BIT(GPIOA_SPTR->GPIO_ODR.RegisterAccess, PinNum); ; break;
+				case GPIOB_PORT :SET_BIT(GPIOB_SPTR->GPIO_ODR.RegisterAccess, PinNum); ; break;
+				case GPIOC_PORT :SET_BIT(GPIOC_SPTR->GPIO_ODR.RegisterAccess, PinNum); ; break;
+				case GPIOD_PORT :SET_BIT(GPIOD_SPTR->GPIO_ODR.RegisterAccess, PinNum); ; break;
+				case GPIOE_PORT :SET_BIT(GPIOE_SPTR->GPIO_ODR.RegisterAccess, PinNum); ; break;
+				case GPIOH_PORT :SET_BIT(GPIOH_SPTR->GPIO_ODR.RegisterAccess, PinNum); ; break;
+				default : /*ERROR*/ break ;
+			}
+		break ;
 		default : /*ERROR*/ break ;
 	}
 }

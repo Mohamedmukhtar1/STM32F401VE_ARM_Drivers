@@ -9,15 +9,16 @@
 #define INC_HAL_LED_HAL_LED_INTERFACE_H_
 
 /***************_APP_INCLUDES_*****************************/
-#include "..\Src\Src_APP\Utility\APP_Utility.h"
+#include "..\..\Src_APP\Utility\APP_Utility.h"
 
 /***************_HAL_INCLUDES_*****************************/
 #include "HAL_LED_Private.h"
 #include "HAL_LED_Config.h"
 
 /***************_MCAL_INCLUDES_****************************/
-#include "..\Src\Src_MCAL\RCC\MCAL_RCC_Interface.h"
-#include "..\Src\Src_MCAL\GPIO\MCAL_GPIO_Interface.h"
+#include "..\..\Src_MCAL\RCC\MCAL_RCC_Interface.h"
+#include "..\..\Src_MCAL\GPIO\MCAL_GPIO_Interface.h"
+
 
 #define LED_0_	((U8)0U)
 #define LED_1_	((U8)1U)
@@ -26,7 +27,6 @@
 /*============================================================================
   ==================_APIs Supported by "HAL_LED DRIVER"_====================
   ============================================================================*/
-void HLED_vConfigLEDs(U8 LED_Name);
 void HLED_vInitLED(U8 LED_Name);
 void HLED_vLEDStateControl(U8 LED_Name, U8 LED_State);
 void HLED_vToggelLED(U8 LED_Name);

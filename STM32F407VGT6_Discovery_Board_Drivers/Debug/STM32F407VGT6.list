@@ -1,5 +1,5 @@
 
-STM32F407VGT6_Discovery.elf:     file format elf32-littlearm
+STM32F407VGT6.elf:     file format elf32-littlearm
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
