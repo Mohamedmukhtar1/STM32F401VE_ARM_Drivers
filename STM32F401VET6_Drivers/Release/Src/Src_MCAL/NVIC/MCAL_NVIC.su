@@ -1,0 +1,6 @@
+../Src/Src_MCAL/NVIC/MCAL_NVIC.c:10:6:MNVIC_vEnableInterruptRequest_IRQ	0	static
+../Src/Src_MCAL/NVIC/MCAL_NVIC.c:15:6:MNVIC_vDisableInterruptRequest_IRQ	0	static
+../Src/Src_MCAL/NVIC/MCAL_NVIC.c:20:6:MNVIC_vSetPending	0	static
+../Src/Src_MCAL/NVIC/MCAL_NVIC.c:25:6:MNVIC_vClearPending	0	static
+../Src/Src_MCAL/NVIC/MCAL_NVIC.c:30:4:MNVIC_U8Get_IRQ_ActiveFlag	0	static
+../Src/Src_MCAL/NVIC/MCAL_NVIC.c:37:6:MNVIC_vASetGroupSubgroupPriority	0	static

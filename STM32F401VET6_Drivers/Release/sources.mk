@@ -29,6 +29,7 @@ Src/Src_MCAL/EXTIx \
 Src/Src_MCAL/GPIO \
 Src/Src_MCAL/NVIC \
 Src/Src_MCAL/RCC \
+Src/Src_MCAL/SCB \
 Src \
 Startup \
 

@@ -78,8 +78,13 @@ typedef enum
   I2C3_EV_IRQn                = 72,     /*!< I2C3 event interrupt                                              */
   I2C3_ER_IRQn                = 73,     /*!< I2C3 error interrupt                                              */
   FPU_IRQn                    = 81,     /*!< FPU global interrupt                                              */
-  SPI4_IRQn                   = 84      /*!< SPI4 global Interrupt                                              */
 } IRQn_t;
+
+#define			_ALL_GROUP			0
+#define			_3GROUP_1SUB		1
+#define			_2GROUP_2SUB		2
+#define			_1GROUP_3SUB		3
+#define			_ALL_SUB			4
 
 /*============================================================================
   ==================_APIs Supported by "MCAL_RCC DRIVER"_====================

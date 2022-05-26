@@ -5,6 +5,7 @@
 "./Src/Src_MCAL/GPIO/MCAL_GPIO.o"
 "./Src/Src_MCAL/NVIC/MCAL_NVIC.o"
 "./Src/Src_MCAL/RCC/MCAL_RCC.o"
+"./Src/Src_MCAL/SCB/MCAL_SCB.o"
 "./Src/main.o"
 "./Src/syscalls.o"
 "./Src/sysmem.o"

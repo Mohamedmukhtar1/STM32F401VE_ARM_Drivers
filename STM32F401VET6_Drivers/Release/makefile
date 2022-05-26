@@ -10,6 +10,7 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include Startup/subdir.mk
+-include Src/Src_MCAL/SCB/subdir.mk
 -include Src/Src_MCAL/RCC/subdir.mk
 -include Src/Src_MCAL/NVIC/subdir.mk
 -include Src/Src_MCAL/GPIO/subdir.mk

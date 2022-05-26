@@ -108,6 +108,18 @@ Discarded input sections
  .text          0x0000000000000000        0x0 ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
  .data          0x0000000000000000        0x0 ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
  .bss           0x0000000000000000        0x0 ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
+ .text.MNVIC_vEnableInterruptRequest_IRQ
+                0x0000000000000000       0x18 ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
+ .text.MNVIC_vDisableInterruptRequest_IRQ
+                0x0000000000000000       0x1c ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
+ .text.MNVIC_vSetPending
+                0x0000000000000000       0x1c ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
+ .text.MNVIC_vClearPending
+                0x0000000000000000       0x1c ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
+ .text.MNVIC_U8Get_IRQ_ActiveFlag
+                0x0000000000000000       0x1c ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
+ .text.MNVIC_vASetGroupSubgroupPriority
+                0x0000000000000000       0x12 ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
  .comment       0x0000000000000000       0x51 ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
  .ARM.attributes
                 0x0000000000000000       0x34 ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
@@ -126,6 +138,12 @@ Discarded input sections
                 0x0000000000000000       0x4c ./Src/Src_MCAL/RCC/MCAL_RCC.o
  .text.MRCC_vOutMCO_1_Prescaler
                 0x0000000000000000       0x58 ./Src/Src_MCAL/RCC/MCAL_RCC.o
+ .text          0x0000000000000000        0x0 ./Src/Src_MCAL/SCB/MCAL_SCB.o
+ .data          0x0000000000000000        0x0 ./Src/Src_MCAL/SCB/MCAL_SCB.o
+ .bss           0x0000000000000000        0x0 ./Src/Src_MCAL/SCB/MCAL_SCB.o
+ .comment       0x0000000000000000       0x51 ./Src/Src_MCAL/SCB/MCAL_SCB.o
+ .ARM.attributes
+                0x0000000000000000       0x34 ./Src/Src_MCAL/SCB/MCAL_SCB.o
  .text          0x0000000000000000        0x0 ./Src/main.o
  .data          0x0000000000000000        0x0 ./Src/main.o
  .bss           0x0000000000000000        0x0 ./Src/main.o
@@ -233,6 +251,7 @@ LOAD ./Src/Src_MCAL/EXTIx/MCAL_EXTI.o
 LOAD ./Src/Src_MCAL/GPIO/MCAL_GPIO.o
 LOAD ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
 LOAD ./Src/Src_MCAL/RCC/MCAL_RCC.o
+LOAD ./Src/Src_MCAL/SCB/MCAL_SCB.o
 LOAD ./Src/main.o
 LOAD ./Src/syscalls.o
 LOAD ./Src/sysmem.o
