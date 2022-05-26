@@ -112,9 +112,9 @@ Discarded input sections
                 0x0000000000000000       0x18 ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
  .text.MNVIC_vDisableInterruptRequest_IRQ
                 0x0000000000000000       0x1c ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
- .text.MNVIC_vSetPending
+ .text.MNVIC_vSetPendingInterrupt
                 0x0000000000000000       0x1c ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
- .text.MNVIC_vClearPending
+ .text.MNVIC_vClearPendingInterrupt
                 0x0000000000000000       0x1c ./Src/Src_MCAL/NVIC/MCAL_NVIC.o
  .text.MNVIC_U8Get_IRQ_ActiveFlag
                 0x0000000000000000       0x1c ./Src/Src_MCAL/NVIC/MCAL_NVIC.o

@@ -17,12 +17,12 @@ void MNVIC_vDisableInterruptRequest_IRQ(IRQn_t Copy_tIRQ)
 	NVIC_SPTR->ICER[Copy_tIRQ /32].RegisterAccess = (1U<<(Copy_tIRQ %32));
 }
 
-void MNVIC_vSetPending(IRQn_t Copy_tIRQ)
+void MNVIC_vSetPendingInterrupt(IRQn_t Copy_tIRQ)
 {
 	NVIC_SPTR->ISPR[Copy_tIRQ /32].RegisterAccess = (1U<<(Copy_tIRQ %32));
 }
 
-void MNVIC_vClearPending(IRQn_t Copy_tIRQ)
+void MNVIC_vClearPendingInterrupt(IRQn_t Copy_tIRQ)
 {
 	NVIC_SPTR->ICPR[Copy_tIRQ /32].RegisterAccess = (1U<<(Copy_tIRQ %32));
 }
@@ -41,27 +41,27 @@ void MNVIC_vASetGroupSubgroupPriority( IRQn_t Copy_tIRQ  , U8 Copy_u8GroupPri   
 	 	/*1) CONFIG SCB_AIRCR */
 			//SCB_AIRCR |= 0x05FA0300;
 		/*2)SET GROUP P	 */
-			NVIC_SPTR->IP[Copy_tIRQ].RegisterAccess = Copy_u8GroupPri << 4;
+			NVIC_SPTR->IP[Copy_tIRQ].RegisterAccess = Copy_u8GroupPri <<4;
 #elif 	PRIORITY_MODE  ==	_3GROUP_1SUB
 		/*1) CONFIG SCB_AIRCR */
 			//SCB_AIRCR |= 0x05FA0400;
 		/*2)SET GROUP P	 */
-			NVIC_SPTR->IP[Copy_tIRQ].RegisterAccess = (Copy_u8GroupPri << 5) | (Copy_u8SubGroupPri << 4);
+			NVIC_SPTR->IP[Copy_tIRQ].RegisterAccess = (Copy_u8GroupPri <<5)|(Copy_u8SubGroupPri <<4);
 #elif 	PRIORITY_MODE  ==	_2GROUP_2SUB
 		/*1) CONFIG SCB_AIRCR */
 			//SCB_AIRCR |= 0x05FA0500;
 		/*2)SET GROUP P	 */
-			NVIC_SPTR->IP[Copy_tIRQ].RegisterAccess = (Copy_u8GroupPri << 6) | (Copy_u8SubGroupPri << 4);
+			NVIC_SPTR->IP[Copy_tIRQ].RegisterAccess = (Copy_u8GroupPri <<6)|(Copy_u8SubGroupPri <<4);
 #elif 	PRIORITY_MODE  ==	_1GROUP_3SUB
 		/*1) CONFIG SCB_AIRCR */
 			//SCB_AIRCR |= 0x05FA0600;
 		/*2)SET GROUP P	 */
-			NVIC_SPTR->IP[Copy_tIRQ].RegisterAccess = (Copy_u8GroupPri << 7) | (Copy_u8SubGroupPri << 4);
+			NVIC_SPTR->IP[Copy_tIRQ].RegisterAccess = (Copy_u8GroupPri <<7)|(Copy_u8SubGroupPri <<4);
 #elif 	PRIORITY_MODE  ==	_ALL_SUB
 		/*1) CONFIG SCB_AIRCR */
 			//SCB_AIRCR |= 0x05FA0700;
 		/*2)SET GROUP P	 */
-			NVIC_SPTR->IP[Copy_tIRQ].RegisterAccess = Copy_u8SubGroupPri << 4;
+			NVIC_SPTR->IP[Copy_tIRQ].RegisterAccess = Copy_u8SubGroupPri <<4;
 #endif
 }
 

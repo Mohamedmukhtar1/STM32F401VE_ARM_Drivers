@@ -90,14 +90,15 @@ typedef enum
   ==================_APIs Supported by "MCAL_RCC DRIVER"_====================
   ============================================================================*/
 /*Enables an interrupt .*/
-void MNVIC_vEnableIRQ(IRQn_t Copy_tIRQ);
+void MNVIC_vEnableInterruptRequest_IRQ(IRQn_t Copy_tIRQ);
 /*Disables an interrupt or exception.*/
-void MNVIC_vDisableIRQ(IRQn_t Copy_tIRQ);
+void MNVIC_vDisableInterruptRequest_IRQ(IRQn_t Copy_tIRQ);
 /*Sets the pending status of interrupt or exception to 1.*/
-void MNVIC_vSetPending(IRQn_t Copy_tIRQ);
+void MNVIC_vSetPendingInterrupt(IRQn_t Copy_tIRQ);
 /*Clears the pending status of interrupt or exception to 0.*/
-void MNVIC_vClearPending(IRQn_t Copy_tIRQ);
+void MNVIC_vClearPendingInterrupt(IRQn_t Copy_tIRQ);
 /*Return the IRQ number of the active interrupt*/
-U8 MNVIC_u8GetActiveFlag(IRQn_t Copy_tIRQ);
+U8 MNVIC_U8Get_IRQ_ActiveFlag(IRQn_t Copy_tIRQ);
+void MNVIC_vASetGroupSubgroupPriority(IRQn_t Copy_tIRQ, U8 Copy_u8GroupPri, U8 Copy_u8SubGroupPri);
 
 #endif /* INC_MCAL_NVIC_MCAL_NVIC_INTERFACE_H_ */
