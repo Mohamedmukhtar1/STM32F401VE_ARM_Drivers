@@ -61,7 +61,7 @@ void HLED_vInitLED(U8 LED_Name)
 		break;
 	#else
 	#endif
-	#if LED_1_ENABLE		== 	ENABLE_LED
+	#if LED_2_ENABLE		== 	ENABLE_LED
 		case LED_2_:
 			LED_ptr->LED_PORT           = LED_2_PORT_CFG          ;
 			LED_ptr->LED_PIN            = LED_2_PIN_CFG           ;

@@ -22,33 +22,57 @@
  *                                                       |_|
  */
 		         #define NVIC_PERIPHERAL_BASE_ADDRESS   0xE000E100
+				 #define SCB_PERIPHERAL_BASE_ADDRESS    0xE000ED00
 /*==========================================================================================
 	-----> Register Map
 ============================================================================================*/
 typedef struct
 {
-  volatile Reg_32Bit_Utag ISER[8U];          /*!< Offset: 0x000 (R/W)  Interrupt Set Enable Register */
+  volatile Reg_32Bit_Utag REG_NVIC_ISER[8U];          /*!< Offset: 0x000 (R/W)  Interrupt Set Enable Register */
   volatile U32 			  RESERVED_0_[24U];
-  volatile Reg_32Bit_Utag ICER[8U];          /*!< Offset: 0x080 (R/W)  Interrupt Clear Enable Register */
+  volatile Reg_32Bit_Utag REG_NVIC_ICER[8U];          /*!< Offset: 0x080 (R/W)  Interrupt Clear Enable Register */
   volatile U32 			  RESERVED_1_[24U];
-  volatile Reg_32Bit_Utag ISPR[8U];          /*!< Offset: 0x100 (R/W)  Interrupt Set Pending Register */
+  volatile Reg_32Bit_Utag REG_NVIC_ISPR[8U];          /*!< Offset: 0x100 (R/W)  Interrupt Set Pending Register */
   volatile U32 			  RESERVED_2_[24U];
-  volatile Reg_32Bit_Utag ICPR[8U];          /*!< Offset: 0x180 (R/W)  Interrupt Clear Pending Register */
+  volatile Reg_32Bit_Utag REG_NVIC_ICPR[8U];          /*!< Offset: 0x180 (R/W)  Interrupt Clear Pending Register */
   volatile U32 			  RESERVED_3_[24U];
-  volatile Reg_32Bit_Utag IABR[8U];          /*!< Offset: 0x200 (R/W)  Interrupt Active bit Register */
+  volatile Reg_32Bit_Utag REG_NVIC_IABR[8U];          /*!< Offset: 0x200 (R/W)  Interrupt Active bit Register */
   volatile U32 			  RESERVED_4_[56U];
-  volatile Reg_8Bit_Utag  IP[240U];          /*!< Offset: 0x300 (R/W)  Interrupt Priority Register (8Bit wide) */
+  volatile Reg_8Bit_Utag  REG_NVIC_IP[240U];          /*!< Offset: 0x300 (R/W)  Interrupt Priority Register (8Bit wide) */
   volatile U32 			  RESERVED_5_[644U];
-  volatile Reg_32Bit_Utag STIR;              /*!< Offset: 0xE00 ( /W)  Software Trigger Interrupt Register */
+  volatile Reg_32Bit_Utag REG_NVIC_STIR;              /*!< Offset: 0xE00 (W/O)  Software Trigger Interrupt Register */
 } NVIC_PERIPHERAL_Stag;
+
+typedef struct
+{
+  volatile Reg_32Bit_Utag REG_SCB_CPUID   ;          /*!< Offset: 0x00 (R/W)  CPUID base register  */
+  volatile Reg_32Bit_Utag REG_SCB_ICSR    ;          /*!< Offset: 0x04 (R/O)  Interrupt control and state register  */
+  volatile Reg_32Bit_Utag REG_SCB_VTOR    ;          /*!< Offset: 0x08 (R/W)  Vector table offset register  */
+  volatile Reg_32Bit_Utag REG_SCB_AIRCR   ;          /*!< Offset: 0x0C (R/W)  Application interrupt and reset control register  */
+  volatile Reg_8Bit_Utag  REG_SCB_SCR     ;
+  volatile Reg_32Bit_Utag REG_SCB_CCR     ;
+  volatile Reg_32Bit_Utag REG_SCB_SHPR[3U];
+  volatile Reg_32Bit_Utag REG_SCB_SHCSR   ;
+  volatile Reg_32Bit_Utag REG_SCB_CFSR    ;
+  volatile Reg_32Bit_Utag REG_SCB_HFSR    ;
+  volatile U32 			  RESERVED_0_[1U] ;
+  volatile Reg_32Bit_Utag REG_SCB_MMAR    ;
+  volatile Reg_32Bit_Utag REG_SCB_BFAR    ;
+  volatile Reg_32Bit_Utag REG_SCB_AFSR    ;
+} SCB_PERIPHERAL_Stag;
 
 /*============================================================================================
 	-)	Struct Pointer :	Base_Address ->	NVIC
   ============================================================================================*/
 #define NVIC_SPTR     ((NVIC_PERIPHERAL_Stag *)(NVIC_PERIPHERAL_BASE_ADDRESS))
+/*============================================================================================
+	-)	Struct Pointer :	Base_Address ->	SCB
+  ============================================================================================*/
+#define SCB_SPTR      ((SCB_PERIPHERAL_Stag  *)(SCB_PERIPHERAL_BASE_ADDRESS))
 
-#define SCB_BASE_ADDRESS             0xE000ED00
-#define SCB_AIRCR   (*((volatile U32 *)(SCB_BASE_ADDRESS + 0X0C )))
+
+//#define SCB_AIRCR   (*((volatile U32 *)(SCB_BASE_ADDRESS + 0X0C )))
+#define SCB_AIRCR    (*((volatile U32 *)(SCB_BASE_ADDRESS + 0X0C )))
 
 
 #endif /* INC_MCAL_NVIC_MCAL_NVIC_REGISTER_H_ */

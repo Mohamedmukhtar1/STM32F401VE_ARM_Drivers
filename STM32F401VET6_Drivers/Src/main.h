@@ -21,6 +21,7 @@
 #include "../Src/Src_MCAL/RCC/MCAL_RCC_Interface.h"
 #include "../Src/Src_MCAL/GPIO/MCAL_GPIO_Interface.h"
 #include "../Src/Src_MCAL/NVIC/MCAL_NVIC_Interface.h"
+#include "../Src/Src_MCAL/EXTIx/MCAL_EXTI_Interface.h"
 /***************_main.c_FUNCTION_PROTOTYPE_****************/
 
 #endif /* MAIN_H_ */
