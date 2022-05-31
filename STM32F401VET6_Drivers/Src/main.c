@@ -8,49 +8,47 @@
  */
 
 #include "main.h"
+U8 Key_Flag =0;
+U8 i=0;
 
 int main(void)
 {
-	/**************************************************************************
-	 * ****************************_Debug_Section_*****************************
-	 * >>>>>> ADebug_vAll_GPIO_Ports();
-	 * >>>>>> ADebug_vFlashingPins();
-	 * >>>>>> void ADebug_vLED_Driver();
-	 **************************************************************************/
-		MRCC_vInitSystemClock(); //System Clock Start -->>>>>>>>>>>>>>>>>>>>>>>
-	/*************************_Main_Body_Start_********************************/
-	MRCC_vEnableBusClock(Bus_AHB1, AHB1ENR_GPIOAEN);
-	MRCC_vEnableBusClock(Bus_APB2, APB2ENR_SYSCFGEN);
+	MRCC_vInitSystemClock();
+	STK_Init(STK_CLK_SRC_HCLK_Div8);
+	MRCC_vEnableBusClock(Bus_AHB1, PHB1_GPIOA);
+	//HKEYPAD_vInitiate();
 
-	MGPIO_vSetPinMode(GPIOA_PORT, GPIO_PIN_0, OUTPUT_MODE);
-	MGPIO_vSetPinOutputType(LED_ptr->LED_PORT, LED_ptr->LED_PIN, LED_ptr->LED_PinOutputType);
-	MGPIO_vSetPinOutputSpeed(LED_ptr->LED_PORT, LED_ptr->LED_PIN, LED_ptr->LED_PinOutputSpeed);
-	MGPIO_vSetPinPullType(LED_ptr->LED_PORT, LED_ptr->LED_PIN, LED_ptr->LED_PinPullType);
+	//MGPIO_vSetPinMode(GPIOA_PORT, GPIO_PIN_0, OUTPUT_MODE);
+	//MGPIO_vSetPinMode(GPIOA_PORT, GPIO_PIN_1, OUTPUT_MODE);
+	//MGPIO_vSetPinOutputSpeed(GPIOA_PORT, GPIO_PIN_0, OUTPUT_LOW_SPEED);
+	//MGPIO_vSetPinOutputSpeed(GPIOA_PORT, GPIO_PIN_1, OUTPUT_LOW_SPEED);
+	//MGPIO_vSetPinOutputType(GPIOA_PORT, GPIO_PIN_0, OUTPUT_PUSH_PULL_TYPE);
+	//MGPIO_vSetPinOutputType(GPIOA_PORT, GPIO_PIN_1, OUTPUT_PUSH_PULL_TYPE);
 
-	MEXTI_vSelectPort(EXTI_PORT_A, EXTI_LINE_0);
-	MEXTI_vEnableInterruptLine(EXTI_LINE_0);
-	MEXTI_vSelectEventTrigger(EXTI_LINE_0, TRIGGER_RISING);
-	/*****************************************************/
-	MNVIC_vASetGroupSubgroupPriority(IRQn_EXTI0, 1, 0);
-	MNVIC_vEnableInterruptRequest_IRQ(IRQn_EXTI0);
+	HLCD_vInitiate();
+	HLCD_WriteString((U8*)"Mohamed");
+	HLCD_GoTo(1,0);
+	HLCD_WriteString((U8*)"Num= ");
+	HAL_LCD_WRITE_NUMBER(0);
+
 	while(1)
 	{
 
-
-
-
-
 	}
-	return 0;
 }
 
-
-
-
-
-/*	MRCC_vInitSystemClock();
-	MRCC_vEnableBusClock(Bus_AHB1, PHB1_GPIOA);
-	MGPIO_vSetPinMode(GPIOA_PORT, GPIO_PIN_1, OUTPUT_MODE);
-	MGPIO_vSetPinOutputType(GPIOA_PORT, GPIO_PIN_1, OUTPUT_PUSH_PULL_TYPE);
-	MGPIO_vSetPinOutputSpeed(GPIOA_PORT, GPIO_PIN_1, OUTPUT_LOW_SPEED);
-	MGPIO_vWritePinData(GPIOA_PORT, GPIO_PIN_1, HIGH_STATE);*/
+/*
+ * 		Key_Flag = HKEYPAD_U8READ();
+ *
+ if(Key_Flag =='7')
+		{
+			MGPIO_vWritePinData(PHB1_GPIOA, GPIO_PIN_2, LOW_STATE);
+			Key_Flag=0;
+		}
+		else if (Key_Flag =='8')
+		{
+			MGPIO_vWritePinData(PHB1_GPIOA, GPIO_PIN_2, HIGH_STATE);
+			Key_Flag=0;
+		}
+		else{	}
+ * */

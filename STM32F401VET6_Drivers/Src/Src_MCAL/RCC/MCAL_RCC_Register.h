@@ -141,10 +141,13 @@ typedef struct {
 #define	AHB1ENR_GPIOCEN     2U
 #define	AHB1ENR_GPIODEN     3U
 #define	AHB1ENR_GPIOEEN     4U
-#define	AHB1ENR_GPIOHEN     5U
-#define	AHB1ENR_CRCEN       6U
-#define	AHB1ENR_DMA1EN      7U
-#define	AHB1ENR_DMA2EN      8U
+#define	AHB1ENR_GPIOFEN     5U
+#define	AHB1ENR_GPIOGEN     6U
+#define	AHB1ENR_GPIOHEN     7U
+#define	AHB1ENR_GPIOIEN     8U
+#define	AHB1ENR_CRCEN       12U
+#define	AHB1ENR_DMA1EN      21U
+#define	AHB1ENR_DMA2EN      22U
 
 #define AHB2ENR_OTGFSEN     7U
 

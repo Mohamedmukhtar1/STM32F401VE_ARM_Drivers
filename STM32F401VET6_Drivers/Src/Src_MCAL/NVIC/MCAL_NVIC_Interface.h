@@ -89,14 +89,12 @@ typedef enum
 /*============================================================================
   ==================_APIs Supported by "MCAL_NVIC DRIVER"_====================
   ============================================================================*/
-/*Enables an interrupt .*/
+/*Enables/Disables an interrupt .*/
 void MNVIC_vEnableInterruptRequest_IRQ(IRQn_Etag Copy_tIRQ);
-/*Disables an interrupt or exception.*/
 void MNVIC_vDisableInterruptRequest_IRQ(IRQn_Etag Copy_tIRQ);
-/*Sets the pending status of interrupt or exception to 1.*/
-void MNVIC_vSetPendingInterrupt(IRQn_Etag Copy_tIRQ);
-/*Clears the pending status of interrupt or exception to 0.*/
-void MNVIC_vClearPendingInterrupt(IRQn_Etag Copy_tIRQ);
+/*Sets/Clears the pending status of interrupt or exception to 1.*/
+void MNVIC_vSet_IRQPendingInterrupt(IRQn_Etag Copy_tIRQ);
+void MNVIC_vClear_IRQPendingInterrupt(IRQn_Etag Copy_tIRQ);
 /*Return the IRQ number of the active interrupt*/
 U8 MNVIC_U8Get_IRQ_ActiveFlag(IRQn_Etag Copy_tIRQ);
 

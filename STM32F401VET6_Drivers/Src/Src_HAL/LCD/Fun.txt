@@ -1,0 +1,133 @@
+void HLCD_vInitiate(void)
+{
+	#if LCD_MODE     ==   _8_BIT_MODE
+	HLCD_WriteCommand(LCD_COMMAND_ACTIVATE_8_BITMODE);
+	Delay_vMilliSecond16MHzoscillator(1);
+	#elif LCD_MODE    ==   _4_BIT_MODE
+	Delay_vMilliSecond16MHzoscillator(50);
+	HLCD_WriteCommand(LCD_COMMAND_1_ACTIVATE_4_BITMODE);
+	Delay_vMilliSecond16MHzoscillator(1);
+	HLCD_WriteCommand(LCD_COMMAND_2_ACTIVATE_4_BITMODE);
+	Delay_vMilliSecond16MHzoscillator(1);
+	HLCD_WriteCommand(LCD_COMMAND_3_ACTIVATE_4_BITMODE);
+	Delay_vMilliSecond16MHzoscillator(1);
+	#endif
+	HLCD_WriteCommand(LCD_COMMAND_DISPLAY_ON_CURSOR_OFF);
+	Delay_vMilliSecond16MHzoscillator(1);
+	HLCD_WriteCommand(LCD_COMMAND_CLEAR_SCREEN);
+	Delay_vMilliSecond16MHzoscillator(1);
+	HLCD_WriteCommand(LCD_COMMAND_RETURN_HOME);
+	Delay_vMilliSecond16MHzoscillator(1);
+	HLCD_WriteCommand(LCD_COMMAND_CURSOR_INCREMENT);
+	Delay_vMilliSecond16MHzoscillator(1);
+}
+
+void HLCD_WriteCommand(U8 loc_U8_LCD_COMMAND)
+{
+	MGPIO_vWritePinData(LCD_RS_PIN, LOW_STATE);
+	MGPIO_vWritePinData(LCD_RW_PIN, LOW_STATE);
+	/**********************	_8_BIT_MODE	*************************/
+	#if LCD_MODE    ==   _8_BIT_MODE
+	MGPIO_vWritePinData(LCD_DATA_0_PIN, GET_BIT(loc_U8_LCD_COMMAND, 0));
+	MGPIO_vWritePinData(LCD_DATA_1_PIN, GET_BIT(loc_U8_LCD_COMMAND, 1));
+	MGPIO_vWritePinData(LCD_DATA_2_PIN, GET_BIT(loc_U8_LCD_COMMAND, 2));
+	MGPIO_vWritePinData(LCD_DATA_3_PIN, GET_BIT(loc_U8_LCD_COMMAND, 3));
+	MGPIO_vWritePinData(LCD_DATA_4_PIN, GET_BIT(loc_U8_LCD_COMMAND, 4));
+	MGPIO_vWritePinData(LCD_DATA_5_PIN, GET_BIT(loc_U8_LCD_COMMAND, 5));
+	MGPIO_vWritePinData(LCD_DATA_6_PIN, GET_BIT(loc_U8_LCD_COMMAND, 6));
+	MGPIO_vWritePinData(LCD_DATA_7_PIN, GET_BIT(loc_U8_LCD_COMMAND, 7));
+	Delay_vMilliSecond16MHzoscillator(50);
+	MGPIO_vWritePinData(LCD_EN_PIN, HIGH_STATE);
+	Delay_vMilliSecond16MHzoscillator(50);
+	MGPIO_vWritePinData(LCD_EN_PIN, LOW_STATE);
+	Delay_vMilliSecond16MHzoscillator(50);
+	/**********************	_4_BIT_MODE	*************************/
+	#elif LCD_MODE    ==   _4_BIT_MODE
+	/***   Sending HIGH Nibble of 8 Bits Data   ***/
+	MGPIO_vWritePinData(LCD_DATA_4_PIN, GET_BIT(loc_U8_LCD_COMMAND, 4U));
+	MGPIO_vWritePinData(LCD_DATA_5_PIN, GET_BIT(loc_U8_LCD_COMMAND, 5U));
+	MGPIO_vWritePinData(LCD_DATA_6_PIN, GET_BIT(loc_U8_LCD_COMMAND, 6U));
+	MGPIO_vWritePinData(LCD_DATA_7_PIN, GET_BIT(loc_U8_LCD_COMMAND, 7U));
+	MGPIO_vWritePinData(LCD_EN_PIN, HIGH_STATE);
+	Delay_vMilliSecond16MHzoscillator(2);
+	MGPIO_vWritePinData(LCD_EN_PIN, LOW_STATE);
+	Delay_vMilliSecond16MHzoscillator(2);
+	/***   Sending LOW Nibble of 8 Bits Data    ***/
+	MGPIO_vWritePinData(LCD_DATA_4_PIN, GET_BIT(loc_U8_LCD_COMMAND, 0U));
+	MGPIO_vWritePinData(LCD_DATA_5_PIN, GET_BIT(loc_U8_LCD_COMMAND, 1U));
+	MGPIO_vWritePinData(LCD_DATA_6_PIN, GET_BIT(loc_U8_LCD_COMMAND, 2U));
+	MGPIO_vWritePinData(LCD_DATA_7_PIN, GET_BIT(loc_U8_LCD_COMMAND, 3U));
+	MGPIO_vWritePinData(LCD_EN_PIN, HIGH_STATE);
+	Delay_vMilliSecond16MHzoscillator(2);
+	MGPIO_vWritePinData(LCD_EN_PIN, LOW_STATE);
+	Delay_vMilliSecond16MHzoscillator(2);
+	#endif
+}
+
+
+void HLCD_WriteCharacter(U8 loc_U8_CHARACTER)
+{
+	MGPIO_vWritePinData(LCD_RS_PIN, LOW_STATE);
+	MGPIO_vWritePinData(LCD_RW_PIN, LOW_STATE);
+	/**********************	_8_BIT_MODE	*************************/
+	#if LCD_MODE	==  _8_BIT_MODE
+	MGPIO_vWritePinData(LCD_DATA_0_PIN, GET_BIT(loc_U8_CHARACTER, 0));
+	MGPIO_vWritePinData(LCD_DATA_1_PIN, GET_BIT(loc_U8_CHARACTER, 1));
+	MGPIO_vWritePinData(LCD_DATA_2_PIN, GET_BIT(loc_U8_CHARACTER, 2));
+	MGPIO_vWritePinData(LCD_DATA_3_PIN, GET_BIT(loc_U8_CHARACTER, 3));
+	MGPIO_vWritePinData(LCD_DATA_4_PIN, GET_BIT(loc_U8_CHARACTER, 4));
+	MGPIO_vWritePinData(LCD_DATA_5_PIN, GET_BIT(loc_U8_CHARACTER, 5));
+	MGPIO_vWritePinData(LCD_DATA_6_PIN, GET_BIT(loc_U8_CHARACTER, 6));
+	MGPIO_vWritePinData(LCD_DATA_7_PIN, GET_BIT(loc_U8_CHARACTER, 7));
+	Delay_vMilliSecond16MHzoscillator(50);
+	MGPIO_vWritePinData(LCD_EN_PIN, HIGH_STATE);
+	Delay_vMilliSecond16MHzoscillator(50);
+	MGPIO_vWritePinData(LCD_EN_PIN, LOW_STATE);
+	Delay_vMilliSecond16MHzoscillator(50);
+	/**********************	_4_BIT_MODE	*************************/
+	#elif LCD_MODE    ==   _4_BIT_MODE
+	/***   Sending HIGH Nibble of 8 Bits Data   ***/
+	MGPIO_vWritePinData(LCD_DATA_4_PIN, GET_BIT(loc_U8_CHARACTER, 4U));
+	MGPIO_vWritePinData(LCD_DATA_5_PIN, GET_BIT(loc_U8_CHARACTER, 5U));
+	MGPIO_vWritePinData(LCD_DATA_6_PIN, GET_BIT(loc_U8_CHARACTER, 6U));
+	MGPIO_vWritePinData(LCD_DATA_7_PIN, GET_BIT(loc_U8_CHARACTER, 7U));
+	MGPIO_vWritePinData(LCD_EN_PIN, HIGH_STATE);
+	Delay_vMilliSecond16MHzoscillator(2);
+	MGPIO_vWritePinData(LCD_EN_PIN, LOW_STATE);
+	Delay_vMilliSecond16MHzoscillator(2);
+	/***   Sending LOW Nibble of 8 Bits Data    ***/
+	MGPIO_vWritePinData(LCD_DATA_4_PIN, GET_BIT(loc_U8_CHARACTER, 0U));
+	MGPIO_vWritePinData(LCD_DATA_5_PIN, GET_BIT(loc_U8_CHARACTER, 1U));
+	MGPIO_vWritePinData(LCD_DATA_6_PIN, GET_BIT(loc_U8_CHARACTER, 2U));
+	MGPIO_vWritePinData(LCD_DATA_7_PIN, GET_BIT(loc_U8_CHARACTER, 3U));
+	MGPIO_vWritePinData(LCD_EN_PIN, HIGH_STATE);
+	Delay_vMilliSecond16MHzoscillator(2);
+	MGPIO_vWritePinData(LCD_EN_PIN, LOW_STATE);
+	Delay_vMilliSecond16MHzoscillator(2);
+	#endif
+}
+
+void HLCD_WriteString(U8 *loc_U8_PTR_STRING)
+{
+	U8 loc_U8_Counter =0;
+	while(loc_U8_PTR_STRING[loc_U8_Counter] != '\0')
+	{
+		HLCD_WriteCharacter(loc_U8_PTR_STRING[loc_U8_Counter]);
+		loc_U8_Counter++;
+	}
+}
+
+void HLCD_ClearScreen(void)
+{
+	HLCD_WriteCommand(LCD_COMMAND_CLEAR_SCREEN); //Refer to the command sheet "HAL_LCD_COMMANDS"
+}
+
+void HLCD_GoTo(U8 loc_U8_Row, U8 loc_U8_Col)
+{
+	U8 loc_Arr_RC_Commands[4] = {LCD_COMMAND_GOTO_1stLINE_POS_0,
+								 LCD_COMMAND_GOTO_2ndLINE_POS_0,
+								 LCD_COMMAND_GOTO_3ndLINE_POS_0,
+								 LCD_COMMAND_GOTO_4ndLINE_POS_0 };
+	//Refer to the command sheet "HAL_LCD_COMMANDS"
+	HLCD_WriteCommand(loc_Arr_RC_Commands[loc_U8_Row]+loc_U8_Col);
+}

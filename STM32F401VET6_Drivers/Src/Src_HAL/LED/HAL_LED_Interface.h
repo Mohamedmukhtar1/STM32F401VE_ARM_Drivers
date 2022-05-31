@@ -25,7 +25,7 @@
 #define LED_2_	((U8)2U)
 
 /*============================================================================
-  ==================_APIs Supported by "HAL_LED DRIVER"_====================
+  ==================_APIs Supported by "HAL_LED DRIVER"_======================
   ============================================================================*/
 void HLED_vInitLED(U8 LED_Name);
 void HLED_vLEDStateControl(U8 LED_Name, U8 LED_State);

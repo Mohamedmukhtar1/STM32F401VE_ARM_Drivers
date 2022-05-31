@@ -7,24 +7,21 @@
 
 #include "MCAL_NVIC_Interface.h"
 
-void MNVIC_vEnableInterruptRequest_IRQ(IRQn_Etag Copy_tIRQ)
+void MNVIC_vEnableInterruptRequest_IRQ(IRQn_Etag Copy_tIRQ)  /*#TESTED#*/
 {
-	NVIC_SPTR->REG_NVIC_ISER[Copy_tIRQ /32].RegisterAccess = (1U<<(Copy_tIRQ %32));
+	SET_BIT(NVIC_SPTR->REG_NVIC_ISER[Copy_tIRQ /32].RegisterAccess, (Copy_tIRQ %32));
 }
-
-void MNVIC_vDisableInterruptRequest_IRQ(IRQn_Etag Copy_tIRQ)
+void MNVIC_vDisableInterruptRequest_IRQ(IRQn_Etag Copy_tIRQ) /*#TESTED#*/
 {
-	NVIC_SPTR->REG_NVIC_ICER[Copy_tIRQ /32].RegisterAccess = (1U<<(Copy_tIRQ %32));
+	SET_BIT(NVIC_SPTR->REG_NVIC_ICER[Copy_tIRQ /32].RegisterAccess, (Copy_tIRQ %32));
 }
-
-void MNVIC_vSetPendingInterrupt(IRQn_Etag Copy_tIRQ)
+void MNVIC_vSet_IRQPendingInterrupt(IRQn_Etag Copy_tIRQ) /*#TESTED#*/
 {
-	NVIC_SPTR->REG_NVIC_ISPR[Copy_tIRQ /32].RegisterAccess = (1U<<(Copy_tIRQ %32));
+	SET_BIT(NVIC_SPTR->REG_NVIC_ISPR[Copy_tIRQ /32].RegisterAccess, (Copy_tIRQ %32));
 }
-
-void MNVIC_vClearPendingInterrupt(IRQn_Etag Copy_tIRQ)
+void MNVIC_vClear_IRQPendingInterrupt(IRQn_Etag Copy_tIRQ)
 {
-	NVIC_SPTR->REG_NVIC_ICPR[Copy_tIRQ /32].RegisterAccess = (1U<<(Copy_tIRQ %32));
+	SET_BIT(NVIC_SPTR->REG_NVIC_ICPR[Copy_tIRQ /32].RegisterAccess, (Copy_tIRQ %32));
 }
 
 U8 MNVIC_U8Get_IRQ_ActiveFlag(IRQn_Etag Copy_tIRQ)

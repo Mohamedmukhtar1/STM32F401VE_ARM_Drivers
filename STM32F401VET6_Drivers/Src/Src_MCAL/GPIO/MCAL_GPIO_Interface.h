@@ -94,6 +94,7 @@
 #define ALTFUN_15           (U8)(15U)
 
 
+
 /*============================================================================
   ==================_APIs Supported by "MCAL_GPIO DRIVER"_====================
   ============================================================================*/
@@ -102,13 +103,15 @@ void MGPIO_vFastPortConfigMode(U8 PortName, U32 PortDirectionMode);
 
 void MGPIO_vSetPinOutputType(U8 PortName ,U8 PinNum ,U8 OutPutType);
 void MGPIO_vSetPinOutputSpeed(U8 PortName ,U8 PinNum ,U8 OutputSpeed);
+
 void MGPIO_vSetPinPullType(U8 PortName ,U8 PinNum ,U8 PullType);
 
 U8 MGPIO_U8ReadPinData(U8 PortName ,U8 PinNum);
 U16 MGPIO_U16ReadPortData(U8 PortName);
 
 void MGPIO_vWritePinData(U8 PortName ,U8 PinNum, U8 OutputState);
-void MGPIO_vWritePortOneByteData(U8 PortName, U8 Data, U8 StartBit);
+void MGPIO_vWritePortByteData(U8 PortName, U8 Data, U8 StartBit);
+void MGPIO_vWritePortNibbleData(U8 PortName, U8 Data, U8 StartBit);
 void MGPIO_vWritePortData(U8 PortName, U16 Data);
 
 void MGPIO_vToggle_Pin(U8 PortName, U8 PinNum);

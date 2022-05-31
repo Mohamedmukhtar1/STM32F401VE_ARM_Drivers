@@ -10,18 +10,26 @@
 
 /***************_APP_INCLUDES_*****************************/
 #include "../Src/Src_APP/Utility\APP_Utility.h"
+
+/***************_Debug_INCLUDES_*****************************/
 #include "../Src/Src_APP/Debug\APP_Debug.h"
 
 /***************_MyApp_INCLUDES_***************************/
 
 /***************_HAL_INCLUDES_*****************************/
-#include "../Src/Src_HAL/LED\HAL_LED_Interface.h"
-
+#include "../Src/Src_HAL/LED/HAL_LED_Interface.h"
+#include "../Src/Src_HAL/Keypad/HAL_Keypad_Interface.h"
+#include "../Src/Src_HAL/LCD/HAL_LCD_Interface.h"
 /***************_MCAL_INCLUDES_****************************/
 #include "../Src/Src_MCAL/RCC/MCAL_RCC_Interface.h"
+#include "../Src/Src_MCAL/SYSTIK/MCAL_SYSTIK_Interface.h"
 #include "../Src/Src_MCAL/GPIO/MCAL_GPIO_Interface.h"
 #include "../Src/Src_MCAL/NVIC/MCAL_NVIC_Interface.h"
 #include "../Src/Src_MCAL/EXTIx/MCAL_EXTI_Interface.h"
+#include "../Src/Src_MCAL/EXTI_AM/EXTI_interface.h"
+
 /***************_main.c_FUNCTION_PROTOTYPE_****************/
+void led_on(void);
+void EXTI_0(void);
 
 #endif /* MAIN_H_ */

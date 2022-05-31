@@ -14,7 +14,7 @@ typedef struct
 	U8 LED_PIN			  ;
 	U8 LED_PinOutputType  ;
 	U8 LED_PinOutputSpeed ;
-	U8 LED_PinPullType ;
+	U8 LED_PinPullType    ;
 	U8 LED_State		  ;
 }LED_Stag;
 

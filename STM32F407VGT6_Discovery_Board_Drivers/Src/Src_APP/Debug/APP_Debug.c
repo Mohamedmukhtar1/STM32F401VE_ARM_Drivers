@@ -7,7 +7,7 @@
 
 #include "APP_Debug.h"
 
-void ADebug_All_GPIO_Ports (void)
+void ADebug_vAll_GPIO_Ports (void)
 {
 	U8 i =0;
 	MRCC_vEnableBusClock(Bus_AHB1, PHB1_GPIOA);
@@ -55,3 +55,63 @@ void ADebug_All_GPIO_Ports (void)
 		MGPIO_vWritePinData(GPIOH_PORT, i, HIGH_STATE);
 	}
 }
+
+void ADebug_vFlashingPins (void)
+{
+	MRCC_vEnableBusClock(Bus_AHB1, PHB1_GPIOA);
+	MGPIO_vSetPinMode(GPIOA_PORT, GPIO_PIN_0, OUTPUT_MODE);
+	MGPIO_vSetPinOutputType(GPIOA_PORT, GPIO_PIN_0, OUTPUT_PUSH_PULL_TYPE);
+	MGPIO_vSetPinPullType(GPIOA_PORT, GPIO_PIN_0, PULL_UP_STATE);
+	MGPIO_vSetPinOutputSpeed(GPIOA_PORT, GPIO_PIN_0, OUTPUT_LOW_SPEED);
+	MGPIO_vWritePinData(GPIOA_PORT, GPIO_PIN_0, HIGH_STATE);
+
+	MRCC_vEnableBusClock(Bus_AHB1, PHB1_GPIOA);
+	MGPIO_vSetPinMode(GPIOA_PORT, GPIO_PIN_2, OUTPUT_MODE);
+	MGPIO_vSetPinOutputType(GPIOA_PORT, GPIO_PIN_2, OUTPUT_PUSH_PULL_TYPE);
+	MGPIO_vSetPinPullType(GPIOA_PORT, GPIO_PIN_2, PULL_UP_STATE);
+	MGPIO_vSetPinOutputSpeed(GPIOA_PORT, GPIO_PIN_2, OUTPUT_LOW_SPEED);
+
+	MRCC_vEnableBusClock(Bus_AHB1, PHB1_GPIOA);
+	MGPIO_vSetPinMode(GPIOA_PORT, GPIO_PIN_4, OUTPUT_MODE);
+	MGPIO_vSetPinOutputType(GPIOA_PORT, GPIO_PIN_4, OUTPUT_PUSH_PULL_TYPE);
+	MGPIO_vSetPinPullType(GPIOA_PORT, GPIO_PIN_4, PULL_UP_STATE);
+	MGPIO_vSetPinOutputSpeed(GPIOA_PORT, GPIO_PIN_4, OUTPUT_LOW_SPEED);
+
+	MRCC_vEnableBusClock(Bus_AHB1, PHB1_GPIOA);
+	MGPIO_vSetPinMode(GPIOA_PORT, GPIO_PIN_6, OUTPUT_MODE);
+	MGPIO_vSetPinOutputType(GPIOA_PORT, GPIO_PIN_6, OUTPUT_PUSH_PULL_TYPE);
+	MGPIO_vSetPinPullType(GPIOA_PORT, GPIO_PIN_6, PULL_UP_STATE);
+	MGPIO_vSetPinOutputSpeed(GPIOA_PORT, GPIO_PIN_6, OUTPUT_LOW_SPEED);
+
+	while(1)
+	{
+		MGPIO_vWritePinData(GPIOA_PORT, GPIO_PIN_0, HIGH_STATE);
+		MGPIO_vWritePinData(GPIOA_PORT, GPIO_PIN_2, HIGH_STATE);
+		MGPIO_vWritePinData(GPIOA_PORT, GPIO_PIN_4, LOW_STATE);
+		Delay_vMilliSecond16MHzoscillator(500);
+		MGPIO_vWritePinData(GPIOA_PORT, GPIO_PIN_0, LOW_STATE);
+		MGPIO_vWritePinData(GPIOA_PORT, GPIO_PIN_2, HIGH_STATE);
+		MGPIO_vWritePinData(GPIOA_PORT, GPIO_PIN_4, HIGH_STATE);
+		Delay_vMilliSecond16MHzoscillator(500);
+		MGPIO_vWritePinData(GPIOA_PORT, GPIO_PIN_0, HIGH_STATE);
+		MGPIO_vWritePinData(GPIOA_PORT, GPIO_PIN_2, LOW_STATE);
+		MGPIO_vWritePinData(GPIOA_PORT, GPIO_PIN_4, HIGH_STATE);
+		Delay_vMilliSecond16MHzoscillator(500);
+
+		MGPIO_vToggle_Pin(GPIOA_PORT, GPIO_PIN_6);
+		Delay_vMilliSecond16MHzoscillator(500);
+	}
+}
+
+void ADebug_vLED_Driver (void)
+{
+	HLED_vInitLED(LED_0_);
+	HLED_vInitLED(LED_1_);
+	HLED_vLEDStateControl(LED_0_, LED_ON);
+	while(1)
+	{
+		HLED_vToggelLED(LED_1_);
+		Delay_vMilliSecond16MHzoscillator(500);
+	}
+}
+

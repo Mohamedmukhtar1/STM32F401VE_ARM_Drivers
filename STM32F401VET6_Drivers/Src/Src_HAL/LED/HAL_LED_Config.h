@@ -10,8 +10,8 @@
 
 
 #define LED_0_ENABLE			     ENABLE_LED
-#define LED_0_PORT_CFG               PHB1_GPIOA
-#define LED_0_PIN_CFG                GPIO_PIN_0
+#define LED_0_PORT_CFG               PHB1_GPIOD
+#define LED_0_PIN_CFG                GPIO_PIN_12
 #define LED_0_PinOutputType_CFG      OUTPUT_PUSH_PULL_TYPE
 #define LED_0_PinOutputSpeed_CFG     OUTPUT_LOW_SPEED
 #define LED_0_PinPullType_CFG        PULL_UP_STATE

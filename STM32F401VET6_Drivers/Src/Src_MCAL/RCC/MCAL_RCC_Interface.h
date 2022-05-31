@@ -43,10 +43,14 @@
 #define	  PHB1_GPIOC     2U
 #define	  PHB1_GPIOD     3U
 #define	  PHB1_GPIOE     4U
+#define	  PHB1_GPIOF     5U
+#define	  PHB1_GPIOG     6U
 #define	  PHB1_GPIOH     7U
+#define	  PHB1_GPIOI     8U
 #define	  PHB1_CRC       12U
 #define	  PHB1_DMA1      21U
 #define	  PHB1_DMA2      22U
+
 /*-----------------------------------*/
 #define   PHB2_OTGFS     7U
 /*-----------------------------------*/

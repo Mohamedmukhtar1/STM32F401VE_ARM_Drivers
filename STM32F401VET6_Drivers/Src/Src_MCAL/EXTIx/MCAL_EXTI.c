@@ -8,7 +8,8 @@
 
 #include "MCAL_EXTI_Interface.h"
 
-static void (*EXTI_CallBack_Ptr[16])(void);
+void (*EXTI_CallBack_Ptr[16])(void)= {NULL};
+
 
 void MEXTI_vEnableInterruptLine(EXTI_LINE_Etag Copy_ELineNum)
 {
@@ -33,8 +34,8 @@ void MEXTI_vSelectEventTrigger(EXTI_LINE_Etag Copy_ELineNum, TRIGGER_Etag Copy_E
 			SET_BIT(EXTI_SPTR->REG_EXTI_RTSR.RegisterAccess, Copy_ELineNum);
 		break;
 		case TRIGGER_ON_CHANGE:
-			CLR_BIT(EXTI_SPTR->REG_EXTI_FTSR.RegisterAccess, Copy_ELineNum);
-			CLR_BIT(EXTI_SPTR->REG_EXTI_RTSR.RegisterAccess, Copy_ELineNum);
+			SET_BIT(EXTI_SPTR->REG_EXTI_RTSR.RegisterAccess, Copy_ELineNum);
+			SET_BIT(EXTI_SPTR->REG_EXTI_FTSR.RegisterAccess, Copy_ELineNum);
 		break;
 		default:		break;
 	}
@@ -57,17 +58,16 @@ void MEXTI_vSelectPort(PORT_Etag Copy_ePortNum, EXTI_LINE_Etag Copy_eLineNUM)
 	/* FOR Safty clear 4 bit */
 	SYSCFG_SPTR->REG_SYSCFG_EXTICR[Copy_eLineNUM /4].RegisterAccess &=~(0b1111<<(4U*(Copy_eLineNUM %4)));
 	/* Set the value of port */
-	SYSCFG_SPTR->REG_SYSCFG_EXTICR[Copy_eLineNUM /4].RegisterAccess &=~(Copy_ePortNum<<(4U*(Copy_eLineNUM %4)));
+	SYSCFG_SPTR->REG_SYSCFG_EXTICR[Copy_eLineNUM /4].RegisterAccess |= (Copy_ePortNum<<(4U*(Copy_eLineNUM %4)));
 }
 
-void MEXTI_vSetCallBack(void (*ptr)(void), U8 Copy_EXTINum)
+void MEXTI_vSetCallBack(void (*ptr)(void), EXTI_LINE_Etag Copy_eLineNUM)
 {
-	EXTI_CallBack_Ptr[Copy_EXTINum] = ptr;
+	EXTI_CallBack_Ptr[Copy_eLineNUM] = ptr;
 }
 
 static void EXTI0_IRQHandler(void)
 {
-	/* Set Pending Interrupt */
 	SET_BIT(EXTI_SPTR->REG_EXTI_PR.RegisterAccess, 0);
 	EXTI_CallBack_Ptr[0]();
 }

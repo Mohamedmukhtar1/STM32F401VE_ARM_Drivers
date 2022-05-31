@@ -89,11 +89,11 @@ U8 MGPIO_U8ReadPinData(U8 PortName, U8 PinNum)
 	switch(PortName)
 	{
 		case GPIOA_PORT :L_U8Pin_Read_Data = GET_BIT(GPIOA_SPTR->GPIO_IDR.RegisterAccess, PinNum) ; break;
-		case GPIOB_PORT :L_U8Pin_Read_Data = GET_BIT(GPIOA_SPTR->GPIO_IDR.RegisterAccess, PinNum) ; break;
-		case GPIOC_PORT :L_U8Pin_Read_Data = GET_BIT(GPIOA_SPTR->GPIO_IDR.RegisterAccess, PinNum) ; break;
-		case GPIOD_PORT :L_U8Pin_Read_Data = GET_BIT(GPIOA_SPTR->GPIO_IDR.RegisterAccess, PinNum) ; break;
-		case GPIOE_PORT :L_U8Pin_Read_Data = GET_BIT(GPIOA_SPTR->GPIO_IDR.RegisterAccess, PinNum) ; break;
-		case GPIOH_PORT :L_U8Pin_Read_Data = GET_BIT(GPIOA_SPTR->GPIO_IDR.RegisterAccess, PinNum) ; break;
+		case GPIOB_PORT :L_U8Pin_Read_Data = GET_BIT(GPIOB_SPTR->GPIO_IDR.RegisterAccess, PinNum) ; break;
+		case GPIOC_PORT :L_U8Pin_Read_Data = GET_BIT(GPIOC_SPTR->GPIO_IDR.RegisterAccess, PinNum) ; break;
+		case GPIOD_PORT :L_U8Pin_Read_Data = GET_BIT(GPIOD_SPTR->GPIO_IDR.RegisterAccess, PinNum) ; break;
+		case GPIOE_PORT :L_U8Pin_Read_Data = GET_BIT(GPIOE_SPTR->GPIO_IDR.RegisterAccess, PinNum) ; break;
+		case GPIOH_PORT :L_U8Pin_Read_Data = GET_BIT(GPIOH_SPTR->GPIO_IDR.RegisterAccess, PinNum) ; break;
 		default : /*ERROR*/ break ;
 	}
 	return L_U8Pin_Read_Data;
@@ -105,11 +105,11 @@ U16 MGPIO_U16ReadPortData(U8 PortName)
 	switch(PortName)
 	{
 		case GPIOA_PORT :L_U8Pin_Read_Data = GET_REG(GPIOA_SPTR->GPIO_IDR.RegisterAccess) ; break;
-		case GPIOB_PORT :L_U8Pin_Read_Data = GET_REG(GPIOA_SPTR->GPIO_IDR.RegisterAccess) ; break;
-		case GPIOC_PORT :L_U8Pin_Read_Data = GET_REG(GPIOA_SPTR->GPIO_IDR.RegisterAccess) ; break;
-		case GPIOD_PORT :L_U8Pin_Read_Data = GET_REG(GPIOA_SPTR->GPIO_IDR.RegisterAccess) ; break;
-		case GPIOE_PORT :L_U8Pin_Read_Data = GET_REG(GPIOA_SPTR->GPIO_IDR.RegisterAccess) ; break;
-		case GPIOH_PORT :L_U8Pin_Read_Data = GET_REG(GPIOA_SPTR->GPIO_IDR.RegisterAccess) ; break;
+		case GPIOB_PORT :L_U8Pin_Read_Data = GET_REG(GPIOB_SPTR->GPIO_IDR.RegisterAccess) ; break;
+		case GPIOC_PORT :L_U8Pin_Read_Data = GET_REG(GPIOC_SPTR->GPIO_IDR.RegisterAccess) ; break;
+		case GPIOD_PORT :L_U8Pin_Read_Data = GET_REG(GPIOD_SPTR->GPIO_IDR.RegisterAccess) ; break;
+		case GPIOE_PORT :L_U8Pin_Read_Data = GET_REG(GPIOE_SPTR->GPIO_IDR.RegisterAccess) ; break;
+		case GPIOH_PORT :L_U8Pin_Read_Data = GET_REG(GPIOH_SPTR->GPIO_IDR.RegisterAccess) ; break;
 		default : /*ERROR*/ break ;
 	}
 	return L_U8Pin_Read_Data;
@@ -163,24 +163,62 @@ void MGPIO_vWritePortData(U8 PortName, U16 Data)
 	}
 }
 
-void MGPIO_vWritePortOneByteData(U8 PortName, U8 Data, U8 StartBit)
+void MGPIO_vWritePortByteData(U8 PortName, U8 Data, U8 StartBit)
+{
+	/* In ODR  Pass and Shift ( 0000 0000 ) to the start bit & sheft data to that start bit
+	 * == Dynamic Data Assigning																*/
+	switch(PortName)
+	{
+	//Register = (((Register &(0xFF00)))|(((Data)&(0x00FF))));
+		case GPIOA_PORT :
+			GPIOA_SPTR->GPIO_ODR.RegisterAccess = ((((GPIOA_SPTR->GPIO_ODR.RegisterAccess) &(0xFF00)))|(((Data)&(0x00FF)))); break;
+		case GPIOB_PORT :
+			GPIOB_SPTR->GPIO_ODR.RegisterAccess = ((((GPIOB_SPTR->GPIO_ODR.RegisterAccess) &(0xFF00)))|(((Data)&(0x00FF)))); break;
+		case GPIOC_PORT :
+			GPIOC_SPTR->GPIO_ODR.RegisterAccess = ((((GPIOC_SPTR->GPIO_ODR.RegisterAccess) &(0xFF00)))|(((Data)&(0x00FF)))); break;
+		case GPIOD_PORT :
+			GPIOD_SPTR->GPIO_ODR.RegisterAccess = ((((GPIOD_SPTR->GPIO_ODR.RegisterAccess) &(0xFF00)))|(((Data)&(0x00FF)))); break;
+		case GPIOE_PORT :
+			GPIOE_SPTR->GPIO_ODR.RegisterAccess = ((((GPIOE_SPTR->GPIO_ODR.RegisterAccess) &(0xFF00)))|(((Data)&(0x00FF)))); break;
+		case GPIOH_PORT :
+			GPIOH_SPTR->GPIO_ODR.RegisterAccess = ((((GPIOH_SPTR->GPIO_ODR.RegisterAccess) &(0xFF00)))|(((Data)&(0x00FF)))); break;
+		default : /*ERROR*/ break ;
+	}
+}
+/*
+ 	 	case GPIOA_PORT :
+			GPIOA_SPTR->GPIO_ODR.RegisterAccess =(((GPIOA_SPTR->GPIO_ODR.RegisterAccess) &~(0xFF<<(StartBit)))|(Data<<(StartBit))); break;
+		case GPIOB_PORT :
+			GPIOB_SPTR->GPIO_ODR.RegisterAccess =(((GPIOB_SPTR->GPIO_ODR.RegisterAccess) &~(0xFF<<(StartBit)))|(Data<<(StartBit))); break;
+		case GPIOC_PORT :
+			GPIOC_SPTR->GPIO_ODR.RegisterAccess =(((GPIOC_SPTR->GPIO_ODR.RegisterAccess) &~(0xFF<<(StartBit)))|(Data<<(StartBit))); break;
+		case GPIOD_PORT :
+			GPIOD_SPTR->GPIO_ODR.RegisterAccess =(((GPIOD_SPTR->GPIO_ODR.RegisterAccess) &~(0xFF<<(StartBit)))|(Data<<(StartBit))); break;
+		case GPIOE_PORT :
+			GPIOE_SPTR->GPIO_ODR.RegisterAccess =(((GPIOE_SPTR->GPIO_ODR.RegisterAccess) &~(0xFF<<(StartBit)))|(Data<<(StartBit))); break;
+		case GPIOH_PORT :
+			GPIOH_SPTR->GPIO_ODR.RegisterAccess =(((GPIOH_SPTR->GPIO_ODR.RegisterAccess) &~(0xFF<<(StartBit)))|(Data<<(StartBit))); break;
+		default :  break ;
+ * */
+
+void MGPIO_vWritePortNibbleData(U8 PortName, U8 Data, U8 StartBit)
 {
 	/* In ODR  Pass and Shift ( 0000 0000 ) to the start bit & sheft data to that start bit
 	 * == Dynamic Data Assigning																*/
 	switch(PortName)
 	{
 		case GPIOA_PORT :
-			GPIOA_SPTR->GPIO_ODR.RegisterAccess =((GPIOA_SPTR->GPIO_ODR.RegisterAccess) & ~(0xFF<<(StartBit))) | (Data<<(StartBit)); break;
+			GPIOA_SPTR->GPIO_ODR.RegisterAccess =(((GPIOA_SPTR->GPIO_ODR.RegisterAccess) &~(0xF<<(StartBit)))|(Data<<(StartBit))); break;
 		case GPIOB_PORT :
-			GPIOB_SPTR->GPIO_ODR.RegisterAccess =((GPIOB_SPTR->GPIO_ODR.RegisterAccess) & ~(0xFF<<(StartBit))) | (Data<<(StartBit)); break;
+			GPIOB_SPTR->GPIO_ODR.RegisterAccess =(((GPIOB_SPTR->GPIO_ODR.RegisterAccess) &~(0xF<<(StartBit)))|(Data<<(StartBit))); break;
 		case GPIOC_PORT :
-			GPIOC_SPTR->GPIO_ODR.RegisterAccess =((GPIOC_SPTR->GPIO_ODR.RegisterAccess) & ~(0xFF<<(StartBit))) | (Data<<(StartBit)); break;
+			GPIOC_SPTR->GPIO_ODR.RegisterAccess =(((GPIOC_SPTR->GPIO_ODR.RegisterAccess) &~(0xF<<(StartBit)))|(Data<<(StartBit))); break;
 		case GPIOD_PORT :
-			GPIOD_SPTR->GPIO_ODR.RegisterAccess =((GPIOD_SPTR->GPIO_ODR.RegisterAccess) & ~(0xFF<<(StartBit))) | (Data<<(StartBit)); break;
+			GPIOD_SPTR->GPIO_ODR.RegisterAccess =(((GPIOD_SPTR->GPIO_ODR.RegisterAccess) &~(0xF<<(StartBit)))|(Data<<(StartBit))); break;
 		case GPIOE_PORT :
-			GPIOE_SPTR->GPIO_ODR.RegisterAccess =((GPIOE_SPTR->GPIO_ODR.RegisterAccess) & ~(0xFF<<(StartBit))) | (Data<<(StartBit)); break;
+			GPIOE_SPTR->GPIO_ODR.RegisterAccess =(((GPIOE_SPTR->GPIO_ODR.RegisterAccess) &~(0xF<<(StartBit)))|(Data<<(StartBit))); break;
 		case GPIOH_PORT :
-			GPIOH_SPTR->GPIO_ODR.RegisterAccess =((GPIOH_SPTR->GPIO_ODR.RegisterAccess) & ~(0xFF<<(StartBit))) | (Data<<(StartBit)); break;
+			GPIOH_SPTR->GPIO_ODR.RegisterAccess =(((GPIOH_SPTR->GPIO_ODR.RegisterAccess) &~(0xF<<(StartBit)))|(Data<<(StartBit))); break;
 		default : /*ERROR*/ break ;
 	}
 }
