@@ -14,7 +14,7 @@ U8 i=0;
 int main(void)
 {
 	MRCC_vInitSystemClock();
-	STK_Init(STK_CLK_SRC_HCLK_Div8);
+	MSTK_Init(STK_CLK_SRC_HCLK_Div8);
 	MRCC_vEnableBusClock(Bus_AHB1, PHB1_GPIOA);
 	//HKEYPAD_vInitiate();
 
@@ -24,7 +24,6 @@ int main(void)
 	//MGPIO_vSetPinOutputSpeed(GPIOA_PORT, GPIO_PIN_1, OUTPUT_LOW_SPEED);
 	//MGPIO_vSetPinOutputType(GPIOA_PORT, GPIO_PIN_0, OUTPUT_PUSH_PULL_TYPE);
 	//MGPIO_vSetPinOutputType(GPIOA_PORT, GPIO_PIN_1, OUTPUT_PUSH_PULL_TYPE);
-
 
 	while(1)
 	{

@@ -48,7 +48,7 @@ EN:		Enable	->	Must be held high to perform Read/Write Operation
 --------------------------------------------------------------------
 Data[0]
   ...		Data/Command Pin
-  ...		In 4-Wire Mode Only 4 pins (0-3) is connected to MCU
+  ...		In 4-Wire Mode Only 4 pins (4-7) is connected to MCU
   ...		In 8-Wire Mode All 8 pins(0-7) are connected to MCU
 Data[7]
 --------------------------------------------------------------------

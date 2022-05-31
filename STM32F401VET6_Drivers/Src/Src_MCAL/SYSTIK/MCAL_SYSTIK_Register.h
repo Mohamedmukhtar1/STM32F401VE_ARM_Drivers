@@ -8,16 +8,21 @@
 #ifndef SRC_MCAL_SYSTIK_MCAL_SYSTIK_REGISTER_H_
 #define SRC_MCAL_SYSTIK_MCAL_SYSTIK_REGISTER_H_
 
-#define STK_BASE_ADDRES				0xE000E010
+#define STK_PERIPHERAL_BASE_ADDRESS     0xE000E010
 
 typedef struct
 {
-	volatile U32 CTRL  ;
-	volatile U32 LOAD  ;
-	volatile U32 VAL   ;
-	volatile U32 CALIB ;
-}STK_TypeDef;
+	volatile Reg_32Bit_Utag REG_STK_CTRL  ;
+	volatile Reg_32Bit_Utag REG_STK_LOAD  ;
+	volatile Reg_32Bit_Utag REG_STK_VAL   ;
+	volatile Reg_32Bit_Utag REG_STK_CALIB ;
+}STK_PERIPHERAL_Stag;
 
-#define STK				((STK_TypeDef*)(STK_BASE_ADDRES))
+/*============================================================================================
+	-)	Struct Pointer :	Base_Address ->	STK
+  ============================================================================================*/
+#define STK_SPTR      ((volatile STK_PERIPHERAL_Stag *)STK_PERIPHERAL_BASE_ADDRESS)
+
+
 
 #endif /* SRC_MCAL_SYSTIK_MCAL_SYSTIK_REGISTER_H_ */
