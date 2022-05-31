@@ -29,19 +29,28 @@
 Max[100000000]->0.000000	[6 point]*/
 #define FLOAT_RESELUTION		100
 
+#define CHAR_HEART		    1U
+#define CHAR_BATTARY	    2U
+#define CHAR_RING		    3U
+#define CHAR_SPEAKER	    4U
+#define CHAR_MUSIC		    5U
+#define CHAR_POWER_CABLE	6U
+#define CHAR_HAPPY_FACE		7U
+
+
 /*============================================================================
   ==================_APIs Supported by "HAL_LCD DRIVER"_======================
   ============================================================================*/
 void HLCD_vInitiate(void);
-void HLCD_WriteCommand(U8 loc_U8_LCD_COMMAND);
-void HLCD_ClearScreen(void);
-void HLCD_GoTo(U8 loc_U8_Row, U8 loc_U8_Col);
+void HLCD_vWriteCommand(U8 loc_U8_LCD_COMMAND);
+void HLCD_vClearScreen(void);
+void HLCD_vGoTo(U8 loc_U8_Row, U8 loc_U8_Col);
+void HLCD_vBuildCustomChar (U8 MemoryLocation, U8 CChar_Name);
 /***********************************************************************/
-void HLCD_WriteCharacter(U8 loc_U8_CHARACTER);
-void HLCD_WriteString(U8 *loc_U8_PTR_STRING);
-void HAL_LCD_WRITE_NUMBER(F64 loc_F32_NUMBER);
-
-
-
+void HLCD_vWriteCharacter(U8 loc_U8_CHARACTER);
+void HLCD_vWriteString(U8 *loc_U8_PTR_STRING);
+void HLCD_vWriteNumber(S32 loc_S32_NUMBER);
+void HLCD_vWriteNumber_Bin(U8 loc_U8_NUMBER);
+void HLCD_vWriteNumber_Hex(U8 loc_U8_NUMBER);
 
 #endif /* SRC_HAL_LCD_HAL_LCD_INTERFACE_H_ */

@@ -7,6 +7,15 @@
 
 #include "HAL_LCD_Interface.h"
 
+U8 Char1[8] = { 0x00, 0x0A, 0x15, 0x11, 0x0A, 0x04, 0x00, 0x00 };
+U8 Char2[8] = { 0x04, 0x1F, 0x11, 0x11, 0x1F, 0x1F, 0x1F, 0x1F };
+U8 Char3[8] = { 0x04, 0x0E, 0x0E, 0x0E, 0x1F, 0x00, 0x04, 0x00 };
+U8 Char4[8] = { 0x01, 0x03, 0x07, 0x1F, 0x1F, 0x07, 0x03, 0x01 };
+U8 Char5[8] = { 0x01, 0x03, 0x05, 0x09, 0x09, 0x0B, 0x1B, 0x18 };
+U8 Char6[8] = { 0x0A, 0x0A, 0x1F, 0x11, 0x11, 0x0E, 0x04, 0x04 };
+U8 Char7[8] = { 0x00, 0x00, 0x0A, 0x00, 0x04, 0x11, 0x0E, 0x00 };
+U8 Char8[8] = { 0x00, 0x0A, 0x1F, 0x1F, 0x0E, 0x04, 0x00, 0x00 };
+
 void HLCD_vInitiate(void)
 {
 	MRCC_vEnableBusClock(Bus_AHB1, LCD_BUS);
@@ -55,28 +64,28 @@ void HLCD_vInitiate(void)
 /*==============================================================================*/
 	Delay_vMilliSecond16MHzoscillator(50); //Wait for H/W init...
 	#if LCD_MODE     ==   _8_BIT_MODE
-	HLCD_WriteCommand(LCD_COMMAND_ACTIVATE_8_BITMODE);
+	HLCD_vWriteCommand(LCD_COMMAND_ACTIVATE_8_BITMODE);
 	Delay_vMilliSecond16MHzoscillator(5);
 	#elif LCD_MODE    ==   _4_BIT_MODE
 	Delay_vMilliSecond16MHzoscillator(5);
-	HLCD_WriteCommand(LCD_COMMAND_1_ACTIVATE_4_BITMODE);
+	HLCD_vWriteCommand(LCD_COMMAND_1_ACTIVATE_4_BITMODE);
 	Delay_vMilliSecond16MHzoscillator(5);
-	HLCD_WriteCommand(LCD_COMMAND_2_ACTIVATE_4_BITMODE);
+	HLCD_vWriteCommand(LCD_COMMAND_2_ACTIVATE_4_BITMODE);
 	Delay_vMilliSecond16MHzoscillator(5);
-	HLCD_WriteCommand(LCD_COMMAND_3_ACTIVATE_4_BITMODE);
+	HLCD_vWriteCommand(LCD_COMMAND_3_ACTIVATE_4_BITMODE);
 	Delay_vMilliSecond16MHzoscillator(5);
 	#endif
-	HLCD_WriteCommand(LCD_COMMAND_DISPLAY_ON_CURSOR_OFF);
+	HLCD_vWriteCommand(LCD_COMMAND_DISPLAY_ON_CURSOR_OFF);
 	Delay_vMilliSecond16MHzoscillator(1);
-	HLCD_WriteCommand(LCD_COMMAND_CLEAR_SCREEN);
+	HLCD_vWriteCommand(LCD_COMMAND_CLEAR_SCREEN);
 	Delay_vMilliSecond16MHzoscillator(1);
-	HLCD_WriteCommand(LCD_COMMAND_RETURN_HOME);
+	HLCD_vWriteCommand(LCD_COMMAND_RETURN_HOME);
 	Delay_vMilliSecond16MHzoscillator(1);
-	HLCD_WriteCommand(LCD_COMMAND_CURSOR_INCREMENT);
+	HLCD_vWriteCommand(LCD_COMMAND_CURSOR_INCREMENT);
 	Delay_vMilliSecond16MHzoscillator(1);
 }
 
-void HLCD_WriteCommand(U8 loc_U8_LCD_COMMAND)
+void HLCD_vWriteCommand(U8 loc_U8_LCD_COMMAND)
 {
 	MGPIO_vWritePinData(LCD_RS_PIN, LOW_STATE); // Fetal operation if High while "Command Transfer"
 	MGPIO_vWritePinData(LCD_RW_PIN, LOW_STATE); // Held Low for "Write Operation"
@@ -117,12 +126,12 @@ void HLCD_WriteCommand(U8 loc_U8_LCD_COMMAND)
 	#endif
 }
 
-void HLCD_ClearScreen(void)
+void HLCD_vClearScreen(void)
 {
-	HLCD_WriteCommand(LCD_COMMAND_CLEAR_SCREEN); //Refer to the command sheet "HAL_LCD_COMMANDS"
+	HLCD_vWriteCommand(LCD_COMMAND_CLEAR_SCREEN); //Refer to the command sheet "HAL_LCD_COMMANDS"
 }
 
-void HLCD_GoTo(U8 loc_U8_Row, U8 loc_U8_Col)
+void HLCD_vGoTo(U8 loc_U8_Row, U8 loc_U8_Col)
 {
 	#if   LCD_DIMENSIONS   ==   LCD_2_BY_16
 	U8 loc_Arr_RC_Commands[2] = {LCD_COMMAND_GOTO_1stLINE_POS_0,
@@ -134,10 +143,62 @@ void HLCD_GoTo(U8 loc_U8_Row, U8 loc_U8_Col)
 							     LCD_COMMAND_GOTO_4ndLINE_POS_0 };
 	#endif
 	//Refer to the command sheet "HAL_LCD_COMMANDS"
-	HLCD_WriteCommand(loc_Arr_RC_Commands[loc_U8_Row]+loc_U8_Col);
+	HLCD_vWriteCommand(loc_Arr_RC_Commands[loc_U8_Row]+loc_U8_Col);
 }
 
-void HLCD_WriteCharacter(U8 loc_U8_CHARACTER)
+void HLCD_vBuildCustomChar (U8 MemoryLocation, U8 CChar_Name)
+{
+    U8 i =0;
+    U8 *CC_msg_Ptr =NULL;
+    if(MemoryLocation < 8)
+    {
+		switch(CChar_Name)
+		{
+			case CHAR_HEART:
+				CC_msg_Ptr = Char1;
+			break;
+			case CHAR_BATTARY:
+				CC_msg_Ptr = Char2;
+			break;
+			case CHAR_RING:
+				CC_msg_Ptr = Char3;
+			break;
+			case CHAR_SPEAKER:
+				CC_msg_Ptr = Char4;
+			break;
+			case CHAR_MUSIC:
+				CC_msg_Ptr = Char5;
+			break;
+			case CHAR_POWER_CABLE:
+				CC_msg_Ptr = Char6;
+			break;
+			case CHAR_HAPPY_FACE:
+				CC_msg_Ptr = Char7;
+			break;
+			default:
+			break;
+		}
+    	HLCD_vWriteCommand(0x40 + (MemoryLocation*8));
+    	/* Command 0x40 and onwards forces the device to point CGRAM address */
+       for(i =0; i <8; i++)  /* Write 8 byte for generation of 1 character */
+       {
+    	   HLCD_vWriteCharacter(CC_msg_Ptr[i]);
+       }
+    }
+    /******************************************************************
+     * 1- You have to build your custom char directly after LCD init
+     * 2- CGRAM can contaion only 8 CChar starting from location (0, to 7)
+     * 3- break operation wiht CGRAM by going Home or GoTo(0,0)
+     * 4- Calling the CC from CGRAM by sending 0 to 7
+     * HLCD_vInitiate();
+     * HLCD_vWriteCustomChar(0, Character1);
+     * HLCD_vWriteCustomChar(1, Character2);
+     ****************************************************************/
+}
+
+
+/************************************************************************************************/
+void HLCD_vWriteCharacter(U8 loc_U8_CHARACTER)
 {
 	MGPIO_vWritePinData(LCD_RS_PIN, HIGH_STATE); // Fetal operation if Low while "Data Transfer"
 	MGPIO_vWritePinData(LCD_RW_PIN, LOW_STATE);  // Held Low for "Write Operation"
@@ -178,84 +239,87 @@ void HLCD_WriteCharacter(U8 loc_U8_CHARACTER)
 	#endif
 }
 
-void HLCD_WriteString(U8 *loc_U8_PTR_STRING)
+void HLCD_vWriteString(U8 *loc_U8_PTR_STRING)
 {
 	U8 loc_U8_Counter =0;
 	while(loc_U8_PTR_STRING[loc_U8_Counter] != '\0')
 	{
-		HLCD_WriteCharacter(loc_U8_PTR_STRING[loc_U8_Counter]);
+		HLCD_vWriteCharacter(loc_U8_PTR_STRING[loc_U8_Counter]);
 		loc_U8_Counter++;
 	}
 }
 
-void HAL_LCD_WRITE_NUMBER(F32 loc_F32_NUMBER)
+void HLCD_vWriteNumber(S32 loc_S32_NUMBER)
 {
-	S8 loc_S8_counter =0;		//must be S to include the -Ve counter state of -1 in (counter >= 0)
-	S8 loc_S8_counter_copy =0;	//makes a valid non changed state of counter to be compared
-	U8 loc_U8_Float_Flag =0;		//indicates that the inserted number is float or non-float
+	U8 i =0;
+	U8 Storing_Array[10] ={0}; //no. of digits for U32 Number
+	U32 loc_U32_Number_Copy = loc_S32_NUMBER;
 
-	U8 POINT_POSITION =1;		//indicates that the float point position
-	U8 loc_U8_Arr_Digit_Display [10] = {0};	//the maximum digits for 32-bit number is ~ 10
-
-	S32 loc_S32_Number_Copy = loc_F32_NUMBER;
-	S32 loc_S32_FloatCast = (S32)loc_F32_NUMBER*FLOAT_RESELUTION; //integer powered copy
-	S32 loc_S32_FloatHold = loc_F32_NUMBER*FLOAT_RESELUTION; //float powered copy
-
-	if(loc_F32_NUMBER <0){ //CHK for '-Ve' state
-		HLCD_WriteCharacter('-');
-		loc_S32_Number_Copy = loc_S32_Number_Copy*(-1);	// -Ve ~ +Ve
-		loc_S32_FloatHold   = loc_S32_FloatHold*(-1);	// -Ve ~ +Ve
-		loc_S32_FloatCast   = loc_S32_FloatCast*(-1);	// -Ve ~ +Ve
+	if(loc_S32_NUMBER <0)
+	{ //CHK for '-Ve' state
+		HLCD_vWriteCharacter('-');
+		loc_S32_NUMBER = loc_S32_NUMBER*(-1);	// -Ve ~ +Ve
+		loc_U32_Number_Copy = loc_S32_NUMBER;
 	}
-	else if(loc_F32_NUMBER == 0){ //CHK for '0' state
-		HLCD_WriteCharacter('0');
+	else if(loc_U32_Number_Copy == 0){ //CHK for '0' state
+		HLCD_vWriteCharacter('0');
 	}
 	else {/*NOTHING*/}
-	/****************************STORING PROCCES********************************/
-	if (loc_S32_FloatHold > loc_S32_FloatCast){ //CHK for 'float' state
-		loc_U8_Float_Flag =1;
-		if (loc_S32_FloatCast == 0)
-		{
-			HLCD_WriteCharacter('0');
-			HLCD_WriteCharacter('.');
-		}
-		else {/*NOTHING*/}
-		while(loc_S32_FloatHold != 0)
-		{ //inserting the digits to array from the 0-indx to the N-indx
-			loc_U8_Arr_Digit_Display [loc_S8_counter] = loc_S32_FloatHold % 10;
-			loc_S8_counter++;
-			loc_S32_FloatHold = loc_S32_FloatHold / 10;
-		}
-		loc_S32_FloatCast = loc_S32_FloatCast /FLOAT_RESELUTION;
-		while(loc_S32_FloatCast != 0)
-		{ //Detecting where's the float point exactly
-			POINT_POSITION++;
-			loc_S32_FloatCast = loc_S32_FloatCast / 10;
-		}
+
+	while(loc_U32_Number_Copy)
+	{//*STORING PROCCES*//
+		Storing_Array[i] = (loc_U32_Number_Copy % 10)+'0';
+		loc_U32_Number_Copy /= 10;
+		i++;
 	}
-	else { //'integer' state
-		loc_U8_Float_Flag =0;
-		while(loc_S32_Number_Copy != 0)
-		{ //inserting the digits to array from the 0-indx to the N-indx
-			loc_U8_Arr_Digit_Display [loc_S8_counter] = loc_S32_Number_Copy % 10;
-			loc_S8_counter++;
-			loc_S32_Number_Copy = loc_S32_Number_Copy / 10;
-		}
-	}
-	loc_S8_counter_copy = loc_S8_counter;
-	loc_S8_counter--;
-	/****************************PRINTING PROCCES********************************/
-	while (loc_S8_counter >= 0)
-	{ //Displaying the digits while it's being stored backward
-		HLCD_WriteCharacter(loc_U8_Arr_Digit_Display[loc_S8_counter] + ASCII_NUM_INIT);
-		loc_S8_counter--; //Escaping Counter
-		if ((loc_S8_counter_copy-POINT_POSITION)==loc_S8_counter && (loc_U8_Float_Flag==1)){
-			//it doesn't apply for POINT_POSITION =1 , POINT_POSITION has to be >1 to be seen
-			HLCD_WriteCharacter('.');
-		}
-		else {/*NOTHING*/}
+	while(i)
+	{
+		HLCD_vWriteCharacter(Storing_Array[i-1]);
+		i--;
 	}
 }
 
+void HLCD_vWriteNumber_Bin(U8 loc_U8_NUMBER)
+{
+	S8 i =0;
+	HLCD_vWriteCharacter('0');
+	HLCD_vWriteCharacter('B');
+
+	for(i =7; i >=0; i--)
+	{
+		if(1 == GET_BIT(loc_U8_NUMBER, i))
+		{
+			HLCD_vWriteCharacter('1');
+		}
+		else{
+			HLCD_vWriteCharacter('0');
+		}
+	}
+}
+
+void HLCD_vWriteNumber_Hex(U8 loc_U8_NUMBER)
+{
+	U8 HEX_Holder =0;
+	HLCD_WriteCharacter('0');
+	HLCD_WriteCharacter('x');
+
+	HEX_Holder =loc_U8_NUMBER /16;
+	if(HEX_Holder<10)
+	{
+		HLCD_vWriteCharacter(HEX_Holder+'0');
+	}
+	else{
+		HLCD_vWriteCharacter(HEX_Holder+'7');
+	}
+
+	HEX_Holder =loc_U8_NUMBER %16;
+	if(HEX_Holder<10)
+	{
+		HLCD_vWriteCharacter(HEX_Holder+'0');
+	}
+	else{
+		HLCD_vWriteCharacter(HEX_Holder+'7');
+	}
+}
 
 

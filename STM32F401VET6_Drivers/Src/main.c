@@ -25,11 +25,6 @@ int main(void)
 	//MGPIO_vSetPinOutputType(GPIOA_PORT, GPIO_PIN_0, OUTPUT_PUSH_PULL_TYPE);
 	//MGPIO_vSetPinOutputType(GPIOA_PORT, GPIO_PIN_1, OUTPUT_PUSH_PULL_TYPE);
 
-	HLCD_vInitiate();
-	HLCD_WriteString((U8*)"Mohamed");
-	HLCD_GoTo(1,0);
-	HLCD_WriteString((U8*)"Num= ");
-	HAL_LCD_WRITE_NUMBER(0);
 
 	while(1)
 	{
