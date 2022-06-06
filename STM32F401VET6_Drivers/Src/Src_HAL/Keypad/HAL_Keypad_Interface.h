@@ -23,6 +23,6 @@
   ==================_APIs Supported by "HAL_Keypad DRIVER"_===================
   ============================================================================*/
 void HKEYPAD_vInitiate(void);
-U8 HKEYPAD_U8READ(void);
+u8 HKEYPAD_U8READ(void);
 
 #endif /* SRC_HAL_KEYPAD_HAL_KEYPAD_INTERFACE_H_ */

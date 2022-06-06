@@ -65,7 +65,7 @@ void MEXTI_vEnableInterruptLine(EXTI_LINE_Etag Copy_ELineNum);
 void MEXTI_vDisableInterruptLine(EXTI_LINE_Etag Copy_ELineNum);
 void MEXTI_vSelectEventTrigger(EXTI_LINE_Etag Copy_ELineNum, TRIGGER_Etag Copy_EventState);
 void MEXTI_vSoftwareTrigger(EXTI_LINE_Etag Copy_ELineNum);
-U8 MEXTI_U8GetPendingInterrupt(EXTI_LINE_Etag Copy_ELineNum);
+u8 MEXTI_U8GetPendingInterrupt(EXTI_LINE_Etag Copy_ELineNum);
 void MEXTI_vSelectPort(PORT_Etag Copy_ePortNum, EXTI_LINE_Etag Copy_eLineNUM);
 void MEXTI_vSetCallBack(void (*ptr)(void), EXTI_LINE_Etag Copy_eLineNUM);
 

@@ -24,14 +24,14 @@ void MNVIC_vClear_IRQPendingInterrupt(IRQn_Etag Copy_tIRQ)
 	SET_BIT(NVIC_SPTR->REG_NVIC_ICPR[Copy_tIRQ /32].RegisterAccess, (Copy_tIRQ %32));
 }
 
-U8 MNVIC_U8Get_IRQ_ActiveFlag(IRQn_Etag Copy_tIRQ)
+u8 MNVIC_U8Get_IRQ_ActiveFlag(IRQn_Etag Copy_tIRQ)
 {
-	U8 L_U8GetActiveFlag = 0U ;
+	u8 L_U8GetActiveFlag = 0U ;
 	L_U8GetActiveFlag = GET_BIT(NVIC_SPTR->REG_NVIC_IABR[Copy_tIRQ /32].RegisterAccess, (Copy_tIRQ %32));
 	return L_U8GetActiveFlag ;
 }
 
-void MNVIC_vASetGroupSubgroupPriority(IRQn_Etag Copy_tIRQ, U8 Copy_u8GroupPri, U8 Copy_u8SubGroupPri)
+void MNVIC_vASetGroupSubgroupPriority(IRQn_Etag Copy_tIRQ, u8 Copy_u8GroupPri, u8 Copy_u8SubGroupPri)
 {
 	#if		PRIORITY_MODE  ==	_ALL_BITS_GROUP
 	/*1) CONFIG SCB_AIRCR */

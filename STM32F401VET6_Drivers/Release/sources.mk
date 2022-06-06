@@ -27,11 +27,13 @@ Src/Src_APP/Utility/Utility_Delay \
 Src/Src_HAL/Keypad \
 Src/Src_HAL/LCD \
 Src/Src_HAL/LED \
+Src/Src_HAL/TFT \
 Src/Src_MCAL/EXTI_AM \
 Src/Src_MCAL/EXTIx \
 Src/Src_MCAL/GPIO \
 Src/Src_MCAL/NVIC \
 Src/Src_MCAL/RCC \
+Src/Src_MCAL/SPI \
 Src/Src_MCAL/SYSTIK \
 Src \
 Startup \

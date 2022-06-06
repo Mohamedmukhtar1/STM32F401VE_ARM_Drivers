@@ -1,0 +1,193 @@
+#include "main.h"
+U8 G_key = 0;
+
+int main(void)
+{
+	MRCC_vInitSystemClock();
+	MSTK_Init(STK_CLK_SRC_HCLK_Div8);
+	MRCC_vEnableBusClock(Bus_AHB1, PHB1_GPIOA);
+	MRCC_vEnableBusClock(Bus_AHB1, PHB1_GPIOB);
+	MRCC_vEnableBusClock(Bus_AHB1, PHB1_GPIOC);
+	MRCC_vEnableBusClock(Bus_AHB1, PHB1_GPIOD);
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+	HKEYPAD_vInitiate();
+	HLCD_vInitiate();
+	HLCD_vGoTo(0, 0);
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+	MGPIO_vSetPinMode(GPIOB_PORT, GPIO_PIN_0, OUTPUT_MODE); // LED 1
+	MGPIO_vSetPinMode(GPIOB_PORT, GPIO_PIN_1, OUTPUT_MODE); // LED 2
+	MGPIO_vSetPinMode(GPIOB_PORT, GPIO_PIN_2, OUTPUT_MODE); // LED 3
+	MGPIO_vSetPinMode(GPIOB_PORT, GPIO_PIN_3, OUTPUT_MODE); // LED 4
+	MGPIO_vSetPinOutputSpeed(GPIOB_PORT, GPIO_PIN_0, OUTPUT_LOW_SPEED);
+	MGPIO_vSetPinOutputSpeed(GPIOB_PORT, GPIO_PIN_1, OUTPUT_LOW_SPEED);
+	MGPIO_vSetPinOutputSpeed(GPIOB_PORT, GPIO_PIN_2, OUTPUT_LOW_SPEED);
+	MGPIO_vSetPinOutputSpeed(GPIOB_PORT, GPIO_PIN_3, OUTPUT_LOW_SPEED);
+	MGPIO_vSetPinOutputType(GPIOB_PORT, GPIO_PIN_0, OUTPUT_PUSH_PULL_TYPE);
+	MGPIO_vSetPinOutputType(GPIOB_PORT, GPIO_PIN_1, OUTPUT_PUSH_PULL_TYPE);
+	MGPIO_vSetPinOutputType(GPIOB_PORT, GPIO_PIN_2, OUTPUT_PUSH_PULL_TYPE);
+	MGPIO_vSetPinOutputType(GPIOB_PORT, GPIO_PIN_3, OUTPUT_PUSH_PULL_TYPE);
+
+	MGPIO_vSetPinMode(GPIOB_PORT, GPIO_PIN_4, OUTPUT_MODE); // Buzzer
+	MGPIO_vSetPinOutputSpeed(GPIOB_PORT, GPIO_PIN_4, OUTPUT_LOW_SPEED);
+	MGPIO_vSetPinOutputType(GPIOB_PORT, GPIO_PIN_4, OUTPUT_PUSH_PULL_TYPE);
+
+	MGPIO_vSetPinMode(GPIOB_PORT, GPIO_PIN_5, OUTPUT_MODE); // Motor pin1
+	MGPIO_vSetPinMode(GPIOB_PORT, GPIO_PIN_6, OUTPUT_MODE); // Motor pin2
+	MGPIO_vSetPinOutputSpeed(GPIOB_PORT, GPIO_PIN_5, OUTPUT_LOW_SPEED);
+	MGPIO_vSetPinOutputSpeed(GPIOB_PORT, GPIO_PIN_6, OUTPUT_LOW_SPEED);
+	MGPIO_vSetPinOutputType(GPIOB_PORT, GPIO_PIN_5, OUTPUT_PUSH_PULL_TYPE);
+	MGPIO_vSetPinOutputType(GPIOB_PORT, GPIO_PIN_6, OUTPUT_PUSH_PULL_TYPE);
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+	HLCD_vGoTo(0,1);
+	HLCD_vWriteString((U8*)"Enter Password:");
+	HLCD_vGoTo(1,5);
+	while(1)
+	{
+		GetPasswordFromUser();
+	}
+}
+
+void GetPasswordFromUser(void)
+{
+	S8 static Input_Incrementer=0 ;
+	S8 static Default_Password [5]="7890";
+	S8 static EnteredPassword[5] ={0};
+	G_key = 'P';
+	Delay_vMilliSecond16MHzoscillator(2);
+	G_key = HKEYPAD_U8READ();
+
+	if (G_key != 'P')
+	{
+		if(G_key >= '0' && G_key <='9')
+		{
+			BuzzerSound();
+			//HLCD_vWriteCharacter('*');
+			HLCD_vWriteCharacter(G_key);
+			EnteredPassword[Input_Incrementer] = G_key;
+			Input_Incrementer++;
+		}
+		else if('=' == G_key)
+		{
+			HLCD_vClearScreen();
+			HLCD_vWriteString((U8*)"OK");
+			Delay_vMilliSecond16MHzoscillator(500);
+			HLCD_vGoTo(1,1);
+			BuzzerSound();
+			if((StringCompare(EnteredPassword , Default_Password) == 1))
+			{
+				HLCD_vWriteString((U8*)"Accepted Pass");
+				Delay_vMilliSecond16MHzoscillator(500);
+				//
+				DefineUserCommand();
+			}
+			else{	}
+		}
+		else{	}
+	}
+	else{	}
+}
+
+U8 StringCompare(S8* String1 , S8 * String2)
+{
+	while(*String1 != 0 || *String2 != 0)
+	{
+		Delay_vMilliSecond16MHzoscillator(5);
+		if(*String1 == *String2){
+			String1++;
+			String2++;
+		}
+		else{
+			return 0;
+		}
+	}
+	return 1;
+}
+
+void BuzzerSound(void)
+{
+	MGPIO_vWritePinData(GPIOB_PORT, GPIO_PIN_4, HIGH_STATE);
+	Delay_vMilliSecond16MHzoscillator(100);
+	MGPIO_vWritePinData(GPIOB_PORT, GPIO_PIN_4, LOW_STATE);
+}
+
+void DefineUserCommand(void)
+{
+	HLCD_vClearScreen();
+	HLCD_vGoTo(1,2);
+	HLCD_vWriteString((U8*)"Welcome Home");
+	Delay_vMilliSecond16MHzoscillator(500);
+	HLCD_vClearScreen();
+	HLCD_vWriteString((U8*)"Pressed Key-> ");
+	while(1)
+	{
+		G_key = 'P';
+		G_key = HKEYPAD_U8READ();
+		if (G_key != 'P')
+		{
+			if('7'==G_key || '8'==G_key || '9'==G_key || '/'==G_key)
+			{
+				switch(G_key) //Ligting control
+				{
+				case '7': //LED1
+					HLCD_vGoTo(0,0);
+					HLCD_vWriteString((U8*)"Pressed Key-> ");
+					HLCD_vGoTo(0,15);
+					HLCD_vWriteCharacter(G_key);
+					HLCD_vWriteCharacter(' ');
+					HLCD_vGoTo(1,0);
+					HLCD_vWriteString((U8*)"LED1        ");
+				break;
+				case '8': //LED2
+					HLCD_vGoTo(0,0);
+					HLCD_vWriteString((U8*)"Pressed Key-> ");
+					HLCD_vGoTo(0,15);
+					HLCD_vWriteCharacter(G_key);
+					HLCD_vWriteCharacter(' ');
+					HLCD_vGoTo(1,0);
+					HLCD_vWriteString((U8*)"LED2        ");
+
+
+				break;
+				case '9': //LED3
+					HLCD_vGoTo(0,0);
+					HLCD_vWriteString((U8*)"Pressed Key-> ");
+					HLCD_vGoTo(0,15);
+					HLCD_vWriteCharacter(G_key);
+					HLCD_vWriteCharacter(' ');
+					HLCD_vGoTo(1,0);
+					HLCD_vWriteString((U8*)"LED3        ");
+				break;
+				case '/': //LED4
+					HLCD_vGoTo(0,0);
+					HLCD_vWriteString((U8*)"Pressed Key-> ");
+					HLCD_vGoTo(0,15);
+					HLCD_vWriteCharacter(G_key);
+					HLCD_vWriteCharacter(' ');
+					HLCD_vGoTo(1,0);
+					HLCD_vWriteString((U8*)"LED4        ");
+				break;
+				default:/*MESRA*/
+					break;
+				}
+			}
+
+			if('4'==G_key || '5'==G_key || '6'==G_key)
+			{
+				switch(G_key)	//Motor control
+				{
+				case '4':  //Motor Left Move
+
+					break;
+				case '5':  //Motor Stop Move
+
+					break;
+				case '6':  //Motor Right Move
+
+					break;
+				default:
+					break;
+				}
+			}
+		}
+	}
+}

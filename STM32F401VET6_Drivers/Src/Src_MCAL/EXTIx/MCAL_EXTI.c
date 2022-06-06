@@ -46,9 +46,9 @@ void MEXTI_vSoftwareTrigger(EXTI_LINE_Etag Copy_ELineNum)
 	SET_BIT(EXTI_SPTR->REG_EXTI_SWIER.RegisterAccess, Copy_ELineNum);
 }
 
-U8 MEXTI_U8GetPendingInterrupt(EXTI_LINE_Etag Copy_ELineNum)
+u8 MEXTI_U8GetPendingInterrupt(EXTI_LINE_Etag Copy_ELineNum)
 {
-	U8 L_U8GetPending =0;
+	u8 L_U8GetPending =0;
 	L_U8GetPending = GET_BIT(EXTI_SPTR->REG_EXTI_PR.RegisterAccess, Copy_ELineNum);
 	return L_U8GetPending;
 }

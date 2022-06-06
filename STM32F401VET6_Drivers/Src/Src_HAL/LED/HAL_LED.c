@@ -13,7 +13,7 @@ LED_Stag LEDs_1_CFG;
 LED_Stag LEDs_2_CFG;
 /************************************/
 
-static LED_Stag* HLED_Sptr_LEDSelect(U8 LED_Name)
+static LED_Stag* HLED_Sptr_LEDSelect(u8 LED_Name)
 {
 	LED_Stag *LED_ptr = NULL;
 	switch(LED_Name)
@@ -35,7 +35,7 @@ static LED_Stag* HLED_Sptr_LEDSelect(U8 LED_Name)
 	return LED_ptr ;
 }
 
-void HLED_vInitLED(U8 LED_Name)
+void HLED_vInitLED(u8 LED_Name)
 {
 	LED_Stag *LED_ptr = NULL;
 	LED_ptr = HLED_Sptr_LEDSelect(LED_Name);
@@ -80,7 +80,7 @@ void HLED_vInitLED(U8 LED_Name)
 	MGPIO_vSetPinPullType(LED_ptr->LED_PORT, LED_ptr->LED_PIN, LED_ptr->LED_PinPullType);
 }
 
-void HLED_vLEDStateControl(U8 LED_Name, U8 LED_State)
+void HLED_vLEDStateControl(u8 LED_Name, u8 LED_State)
 {
 	LED_Stag *LED_ptr = NULL;
 	LED_ptr = HLED_Sptr_LEDSelect(LED_Name);
@@ -88,7 +88,7 @@ void HLED_vLEDStateControl(U8 LED_Name, U8 LED_State)
 	MGPIO_vWritePinData(LED_ptr->LED_PORT, LED_ptr->LED_PIN, LED_State);
 }
 
-void HLED_vToggelLED(U8 LED_Name)
+void HLED_vToggelLED(u8 LED_Name)
 {
 	LED_Stag *LED_ptr = NULL;
 	LED_ptr = HLED_Sptr_LEDSelect(LED_Name);

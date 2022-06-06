@@ -43,38 +43,38 @@ void HKEYPAD_vInitiate(void)
 	MGPIO_vSetPinPullType(KEYPAD_COL_PORT, KEYPAD_C3_PIN, PULL_UP_STATE);
 }
 
-U8 HKEYPAD_U8READ(void)
+u8 HKEYPAD_u8READ(void)
 {
-	U8 KeyPad_ARRAY [4][4]= KEYPAD_KEYS_VALUES;
-	U8 loc_U8_Row =KEYPAD_R1_PIN;
-	U8 loc_U8_Col =KEYPAD_C1_PIN;
-	U8 loc_U8_RWCL_DATA_READING = 0;
-	U8 loc_U8_Pad_Reading = PAD_RELEASE;
+	u8 KeyPad_ARRAY [4][4]= KEYPAD_KEYS_VALUES;
+	u8 loc_u8_Row =KEYPAD_R1_PIN;
+	u8 loc_u8_Col =KEYPAD_C1_PIN;
+	u8 loc_u8_RWCL_DATA_READING = 0;
+	u8 loc_u8_Pad_Reading = PAD_RELEASE;
 
-	for (loc_U8_Row = KEYPAD_R0_PIN; loc_U8_Row <= KEYPAD_R3_PIN; loc_U8_Row++)
+	for (loc_u8_Row = KEYPAD_R0_PIN; loc_u8_Row <= KEYPAD_R3_PIN; loc_u8_Row++)
 	{
-		MGPIO_vWritePinData(KEYPAD_ROW_PORT, loc_U8_Row, LOW_STATE);
-		for (loc_U8_Col = KEYPAD_C0_PIN; loc_U8_Col <= KEYPAD_C3_PIN; loc_U8_Col++)
+		MGPIO_vWritePinData(KEYPAD_ROW_PORT, loc_u8_Row, LOW_STATE);
+		for (loc_u8_Col = KEYPAD_C0_PIN; loc_u8_Col <= KEYPAD_C3_PIN; loc_u8_Col++)
 		{
-			loc_U8_Pad_Reading = MGPIO_U8ReadPinData(KEYPAD_COL_PORT, loc_U8_Col);
-			if (PAD_PRESSE == loc_U8_Pad_Reading)
+			loc_u8_Pad_Reading = MGPIO_u8ReadPinData(KEYPAD_COL_PORT, loc_u8_Col);
+			if (PAD_PRESSE == loc_u8_Pad_Reading)
 			{
 				Delay_vMilliSecond16MHzoscillator(50);
-				loc_U8_Pad_Reading = MGPIO_U8ReadPinData(KEYPAD_COL_PORT, loc_U8_Col);
-				if (PAD_PRESSE == loc_U8_Pad_Reading)
+				loc_u8_Pad_Reading = MGPIO_u8ReadPinData(KEYPAD_COL_PORT, loc_u8_Col);
+				if (PAD_PRESSE == loc_u8_Pad_Reading)
 				{
-					while (PAD_PRESSE == MGPIO_U8ReadPinData(KEYPAD_COL_PORT, loc_U8_Col));
-					loc_U8_RWCL_DATA_READING =  KeyPad_ARRAY[loc_U8_Row -KEYPAD_R0_PIN][loc_U8_Col -KEYPAD_C0_PIN];
-					loc_U8_Pad_Reading = PAD_RELEASE;
+					while (PAD_PRESSE == MGPIO_u8ReadPinData(KEYPAD_COL_PORT, loc_u8_Col));
+					loc_u8_RWCL_DATA_READING =  KeyPad_ARRAY[loc_u8_Row -KEYPAD_R0_PIN][loc_u8_Col -KEYPAD_C0_PIN];
+					//loc_u8_Pad_Reading = PAD_RELEASE;
 					//MGPIO_vWritePinData(PHB1_GPIOA, GPIO_PIN_2, HIGH_STATE);
 				}
 				else {/*NOTHING*/}
 			}
 			else {/*NOTHING*/}
 		}
-		MGPIO_vWritePinData(KEYPAD_ROW_PORT, loc_U8_Row, HIGH_STATE);
+		MGPIO_vWritePinData(KEYPAD_ROW_PORT, loc_u8_Row, HIGH_STATE);
 		//Delay_vMilliSecond16MHzoscillator(100);
 		//MGPIO_vWritePinData(PHB1_GPIOA, GPIO_PIN_2, LOW_STATE);
 	}
-	return loc_U8_RWCL_DATA_READING;
+	return loc_u8_RWCL_DATA_READING;
 }

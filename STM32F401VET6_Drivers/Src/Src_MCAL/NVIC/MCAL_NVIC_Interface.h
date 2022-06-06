@@ -96,8 +96,8 @@ void MNVIC_vDisableInterruptRequest_IRQ(IRQn_Etag Copy_tIRQ);
 void MNVIC_vSet_IRQPendingInterrupt(IRQn_Etag Copy_tIRQ);
 void MNVIC_vClear_IRQPendingInterrupt(IRQn_Etag Copy_tIRQ);
 /*Return the IRQ number of the active interrupt*/
-U8 MNVIC_U8Get_IRQ_ActiveFlag(IRQn_Etag Copy_tIRQ);
+u8 MNVIC_U8Get_IRQ_ActiveFlag(IRQn_Etag Copy_tIRQ);
 
-void MNVIC_vASetGroupSubgroupPriority(IRQn_Etag Copy_tIRQ, U8 Copy_u8GroupPri, U8 Copy_u8SubGroupPri);
+void MNVIC_vASetGroupSubgroupPriority(IRQn_Etag Copy_tIRQ, u8 Copy_u8GroupPri, u8 Copy_u8SubGroupPri);
 
 #endif /* INC_MCAL_NVIC_MCAL_NVIC_INTERFACE_H_ */

@@ -83,13 +83,13 @@
   ============================================================================*/
 void MRCC_vInitSystemClock(void);
 
-void MRCC_vEnableBusClock(U8 AxBxENR_RCC_Bus ,U8 Peripheral_PPxx);
-void MRCC_vDisableBusClock(U8 AxBxENR_RCC_Bus , U8 Peripheral_PPxx);
+void MRCC_vEnableBusClock(u8 AxBxENR_RCC_Bus ,u8 Peripheral_PPxx);
+void MRCC_vDisableBusClock(u8 AxBxENR_RCC_Bus , u8 Peripheral_PPxx);
 
 void MRCC_vEnableSecuritySystem(void);
 void MRCC_vDisableSecuritySystem(void);
 
-void MRCC_vOutMCO_1(U8 MCO_1_Source);
-void MRCC_vOutMCO_1_Prescaler(U8 MCO_1_Prescaler);
+void MRCC_vOutMCO_1(u8 MCO_1_Source);
+void MRCC_vOutMCO_1_Prescaler(u8 MCO_1_Prescaler);
 
 #endif /* INC_MCAL_RCC_MCAL_RCC_INTERFACE_H_ */

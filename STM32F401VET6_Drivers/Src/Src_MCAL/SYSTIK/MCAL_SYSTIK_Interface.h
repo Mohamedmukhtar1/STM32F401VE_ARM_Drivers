@@ -32,16 +32,16 @@ typedef enum
 void MSTK_Init(STK_CLK_SRC_t STK_CLK_SRC);
 void MSTK_Stop(void);
 
-void MSTK_DelayMs(U32 Copy_u32RequiredMs);
-void MSTK_DelayUs(U32 Copy_u32RequiredUs);
+void MSTK_DelayMs(u32 Copy_u32RequiredMs);
+void MSTK_DelayUs(u32 Copy_u32RequiredUs);
 
-void MSTK_PeriodicCallBackMs(U32 Copy_u32RequiredDelay,void(*pAppFun)(void));
-void MSTK_SingleCallBackMs(U32 Copy_u32RequiredDelay,void(*pAppFun)(void));
+void MSTK_PeriodicCallBackMs(u32 Copy_u32RequiredDelay,void(*pAppFun)(void));
+void MSTK_SingleCallBackMs(u32 Copy_u32RequiredDelay,void(*pAppFun)(void));
 
-U32 MSTK_GetRemainingTime(void);
-U32 MSTK_GetElapsedTime(void);
+u32 MSTK_GetRemainingTime(void);
+u32 MSTK_GetElapsedTime(void);
 
-void MSTK_PWM(U8 Freq,U16 Duty,void(*pAppFun)(void));
+void MSTK_PWM(u8 Freq,u16 Duty,void(*pAppFun)(void));
 void SysTick_Handler(void);
 
 #endif /* SRC_MCAL_SYSTIK_MCAL_SYSTIK_INTERFACE_H_ */

@@ -79,7 +79,7 @@ void MRCC_vInitSystemClock(void)
 	#endif
 }
 
-void MRCC_vEnableBusClock(U8 AxBxENR_RCC_Bus ,U8 Peripheral_PPxx)
+void MRCC_vEnableBusClock(u8 AxBxENR_RCC_Bus, u8 Peripheral_PPxx)
 {
 	switch(AxBxENR_RCC_Bus)
 	{
@@ -95,7 +95,7 @@ void MRCC_vEnableBusClock(U8 AxBxENR_RCC_Bus ,U8 Peripheral_PPxx)
 	}
 }
 
-void MRCC_vDisableBusClock(U8 AxBxENR_RCC_Bus , U8 Peripheral_PPxx)
+void MRCC_vDisableBusClock(u8 AxBxENR_RCC_Bus, u8 Peripheral_PPxx)
 {
 	switch(AxBxENR_RCC_Bus)
 	{
@@ -123,7 +123,7 @@ void MRCC_vDisableSecuritySystem(void)
 	//ASSIGN_BIT_TO(RCC_SPTR->REG_RCC_CR.BitAccess.BIT19, 0U);
 }
 
-void MRCC_vOutMCO_1(U8 MCO_1_Source)
+void MRCC_vOutMCO_1(u8 MCO_1_Source)
 {
 	switch(MCO_1_Source)
 	{
@@ -149,7 +149,7 @@ void MRCC_vOutMCO_1(U8 MCO_1_Source)
 	}
 }
 
-void MRCC_vOutMCO_1_Prescaler(U8 MCO_1_Prescaler)
+void MRCC_vOutMCO_1_Prescaler(u8 MCO_1_Prescaler)
 {
 	switch (MCO_1_Prescaler)
 	{

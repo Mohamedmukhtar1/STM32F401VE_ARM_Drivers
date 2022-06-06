@@ -42,15 +42,15 @@ Max[100000000]->0.000000	[6 point]*/
   ==================_APIs Supported by "HAL_LCD DRIVER"_======================
   ============================================================================*/
 void HLCD_vInitiate(void);
-void HLCD_vWriteCommand(U8 loc_U8_LCD_COMMAND);
+void HLCD_vWriteCommand(u8 loc_u8_LCD_COMMAND);
 void HLCD_vClearScreen(void);
-void HLCD_vGoTo(U8 loc_U8_Row, U8 loc_U8_Col);
-void HLCD_vBuildCustomChar (U8 MemoryLocation, U8 CChar_Name);
+void HLCD_vGoTo(u8 loc_u8_Row, u8 loc_u8_Col);
+void HLCD_vBuildCustomChar (u8 MemoryLocation, u8 CChar_Name);
 /***********************************************************************/
-void HLCD_vWriteCharacter(U8 loc_U8_CHARACTER);
-void HLCD_vWriteString(U8 *loc_U8_PTR_STRING);
-void HLCD_vWriteNumber(S32 loc_S32_NUMBER);
-void HLCD_vWriteNumber_Bin(U8 loc_U8_NUMBER);
-void HLCD_vWriteNumber_Hex(U8 loc_U8_NUMBER);
+void HLCD_vWriteCharacter(u8 loc_u8_CHARACTER);
+void HLCD_vWriteString(u8 *loc_u8_PTR_STRING);
+void HLCD_vWriteNumber(s32 loc_S32_NUMBER);
+void HLCD_vWriteNumber_Bin(u8 loc_u8_NUMBER);
+void HLCD_vWriteNumber_Hex(u8 loc_u8_NUMBER);
 
 #endif /* SRC_HAL_LCD_HAL_LCD_INTERFACE_H_ */

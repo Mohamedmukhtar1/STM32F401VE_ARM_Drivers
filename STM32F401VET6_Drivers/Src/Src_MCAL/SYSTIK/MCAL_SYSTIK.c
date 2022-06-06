@@ -8,15 +8,15 @@
 #include "MCAL_SYSTIK_Interface.h"
 
 /*=====================================*/
-static U32 STK_CLK_Ms_Ticks;
-static U32 STK_RequiredOnTime;
-static U32 STK_RequiredOffTime;
-//static U32 L_RequiredIntervalTime;
+static u32 STK_CLK_Ms_Ticks;
+static u32 STK_RequiredOnTime;
+static u32 STK_RequiredOffTime;
+//static u32 L_RequiredIntervalTime;
 static void(*STK_pAppFun)(void)=NULL;
 //static void*STK_pAppFunParameter=NULL;
-static volatile U8 STK_CallBackMode;
-static volatile U8 G_u8ReadFlag;
-static U32 counter;
+static volatile u8 STK_CallBackMode;
+static volatile u8 G_u8ReadFlag;
+static u32 counter;
 /*=====================================*/
 
 void MSTK_Init(STK_CLK_SRC_t STK_CLK_SRC)
@@ -46,7 +46,7 @@ void MSTK_Stop(void)
 	STK_SPTR->REG_STK_CTRL.RegisterAccess &=~ STK_CTRL_TICKINT;
 }
 
-void MSTK_DelayMs(U32 Copy_u32RequiredMs)
+void MSTK_DelayMs(u32 Copy_u32RequiredMs)
 {
 	STK_SPTR->REG_STK_LOAD.RegisterAccess = (STK_CLK_Ms_Ticks*Copy_u32RequiredMs)-1;
 	STK_SPTR->REG_STK_VAL.RegisterAccess =0;
@@ -56,7 +56,7 @@ void MSTK_DelayMs(U32 Copy_u32RequiredMs)
 
 }
 
-void MSTK_DelayUs(U32 Copy_u32RequiredUs)
+void MSTK_DelayUs(u32 Copy_u32RequiredUs)
 {
 	STK_SPTR->REG_STK_LOAD.RegisterAccess = ((STK_CLK_Ms_Ticks/1000U)*Copy_u32RequiredUs)-1;
 	STK_SPTR->REG_STK_VAL.RegisterAccess =0;
@@ -66,7 +66,7 @@ void MSTK_DelayUs(U32 Copy_u32RequiredUs)
 
 }
 
-void MSTK_PeriodicCallBackMs(U32 Copy_u32RequiredDelay,void(*pAppFun)(void))
+void MSTK_PeriodicCallBackMs(u32 Copy_u32RequiredDelay,void(*pAppFun)(void))
 {
 	if(pAppFun!=NULL)
 	{
@@ -79,7 +79,7 @@ void MSTK_PeriodicCallBackMs(U32 Copy_u32RequiredDelay,void(*pAppFun)(void))
 	else{/*error*/}
 }
 
-void MSTK_SingleCallBackMs(U32 Copy_u32RequiredDelay,void(*pAppFun)(void))
+void MSTK_SingleCallBackMs(u32 Copy_u32RequiredDelay,void(*pAppFun)(void))
 {
 	if(pAppFun!=NULL)
 	{
@@ -92,23 +92,23 @@ void MSTK_SingleCallBackMs(U32 Copy_u32RequiredDelay,void(*pAppFun)(void))
 	else{/*error*/}
 }
 
-U32 MSTK_GetRemainingTime(void)
+u32 MSTK_GetRemainingTime(void)
 {
-	U32 L_ReadValR;
+	u32 L_ReadValR;
 	L_ReadValR= STK_SPTR->REG_STK_VAL.RegisterAccess;
 	return L_ReadValR;
 }
 
-U32 MSTK_GetElapsedTime(void)
+u32 MSTK_GetElapsedTime(void)
 {
-	U32 L_ReadElapsedTime;
+	u32 L_ReadElapsedTime;
 	L_ReadElapsedTime= (STK_SPTR->REG_STK_LOAD.RegisterAccess) - (STK_SPTR->REG_STK_VAL.RegisterAccess);
 	return L_ReadElapsedTime;
 }
 
-void MSTK_PWM(U8 Freq,U16 Duty,void(*pAppFun)(void))
+void MSTK_PWM(u8 Freq,u16 Duty,void(*pAppFun)(void))
 {
-	U32 L_RequiredTime  = ((1000U/Freq)*2U);//how 0.5ms in this freq
+	u32 L_RequiredTime  = ((1000U/Freq)*2U);//how 0.5ms in this freq
 	STK_RequiredOnTime  = (Duty*L_RequiredTime/1000);
 	STK_RequiredOffTime = ((1000-Duty)*L_RequiredTime/1000);
 	STK_pAppFun = pAppFun;
@@ -148,9 +148,9 @@ void SysTick_Handler(void)
 }
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-/*void STK_PWM(U8 Freq,U16 Duty,void(*pAppFun)(void))
-{ //void STK_PWM(U8 Freq, U16 Duty, void(*pAppFun)(void));
-	U32 L_RequiredTime = (1000U*1000U/Freq);//how us in this freq
+/*void STK_PWM(u8 Freq,u16 Duty,void(*pAppFun)(void))
+{ //void STK_PWM(u8 Freq, u16 Duty, void(*pAppFun)(void));
+	u32 L_RequiredTime = (1000U*1000U/Freq);//how us in this freq
 	 L_RequiredOnTime = (Duty*(L_RequiredTime/1000));
 	 L_RequiredOffTime = ((1000-Duty)*(L_RequiredTime/1000));
 	STK_pAppFun = pAppFun;

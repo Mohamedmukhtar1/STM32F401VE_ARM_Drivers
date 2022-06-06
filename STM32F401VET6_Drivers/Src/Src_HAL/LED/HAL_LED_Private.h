@@ -10,12 +10,12 @@
 
 typedef struct
 {
-	U8 LED_PORT			  ;
-	U8 LED_PIN			  ;
-	U8 LED_PinOutputType  ;
-	U8 LED_PinOutputSpeed ;
-	U8 LED_PinPullType    ;
-	U8 LED_State		  ;
+	u8 LED_PORT			  ;
+	u8 LED_PIN			  ;
+	u8 LED_PinOutputType  ;
+	u8 LED_PinOutputSpeed ;
+	u8 LED_PinPullType    ;
+	u8 LED_State		  ;
 }LED_Stag;
 
 #define LED_ON		HIGH_STATE

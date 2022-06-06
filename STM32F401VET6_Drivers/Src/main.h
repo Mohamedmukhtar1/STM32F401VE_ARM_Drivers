@@ -15,11 +15,14 @@
 #include "../Src/Src_APP/Debug\APP_Debug.h"
 
 /***************_MyApp_INCLUDES_***************************/
+#include "HAL_TFT_ImagesSheet.h"
 
 /***************_HAL_INCLUDES_*****************************/
 #include "../Src/Src_HAL/LED/HAL_LED_Interface.h"
 #include "../Src/Src_HAL/Keypad/HAL_Keypad_Interface.h"
 #include "../Src/Src_HAL/LCD/HAL_LCD_Interface.h"
+#include "../Src/Src_HAL/TFT/HAL_TFT_Interface.h"
+
 /***************_MCAL_INCLUDES_****************************/
 #include "../Src/Src_MCAL/RCC/MCAL_RCC_Interface.h"
 #include "../Src/Src_MCAL/SYSTIK/MCAL_SYSTIK_Interface.h"
@@ -29,7 +32,5 @@
 #include "../Src/Src_MCAL/EXTI_AM/EXTI_interface.h"
 
 /***************_main.c_FUNCTION_PROTOTYPE_****************/
-void led_on(void);
-void EXTI_0(void);
 
 #endif /* MAIN_H_ */

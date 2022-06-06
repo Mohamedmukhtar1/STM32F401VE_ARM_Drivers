@@ -33,6 +33,7 @@ Src/main.o: ../Src/main.c ../Src/main.h \
  ../Inc/../Src/Src_MCAL/EXTIx/MCAL_EXTI_Private.h \
  ../Inc/../Src/Src_MCAL/EXTIx/MCAL_EXTI_Config.h \
  ../Inc/../Src/Src_MCAL/EXTIx/MCAL_EXTI_Register.h \
+ ../Src/HAL_TFT_ImagesSheet.h \
  ../Src/../Src/Src_HAL/LED/HAL_LED_Interface.h \
  ../Src/../Src/Src_HAL/Keypad/HAL_Keypad_Interface.h \
  ../Src/../Src/Src_HAL/Keypad/..\..\Src_APP\Utility\APP_Utility.h \
@@ -47,12 +48,25 @@ Src/main.o: ../Src/main.c ../Src/main.h \
  ../Src/../Src/Src_HAL/LCD/HAL_LCD_Commands.h \
  ../Src/../Src/Src_HAL/LCD/..\..\Src_MCAL\RCC\MCAL_RCC_Interface.h \
  ../Src/../Src/Src_HAL/LCD/..\..\Src_MCAL\GPIO\MCAL_GPIO_Interface.h \
+ ../Src/../Src/Src_HAL/TFT/HAL_TFT_Interface.h \
+ ../Src/../Src/Src_HAL/TFT/..\..\Src_APP\Utility\APP_Utility.h \
+ ../Src/../Src/Src_HAL/TFT/HAL_TFT_Private.h \
+ ../Src/../Src/Src_HAL/TFT/HAL_TFT_Config.h \
+ ../Src/../Src/Src_HAL/TFT/HAL_TFT_Commands.h \
+ ../Src/../Src/Src_HAL/TFT/../../Src_MCAL/RCC/MCAL_RCC_Interface.h \
+ ../Src/../Src/Src_HAL/TFT/../../Src_MCAL/GPIO/MCAL_GPIO_Interface.h \
+ ../Src/../Src/Src_HAL/TFT/../../Src_MCAL/SYSTIK/MCAL_SYSTIK_Interface.h \
+ ../Src/../Src/Src_HAL/TFT/../../Src_MCAL/SYSTIK/..\..\Src_APP\Utility\APP_Utility.h \
+ ../Src/../Src/Src_HAL/TFT/../../Src_MCAL/SYSTIK/MCAL_SYSTIK_Private.h \
+ ../Src/../Src/Src_HAL/TFT/../../Src_MCAL/SYSTIK/MCAL_SYSTIK_Config.h \
+ ../Src/../Src/Src_HAL/TFT/../../Src_MCAL/SYSTIK/MCAL_SYSTIK_Register.h \
+ ../Src/../Src/Src_HAL/TFT/../../Src_MCAL/SPI/MCAL_SPI_Interface.h \
+ ../Src/../Src/Src_HAL/TFT/../../Src_MCAL/SPI/..\..\Src_APP\Utility\APP_Utility.h \
+ ../Src/../Src/Src_HAL/TFT/../../Src_MCAL/SPI/MCAL_SPI_Private.h \
+ ../Src/../Src/Src_HAL/TFT/../../Src_MCAL/SPI/MCAL_SPI_Config.h \
+ ../Src/../Src/Src_HAL/TFT/../../Src_MCAL/SPI/MCAL_SPI_Register.h \
  ../Src/../Src/Src_MCAL/RCC/MCAL_RCC_Interface.h \
  ../Src/../Src/Src_MCAL/SYSTIK/MCAL_SYSTIK_Interface.h \
- ../Src/../Src/Src_MCAL/SYSTIK/..\..\Src_APP\Utility\APP_Utility.h \
- ../Src/../Src/Src_MCAL/SYSTIK/MCAL_SYSTIK_Private.h \
- ../Src/../Src/Src_MCAL/SYSTIK/MCAL_SYSTIK_Config.h \
- ../Src/../Src/Src_MCAL/SYSTIK/MCAL_SYSTIK_Register.h \
  ../Src/../Src/Src_MCAL/GPIO/MCAL_GPIO_Interface.h \
  ../Src/../Src/Src_MCAL/NVIC/MCAL_NVIC_Interface.h \
  ../Src/../Src/Src_MCAL/EXTIx/MCAL_EXTI_Interface.h \
@@ -97,6 +111,7 @@ Src/main.o: ../Src/main.c ../Src/main.h \
 ../Inc/../Src/Src_MCAL/EXTIx/MCAL_EXTI_Private.h:
 ../Inc/../Src/Src_MCAL/EXTIx/MCAL_EXTI_Config.h:
 ../Inc/../Src/Src_MCAL/EXTIx/MCAL_EXTI_Register.h:
+../Src/HAL_TFT_ImagesSheet.h:
 ../Src/../Src/Src_HAL/LED/HAL_LED_Interface.h:
 ../Src/../Src/Src_HAL/Keypad/HAL_Keypad_Interface.h:
 ../Src/../Src/Src_HAL/Keypad/..\..\Src_APP\Utility\APP_Utility.h:
@@ -111,12 +126,25 @@ Src/main.o: ../Src/main.c ../Src/main.h \
 ../Src/../Src/Src_HAL/LCD/HAL_LCD_Commands.h:
 ../Src/../Src/Src_HAL/LCD/..\..\Src_MCAL\RCC\MCAL_RCC_Interface.h:
 ../Src/../Src/Src_HAL/LCD/..\..\Src_MCAL\GPIO\MCAL_GPIO_Interface.h:
+../Src/../Src/Src_HAL/TFT/HAL_TFT_Interface.h:
+../Src/../Src/Src_HAL/TFT/..\..\Src_APP\Utility\APP_Utility.h:
+../Src/../Src/Src_HAL/TFT/HAL_TFT_Private.h:
+../Src/../Src/Src_HAL/TFT/HAL_TFT_Config.h:
+../Src/../Src/Src_HAL/TFT/HAL_TFT_Commands.h:
+../Src/../Src/Src_HAL/TFT/../../Src_MCAL/RCC/MCAL_RCC_Interface.h:
+../Src/../Src/Src_HAL/TFT/../../Src_MCAL/GPIO/MCAL_GPIO_Interface.h:
+../Src/../Src/Src_HAL/TFT/../../Src_MCAL/SYSTIK/MCAL_SYSTIK_Interface.h:
+../Src/../Src/Src_HAL/TFT/../../Src_MCAL/SYSTIK/..\..\Src_APP\Utility\APP_Utility.h:
+../Src/../Src/Src_HAL/TFT/../../Src_MCAL/SYSTIK/MCAL_SYSTIK_Private.h:
+../Src/../Src/Src_HAL/TFT/../../Src_MCAL/SYSTIK/MCAL_SYSTIK_Config.h:
+../Src/../Src/Src_HAL/TFT/../../Src_MCAL/SYSTIK/MCAL_SYSTIK_Register.h:
+../Src/../Src/Src_HAL/TFT/../../Src_MCAL/SPI/MCAL_SPI_Interface.h:
+../Src/../Src/Src_HAL/TFT/../../Src_MCAL/SPI/..\..\Src_APP\Utility\APP_Utility.h:
+../Src/../Src/Src_HAL/TFT/../../Src_MCAL/SPI/MCAL_SPI_Private.h:
+../Src/../Src/Src_HAL/TFT/../../Src_MCAL/SPI/MCAL_SPI_Config.h:
+../Src/../Src/Src_HAL/TFT/../../Src_MCAL/SPI/MCAL_SPI_Register.h:
 ../Src/../Src/Src_MCAL/RCC/MCAL_RCC_Interface.h:
 ../Src/../Src/Src_MCAL/SYSTIK/MCAL_SYSTIK_Interface.h:
-../Src/../Src/Src_MCAL/SYSTIK/..\..\Src_APP\Utility\APP_Utility.h:
-../Src/../Src/Src_MCAL/SYSTIK/MCAL_SYSTIK_Private.h:
-../Src/../Src/Src_MCAL/SYSTIK/MCAL_SYSTIK_Config.h:
-../Src/../Src/Src_MCAL/SYSTIK/MCAL_SYSTIK_Register.h:
 ../Src/../Src/Src_MCAL/GPIO/MCAL_GPIO_Interface.h:
 ../Src/../Src/Src_MCAL/NVIC/MCAL_NVIC_Interface.h:
 ../Src/../Src/Src_MCAL/EXTIx/MCAL_EXTI_Interface.h:

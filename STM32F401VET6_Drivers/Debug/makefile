@@ -11,13 +11,14 @@ RM := rm -rf
 -include sources.mk
 -include Startup/subdir.mk
 -include Src/Src_MCAL/SYSTIK/subdir.mk
+-include Src/Src_MCAL/SPI/subdir.mk
 -include Src/Src_MCAL/RCC/subdir.mk
 -include Src/Src_MCAL/NVIC/subdir.mk
 -include Src/Src_MCAL/GPIO/subdir.mk
 -include Src/Src_MCAL/EXTIx/subdir.mk
 -include Src/Src_MCAL/EXTI_AM/subdir.mk
+-include Src/Src_HAL/TFT/subdir.mk
 -include Src/Src_HAL/LED/subdir.mk
--include Src/Src_HAL/LCD_AM/subdir.mk
 -include Src/Src_HAL/LCD/subdir.mk
 -include Src/Src_HAL/Keypad/subdir.mk
 -include Src/Src_APP/Utility/Utility_Delay/subdir.mk

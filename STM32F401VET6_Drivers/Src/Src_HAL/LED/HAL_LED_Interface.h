@@ -20,15 +20,15 @@
 #include "..\..\Src_MCAL\GPIO\MCAL_GPIO_Interface.h"
 
 
-#define LED_0_	((U8)0U)
-#define LED_1_	((U8)1U)
-#define LED_2_	((U8)2U)
+#define LED_0_	((u8)0U)
+#define LED_1_	((u8)1U)
+#define LED_2_	((u8)2U)
 
 /*============================================================================
   ==================_APIs Supported by "HAL_LED DRIVER"_======================
   ============================================================================*/
-void HLED_vInitLED(U8 LED_Name);
-void HLED_vLEDStateControl(U8 LED_Name, U8 LED_State);
-void HLED_vToggelLED(U8 LED_Name);
+void HLED_vInitLED(u8 LED_Name);
+void HLED_vLEDStateControl(u8 LED_Name, u8 LED_State);
+void HLED_vToggelLED(u8 LED_Name);
 
 #endif /* INC_HAL_LED_HAL_LED_INTERFACE_H_ */

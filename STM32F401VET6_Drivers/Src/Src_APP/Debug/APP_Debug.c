@@ -9,7 +9,7 @@
 
 void ADebug_vAll_GPIO_Ports (void)
 {
-	U8 i =0;
+	u8 i =0;
 	MRCC_vEnableBusClock(Bus_AHB1, PHB1_GPIOA);
 	MRCC_vEnableBusClock(Bus_AHB1, PHB1_GPIOB);
 	MRCC_vEnableBusClock(Bus_AHB1, PHB1_GPIOC);
@@ -26,8 +26,8 @@ void ADebug_vAll_GPIO_Ports (void)
 
 	for(i=0; i<16 ;i++)
 	{
-		MGPIO_vSetPinOutputType(GPIOA_PORT, (U8)i, OUTPUT_PUSH_PULL_TYPE);
-		MGPIO_vSetPinOutputSpeed(GPIOA_PORT, (U8)i, OUTPUT_LOW_SPEED);
+		MGPIO_vSetPinOutputType(GPIOA_PORT, (u8)i, OUTPUT_PUSH_PULL_TYPE);
+		MGPIO_vSetPinOutputSpeed(GPIOA_PORT, (u8)i, OUTPUT_LOW_SPEED);
 
 		MGPIO_vSetPinOutputType(GPIOB_PORT ,i ,OUTPUT_PUSH_PULL_TYPE);
 		MGPIO_vSetPinOutputSpeed(GPIOB_PORT ,i ,OUTPUT_LOW_SPEED);
